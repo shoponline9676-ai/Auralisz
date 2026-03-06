@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auralisz® | Apple Premium — AirPods, Apple Watch & Accessoires</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --bg2:#f5f5f7;
+  --bg3:#fafafa;
+  --surface:#ffffff;
+  --card:#ffffff;
+  --border:#e5e5ea;
+  --border2:#d1d1d6;
+  --text:#1d1d1f;
+  --text2:#3a3a3c;
+  --muted:#6e6e73;
+  --light:#aeaeb2;
+  --accent:#0071e3;
+  --accent2:#0077ed;
+  --accentbg:#e8f1fd;
+  --red:#ff3b30;
+  --green:#30d158;
+  --r:12px;
+  --r2:18px;
+  --shadow:0 2px 12px rgba(0,0,0,.08);
+  --shadow2:0 8px 32px rgba(0,0,0,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* TICKER */
+.ticker{background:var(--text);height:36px;overflow:hidden;display:flex;align-items:center;}
+.ticker-t{display:flex;animation:tkroll 30s linear infinite;white-space:nowrap;}
+.ticker-t span{font-size:.65rem;font-weight:500;letter-spacing:.08em;color:rgba(255,255,255,.85);padding:0 48px;}
+@keyframes tkroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:900;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-wrap{display:flex;align-items:center;height:60px;max-width:1320px;margin:0 auto;padding:0 32px;gap:0;}
+.logo{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;color:var(--text);margin-right:40px;flex-shrink:0;}
+.logo em{color:var(--accent);font-style:normal;}
+.nav-links{display:flex;align-items:stretch;height:60px;flex:1;}
+.nav-item{position:relative;display:flex;align-items:center;}
+.nav-a{padding:0 16px;font-size:.82rem;font-weight:500;color:var(--text2);cursor:pointer;white-space:nowrap;height:100%;display:flex;align-items:center;gap:4px;transition:color .15s;}
+.nav-a:hover{color:var(--accent);}
+
+/* DROPDOWN — stays open on hover */
+.nav-item:hover .drop{opacity:1;visibility:visible;transform:translateY(0);}
+.drop{position:absolute;top:100%;left:0;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2);padding:8px;z-index:1000;min-width:220px;box-shadow:var(--shadow2);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .18s ease,transform .18s ease,visibility .18s;}
+.drop a{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:.81rem;font-weight:500;color:var(--text2);border-radius:10px;transition:all .15s;cursor:pointer;}
+.drop a:hover{background:var(--bg2);color:var(--accent);}
+.drop a img{width:32px;height:32px;object-fit:contain;border-radius:6px;background:var(--bg2);}
+.drop-sep{height:1px;background:var(--border);margin:4px 0;}
+
+.nav-icons{display:flex;align-items:center;gap:2px;margin-left:auto;}
+.ni{width:38px;height:38px;display:flex;align-items:center;justify-content:center;background:none;border:none;border-radius:10px;transition:background .15s;position:relative;cursor:pointer;}
+.ni:hover{background:var(--bg2);}
+.ni svg{width:18px;height:18px;stroke:var(--text);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.cbadge{position:absolute;top:4px;right:4px;background:var(--accent);color:#fff;border-radius:50%;width:16px;height:16px;font-size:.5rem;font-weight:700;display:flex;align-items:center;justify-content:center;}
+
+/* PROMO BAR */
+.promo-bar{background:var(--accentbg);border-bottom:1px solid #c7ddf8;padding:10px 32px;text-align:center;font-size:.78rem;color:var(--accent);font-weight:600;}
+.promo-bar span{opacity:.6;font-weight:400;margin-left:6px;}
+
+/* HERO */
+.hero{background:var(--bg2);padding:60px 32px;overflow:hidden;position:relative;}
+.hero-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.hero-tag{display:inline-flex;align-items:center;gap:7px;background:var(--accentbg);border:1px solid #bbd4f7;padding:5px 14px;border-radius:100px;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;}
+.hero-tag::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;}
+.hero-txt h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin-bottom:16px;color:var(--text);}
+.hero-txt h1 .hl{color:var(--accent);}
+.hero-txt p{font-size:.9rem;color:var(--muted);line-height:1.75;margin-bottom:28px;max-width:420px;}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:13px 28px;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.02em;border:none;border-radius:100px;cursor:pointer;transition:all .2s;}
+.btn-primary:hover{background:var(--accent2);box-shadow:0 4px 16px rgba(0,113,227,.3);}
+.btn-secondary{background:var(--bg);color:var(--text);padding:13px 28px;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;border:1px solid var(--border2);border-radius:100px;cursor:pointer;transition:all .2s;}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent);}
+.hero-stats{display:flex;gap:28px;margin-top:32px;padding-top:24px;border-top:1px solid var(--border);}
+.hs{display:flex;flex-direction:column;gap:2px;}
+.hs-num{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:var(--text);}
+.hs-lbl{font-size:.65rem;color:var(--muted);letter-spacing:.04em;}
+.hero-img{position:relative;display:flex;align-items:center;justify-content:center;}
+.hero-img img{width:90%;max-width:480px;filter:drop-shadow(0 20px 48px rgba(0,0,0,.12));animation:float 7s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+/* TRUST */
+.trust{background:var(--bg);border-bottom:1px solid var(--border);padding:16px 32px;}
+.trust-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+.ti{display:flex;align-items:center;gap:10px;padding:8px 0;border-right:1px solid var(--border);}
+.ti:last-child{border-right:none;}
+.ti-icon{width:32px;height:32px;background:var(--accentbg);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ti-icon svg{width:15px;height:15px;stroke:var(--accent);fill:none;stroke-width:2;}
+.ti h4{font-size:.73rem;font-weight:600;color:var(--text);}
+.ti p{font-size:.62rem;color:var(--muted);}
+.ti-txt{padding-left:4px;}
+
+/* SECTIONS */
+.sec{padding:64px 32px;max-width:1320px;margin:0 auto;}
+.sec-full{padding:64px 32px;}
+.sh{margin-bottom:36px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;}
+.sh-left .eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.sh-left h2{font-family:'Syne',sans-serif;font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:800;letter-spacing:-.03em;color:var(--text);}
+.see-all{font-size:.78rem;font-weight:600;color:var(--accent);cursor:pointer;white-space:nowrap;padding:8px 16px;border:1px solid var(--border2);border-radius:100px;transition:all .15s;}
+.see-all:hover{background:var(--accentbg);border-color:#bbd4f7;}
+
+/* PRODUCT GRID */
+.pg{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.pg-3{grid-template-columns:repeat(3,1fr);}
+
+/* PRODUCT CARD */
+.pc{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;cursor:pointer;transition:all .22s;position:relative;}
+.pc:hover{border-color:var(--border2);box-shadow:var(--shadow2);transform:translateY(-4px);}
+.pc-img{position:relative;background:var(--bg2);aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:20px;overflow:hidden;}
+.pc-img img{width:80%;height:80%;object-fit:contain;transition:transform .4s;filter:drop-shadow(0 8px 20px rgba(0,0,0,.1));}
+.pc:hover .pc-img img{transform:scale(1.05);}
+.pc-badges{position:absolute;top:10px;left:10px;display:flex;flex-direction:column;gap:4px;}
+.bdg{font-size:.56rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:5px;}
+.bdg.sale{background:#fff0ef;color:var(--red);border:1px solid #ffd5d3;}
+.bdg.new{background:var(--accentbg);color:var(--accent);border:1px solid #bbd4f7;}
+.bdg.hot{background:#fff8e7;color:#c07700;border:1px solid #ffe0a0;}
+.pc-wish{position:absolute;top:10px;right:10px;width:30px;height:30px;background:rgba(255,255,255,.9);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;cursor:pointer;}
+.pc:hover .pc-wish{opacity:1;}
+.pc-wish svg{width:14px;height:14px;stroke:var(--muted);fill:none;stroke-width:2;}
+.pc-quick{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(255,255,255,1) 60%,transparent);padding:20px 14px 12px;transform:translateY(100%);transition:transform .25s;}
+.pc:hover .pc-quick{transform:translateY(0);}
+.pc-add{width:100%;background:var(--accent);color:#fff;border:none;padding:9px;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:600;border-radius:8px;cursor:pointer;transition:background .15s;}
+.pc-add:hover{background:var(--accent2);}
+.pc-body{padding:14px 16px 18px;}
+.pc-brand{font-size:.6rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.pc-name{font-size:.84rem;font-weight:600;line-height:1.35;margin-bottom:8px;color:var(--text);}
+.pc-stars{display:flex;align-items:center;gap:4px;margin-bottom:8px;}
+.stars{font-size:.65rem;color:#ff9500;letter-spacing:1px;}
+.stars-n{font-size:.62rem;color:var(--light);}
+.pc-price{display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
+.p-now{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--text);}
+.p-was{font-size:.72rem;color:var(--light);text-decoration:line-through;}
+.p-off{font-size:.6rem;background:#fff0ef;color:var(--red);padding:2px 6px;border-radius:4px;font-weight:700;}
+
+/* CATEGORIES */
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.cat-tile{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:32px 24px;cursor:pointer;transition:all .22s;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;}
+.cat-tile:hover{border-color:var(--border2);box-shadow:var(--shadow2);background:var(--bg);transform:translateY(-4px);}
+.cat-icon{width:80px;height:80px;display:flex;align-items:center;justify-content:center;}
+.cat-icon img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(0,0,0,.1));}
+.cat-name{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--text);}
+.cat-count{font-size:.72rem;color:var(--muted);}
+.cat-link{font-size:.74rem;font-weight:600;color:var(--accent);}
+
+/* BANNER */
+.banner{background:var(--bg2);border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;min-height:380px;position:relative;}
+.banner.blue{background:linear-gradient(135deg,#eaf2ff,#d4e8ff);}
+.banner-txt{padding:56px 52px;display:flex;flex-direction:column;justify-content:center;}
+.banner-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.banner-txt h2{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:10px;color:var(--text);}
+.banner-txt p{font-size:.84rem;color:var(--muted);line-height:1.75;margin-bottom:24px;max-width:340px;}
+.banner-img{display:flex;align-items:center;justify-content:center;padding:32px;}
+.banner-img img{max-width:320px;width:100%;filter:drop-shadow(0 16px 40px rgba(0,0,0,.12));animation:float 7s ease-in-out infinite;}
+
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.fc{background:var(--bg2);border-radius:var(--r2);padding:28px 24px;transition:all .22s;}
+.fc:hover{background:var(--bg);box-shadow:var(--shadow);}
+.fc-icon{width:44px;height:44px;background:var(--accentbg);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.fc-icon svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.fc h3{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:7px;color:var(--text);}
+.fc p{font-size:.78rem;color:var(--muted);line-height:1.7;}
+
+/* REVIEWS */
+
+.btn-more-rev{background:var(--acc);color:#fff;border:none;border-radius:50px;padding:14px 40px;font-size:.9rem;font-weight:600;cursor:pointer;letter-spacing:.5px;transition:.2s;}
+.btn-more-rev:hover{opacity:.85;transform:translateY(-1px);}
+
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.rv{background:var(--bg);border:1px solid var(--border);border-radius:var(--r2);padding:22px;transition:all .22s;}
+.rv:hover{box-shadow:var(--shadow);}
+.rv-prod-img{width:100%;height:140px;object-fit:contain;background:var(--bg2);border-radius:10px;margin-bottom:14px;padding:12px;}
+.rv-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
+.rv-av{width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;}
+.rv-name{font-size:.78rem;font-weight:600;color:var(--text);}
+.rv-date{font-size:.62rem;color:var(--light);margin-top:2px;}
+.rv-prod{font-size:.65rem;font-weight:600;color:var(--accent);margin-bottom:8px;}
+.rv-body{font-size:.79rem;color:var(--text2);line-height:1.7;}
+.rv-check{display:inline-flex;align-items:center;gap:4px;font-size:.62rem;color:var(--green);font-weight:600;margin-top:10px;}
+.rv-check::before{content:'✓';}
+
+/* NEWSLETTER */
+.nl{background:var(--bg2);padding:64px 32px;text-align:center;}
+.nl-inner{max-width:500px;margin:0 auto;}
+.nl h2{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;letter-spacing:-.03em;margin-bottom:8px;color:var(--text);}
+.nl p{font-size:.84rem;color:var(--muted);margin-bottom:24px;}
+.nl-form{display:flex;background:var(--bg);border:1px solid var(--border2);border-radius:100px;overflow:hidden;padding:4px;}
+.nl-form input{flex:1;background:transparent;border:none;padding:9px 18px;font-family:'DM Sans',sans-serif;font-size:.82rem;outline:none;color:var(--text);}
+.nl-form input::placeholder{color:var(--light);}
+.nl-form button{background:var(--accent);color:#fff;border:none;padding:9px 22px;font-family:'DM Sans',sans-serif;font-size:.74rem;font-weight:600;border-radius:100px;cursor:pointer;transition:background .15s;}
+.nl-form button:hover{background:var(--accent2);}
+
+/* FOOTER */
+footer{background:var(--text);padding:56px 32px 24px;}
+.foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:36px;max-width:1320px;margin:0 auto 44px;}
+.foot-logo{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fff;margin-bottom:10px;display:block;}
+.foot-logo em{color:var(--accent);font-style:normal;}
+.foot-brand p{font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:18px;}
+.pay-row{display:flex;flex-wrap:wrap;gap:5px;}
+.pay-chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:4px 10px;font-size:.58rem;color:rgba(255,255,255,.45);border-radius:5px;}
+.foot-col h5{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:14px;}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.foot-col li{font-size:.74rem;color:rgba(255,255,255,.5);cursor:pointer;transition:color .15s;}
+.foot-col li:hover{color:#fff;}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;max-width:1320px;margin:0 auto;}
+.foot-bottom p{font-size:.65rem;color:rgba(255,255,255,.3);}
+.foot-lnks{display:flex;gap:18px;}
+.foot-lnks span{font-size:.65rem;color:rgba(255,255,255,.3);cursor:pointer;transition:color .15s;}
+.foot-lnks span:hover{color:rgba(255,255,255,.7);}
+
+/* CART DRAWER */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:800;display:none;backdrop-filter:blur(2px);}
+.overlay.on{display:block;}
+.cart-drawer{position:fixed;top:0;right:-460px;width:440px;height:100vh;background:var(--bg);z-index:1000;transition:right .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;border-left:1px solid var(--border);box-shadow:-16px 0 48px rgba(0,0,0,.1);}
+.cart-drawer.open{right:0;}
+.cart-hd{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--border);}
+.cart-hd h3{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;}
+.cart-cls{background:var(--bg2);border:1px solid var(--border);color:var(--text2);width:30px;height:30px;border-radius:8px;font-size:.85rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.cart-cls:hover{background:#fff0ef;border-color:#ffd5d3;color:var(--red);}
+.cart-body{flex:1;overflow-y:auto;padding:14px 22px;}
+.cart-empty{text-align:center;padding:52px 0;color:var(--light);font-size:.82rem;line-height:2.2;}
+.ci{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);}
+.ci-img{width:70px;height:70px;object-fit:contain;border-radius:10px;background:var(--bg2);padding:6px;flex-shrink:0;}
+.ci-name{font-size:.78rem;font-weight:600;line-height:1.3;margin-bottom:3px;color:var(--text);}
+.ci-det{font-size:.63rem;color:var(--light);margin-bottom:5px;}
+.ci-price{font-size:.84rem;font-weight:700;color:var(--text);}
+.ci-row{display:flex;align-items:center;gap:7px;margin-top:8px;}
+.qb{width:26px;height:26px;border:1px solid var(--border2);background:var(--bg2);color:var(--text);border-radius:6px;font-size:.85rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;}
+.qb:hover{border-color:var(--accent);color:var(--accent);}
+.qn{font-size:.8rem;font-weight:600;min-width:22px;text-align:center;}
+.rmb{background:none;border:none;font-size:.62rem;color:var(--light);text-decoration:underline;margin-left:auto;cursor:pointer;transition:color .15s;}
+.rmb:hover{color:var(--red);}
+.cart-ft{padding:16px 22px;border-top:1px solid var(--border);}
+.sub-row{display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:5px;color:var(--text2);}
+.sub-row span:last-child{font-weight:700;color:var(--text);}
+.free-ship{font-size:.68rem;color:var(--green);font-weight:600;margin-bottom:14px;}
+.btn-cta{width:100%;background:var(--accent);color:#fff;border:none;padding:13px;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:700;border-radius:10px;cursor:pointer;margin-bottom:9px;transition:background .15s;}
+.btn-cta:hover{background:var(--accent2);}
+.btn-sec2{width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--text2);padding:11px;font-family:'DM Sans',sans-serif;font-size:.76rem;font-weight:500;border-radius:10px;cursor:pointer;transition:all .15s;}
+.btn-sec2:hover{border-color:var(--border2);}
+.cpay{display:flex;justify-content:center;gap:5px;margin-top:10px;}
+.cpay span{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-size:.58rem;color:var(--muted);}
+
+/* PRODUCT PAGE */
+.prod-page{padding:36px 32px;max-width:1320px;margin:0 auto;}
+.bc{font-size:.68rem;color:var(--light);margin-bottom:26px;display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
+.bc span{cursor:pointer;transition:color .12s;}.bc span:hover{color:var(--accent);}.bc .bcs{opacity:.4;font-size:.6rem;}
+.prod-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+.gallery{position:sticky;top:80px;}
+.g-main{aspect-ratio:1;background:var(--bg2);border-radius:var(--r2);border:1px solid var(--border);margin-bottom:10px;display:flex;align-items:center;justify-content:center;padding:32px;overflow:hidden;}
+.g-main img{width:85%;height:85%;object-fit:contain;transition:transform .4s;filter:drop-shadow(0 12px 28px rgba(0,0,0,.12));}
+.g-main:hover img{transform:scale(1.04);}
+.g-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.g-th{aspect-ratio:1;background:var(--bg2);border:2px solid transparent;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:7px;transition:all .15s;}
+.g-th.sel{border-color:var(--accent);background:var(--accentbg);}
+.g-th img{width:100%;height:100%;object-fit:contain;}
+.pd-brand{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:7px;}
+.pd-title{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px;color:var(--text);}
+.pd-stars{display:flex;align-items:center;gap:7px;margin-bottom:18px;}
+.pd-stars .rc{font-size:.68rem;color:var(--light);cursor:pointer;}
+.price-blk{display:flex;align-items:center;gap:12px;margin-bottom:22px;padding-bottom:22px;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.price-big{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--text);}
+.price-old{font-size:.9rem;color:var(--light);text-decoration:line-through;}
+.price-badge{background:#fff0ef;color:var(--red);font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:5px;}
+.col-row{margin-bottom:20px;}
+.f-lbl{font-size:.65rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:9px;display:flex;align-items:center;gap:8px;}
+.prod-cols{display:flex;gap:8px;flex-wrap:wrap;}
+.p-col{width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all .15s;}
+.p-col.sel{box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--accent);}
+.qty-row{display:flex;gap:10px;margin-bottom:10px;}
+.qty-ctrl{display:flex;align-items:center;background:var(--bg2);border:1px solid var(--border2);border-radius:10px;overflow:hidden;}
+.qty-ctrl button{width:38px;height:42px;background:none;border:none;color:var(--muted);font-size:1rem;cursor:pointer;transition:color .15s;}
+.qty-ctrl button:hover{color:var(--accent);}
+.qty-ctrl span{font-size:.88rem;font-weight:600;min-width:36px;text-align:center;}
+.btn-atc{flex:1;background:var(--bg2);border:1px solid var(--border2);color:var(--text);padding:12px;font-family:'DM Sans',sans-serif;font-size:.76rem;font-weight:600;border-radius:10px;cursor:pointer;transition:all .2s;}
+.btn-atc:hover{border-color:var(--accent);color:var(--accent);}
+.btn-buy{width:100%;background:var(--accent);color:#fff;border:none;padding:13px;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:700;border-radius:10px;margin-bottom:22px;cursor:pointer;transition:background .15s;}
+.btn-buy:hover{background:var(--accent2);}
+.pd-feats{padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:20px;display:flex;flex-direction:column;gap:12px;}
+.pd-feat{display:flex;align-items:flex-start;gap:10px;}
+.pd-feat svg{width:15px;height:15px;stroke:var(--accent);fill:none;stroke-width:2;flex-shrink:0;margin-top:2px;}
+.pd-feat p{font-size:.78rem;color:var(--text2);line-height:1.55;}
+.acc-item{border-bottom:1px solid var(--border);}
+.acc-btn{width:100%;background:none;border:none;color:var(--text);display:flex;justify-content:space-between;align-items:center;padding:14px 0;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;}
+.acc-arrow{color:var(--light);font-size:.65rem;transition:transform .25s;}
+.acc-item.open .acc-arrow{transform:rotate(180deg);}
+.acc-content{display:none;padding:0 0 14px;font-size:.78rem;color:var(--muted);line-height:1.8;}
+.acc-item.open .acc-content{display:block;}
+.specs-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:22px;}
+.spec-box{background:var(--bg2);border-radius:10px;padding:12px 14px;}
+.spec-l{font-size:.6rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.spec-v{font-size:.84rem;font-weight:600;color:var(--text);}
+.related-sec{background:var(--bg2);padding:56px 32px;}
+.related-inner{max-width:1320px;margin:0 auto;}
+
+/* COLLECTION */
+.col-pg{padding:36px 32px;max-width:1320px;margin:0 auto;}
+.col-head{margin-bottom:28px;}
+.col-head h1{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;letter-spacing:-.03em;margin-bottom:5px;}
+.col-ct{font-size:.74rem;color:var(--muted);}
+.filters{display:flex;gap:7px;margin-bottom:26px;flex-wrap:wrap;}
+.fbtn{padding:8px 18px;background:var(--bg2);border:1px solid var(--border);color:var(--muted);font-family:'DM Sans',sans-serif;font-size:.74rem;font-weight:500;border-radius:100px;cursor:pointer;transition:all .15s;}
+.fbtn:hover,.fbtn.act{background:var(--accentbg);border-color:#bbd4f7;color:var(--accent);}
+
+/* CHECKOUT */
+.ck-wrap{min-height:100vh;display:grid;grid-template-columns:1fr 400px;}
+.ck-left{padding:44px 52px;border-right:1px solid var(--border);}
+.ck-right{padding:44px 36px;background:var(--bg2);}
+.ck-logo{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:36px;cursor:pointer;color:var(--text);}
+.ck-logo em{color:var(--accent);font-style:normal;}
+.ck-steps{display:flex;align-items:center;gap:8px;margin-bottom:36px;}
+.cks{font-size:.72rem;color:var(--light);}
+.cks.done{color:var(--accent);text-decoration:underline;cursor:pointer;}
+.cks.cur{color:var(--text);font-weight:600;}
+.cks-sep{color:var(--light);font-size:.65rem;}
+.sec-lbl{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.frow.full{grid-template-columns:1fr;}
+.fg{display:flex;flex-direction:column;gap:5px;}
+.fg label{font-size:.67rem;font-weight:600;color:var(--muted);letter-spacing:.04em;}
+.fg input,.fg select{background:var(--bg);border:1.5px solid var(--border2);color:var(--text);padding:11px 13px;font-family:'DM Sans',sans-serif;font-size:.82rem;outline:none;border-radius:10px;transition:border-color .15s;}
+.fg input:focus,.fg select:focus{border-color:var(--accent);}
+.fg input.err{border-color:var(--red);}
+.ferr{font-size:.62rem;color:var(--red);min-height:13px;}
+.divider{border:none;border-top:1px solid var(--border);margin:22px 0;}
+.ship-opt{background:var(--bg);border:1.5px solid var(--border);padding:14px;border-radius:12px;display:flex;align-items:flex-start;gap:10px;margin-bottom:9px;cursor:pointer;transition:all .15s;}
+.ship-opt.sel{border-color:var(--accent);background:var(--accentbg);}
+.ship-opt input[type=radio]{accent-color:var(--accent);margin-top:2px;}
+.ship-l{font-size:.8rem;font-weight:600;color:var(--text);}
+.ship-s{font-size:.66rem;color:var(--muted);margin-top:2px;}
+.pm-opt{background:var(--bg);border:1.5px solid var(--border);padding:14px;border-radius:12px;display:flex;align-items:flex-start;gap:10px;margin-bottom:9px;cursor:pointer;transition:all .15s;}
+.pm-opt.sel{border-color:var(--accent);background:var(--accentbg);}
+#stripe-card-element{background:var(--bg);border:1.5px solid var(--border2);border-radius:10px;padding:13px;margin-bottom:10px;}
+#stripe-card-errors{font-size:.66rem;color:var(--red);min-height:15px;margin-bottom:10px;}
+.lock-note{display:flex;align-items:center;gap:5px;font-size:.65rem;color:var(--light);margin-bottom:18px;}
+.lock-note svg{width:12px;height:12px;stroke:var(--light);fill:none;stroke-width:2;}
+.btn-next{width:100%;background:var(--accent);color:#fff;border:none;padding:13px;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:700;border-radius:10px;cursor:pointer;margin-top:6px;transition:background .15s;}
+.btn-next:hover{background:var(--accent2);}
+.btn-next:disabled{opacity:.4;cursor:not-allowed;}
+.btn-back{background:none;border:none;font-size:.68rem;color:var(--muted);text-decoration:underline;margin-top:12px;display:block;cursor:pointer;}
+.ck-order-lbl{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;}
+.o-items{display:flex;flex-direction:column;gap:14px;margin-bottom:22px;}
+.oi{display:flex;gap:11px;align-items:flex-start;}
+.oi-w{position:relative;flex-shrink:0;}
+.oi-img{width:60px;height:60px;object-fit:contain;border-radius:10px;background:var(--bg);border:1px solid var(--border);padding:5px;}
+.oi-q{position:absolute;top:-5px;right:-5px;background:var(--accent);color:#fff;border-radius:50%;width:18px;height:18px;font-size:.52rem;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.oi-name{font-size:.76rem;font-weight:600;line-height:1.3;margin-bottom:2px;}
+.oi-det{font-size:.62rem;color:var(--light);}
+.oi-price{font-size:.82rem;font-weight:700;color:var(--text);margin-left:auto;flex-shrink:0;}
+.promo-row{display:flex;gap:7px;margin-bottom:18px;}
+.promo-row input{flex:1;background:var(--bg);border:1.5px solid var(--border2);color:var(--text);padding:9px 13px;font-family:'DM Sans',sans-serif;font-size:.78rem;outline:none;border-radius:10px;transition:border-color .15s;}
+.promo-row input:focus{border-color:var(--accent);}
+.promo-row button{background:var(--accentbg);border:1px solid #bbd4f7;color:var(--accent);padding:9px 16px;font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:600;border-radius:10px;cursor:pointer;white-space:nowrap;}
+.totals{border-top:1px solid var(--border);padding-top:14px;}
+.tl{display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:9px;color:var(--text2);}
+.tl span:last-child{font-weight:600;color:var(--text);}
+.tl.grand{font-size:.95rem;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+.tl.grand span{font-weight:800 !important;color:var(--text) !important;}
+.tl.grn span:last-child{color:var(--green) !important;}
+.recap-box{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:18px;}
+
+/* STATIC */
+.sp{max-width:800px;margin:0 auto;padding:56px 32px;}
+.sp h1{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;letter-spacing:-.03em;margin-bottom:7px;color:var(--text);}
+.sp .upd{font-size:.68rem;color:var(--light);margin-bottom:32px;display:block;}
+.sp h2{font-size:1rem;font-weight:700;margin:24px 0 8px;color:var(--accent);}
+.sp p,.sp li{font-size:.82rem;color:var(--muted);line-height:1.85;margin-bottom:7px;}
+.sp ul{padding-left:18px;}
+.sp a{color:var(--accent);}
+
+/* CONFIRM */
+.conf-wrap{max-width:560px;margin:0 auto;padding:72px 32px;text-align:center;}
+.conf-icon{width:72px;height:72px;background:#eafaf0;border:1px solid #b4e6c5;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;}
+.conf-icon svg{width:32px;height:32px;stroke:var(--green);fill:none;stroke-width:2.5;}
+.conf-wrap h1{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;letter-spacing:-.03em;margin-bottom:10px;}
+.conf-wrap p{font-size:.84rem;color:var(--muted);line-height:1.75;margin-bottom:24px;}
+.ord-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:18px 24px;margin-bottom:28px;text-align:left;}
+.ord-box strong{display:block;font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:var(--text);margin-bottom:5px;}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:#fff;padding:12px 18px;font-size:.78rem;z-index:9999;transform:translateY(40px);opacity:0;transition:all .25s;pointer-events:none;max-width:300px;border-radius:10px;box-shadow:var(--shadow2);}
+.toast.show{transform:translateY(0);opacity:1;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.page{display:none;}
+.page.active{display:block;animation:fadeUp .3s ease;}
+
+/* MOBILE */
+@media(max-width:1100px){.pg{grid-template-columns:repeat(3,1fr);}.foot-top{grid-template-columns:1fr 1fr;gap:24px;}.ck-wrap{grid-template-columns:1fr 360px;}}
+@media(max-width:900px){.nav-links{display:none;}.hero-inner{grid-template-columns:1fr;gap:36px;}.hero-img{display:none;}.cat-grid{grid-template-columns:1fr 1fr;}.rev-grid{grid-template-columns:1fr 1fr;}.banner{grid-template-columns:1fr;}.banner-img{display:none;}.ck-wrap{grid-template-columns:1fr;}.ck-right{order:-1;}.prod-layout{grid-template-columns:1fr;}.gallery{position:static;}}
+@media(max-width:640px){.sec,.prod-page,.col-pg,.ck-left,.ck-right,.sp{padding:24px 16px;}.nav-wrap{padding:0 16px;}.pg{grid-template-columns:1fr 1fr;gap:10px;}.rev-grid{grid-template-columns:1fr;}.cat-grid{grid-template-columns:1fr 1fr;}.foot-top{grid-template-columns:1fr;}footer,.nl,.sec-full,.related-sec{padding:36px 16px;}.trust{padding:14px 16px;}.trust-inner{grid-template-columns:1fr 1fr;}.frow{grid-template-columns:1fr;}.hero{padding:40px 16px 32px;}.promo-bar{padding:10px 16px;}.feat-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker"><div class="ticker-t">
+  <span>⚡ Livraison express 24h disponible</span>
+  <span>🎧 AirPods Pro 2 — 85€ seulement</span>
+  <span>🔒 Paiement 100% sécurisé · Stripe</span>
+  <span>⌚ Apple Watch Ultra 2 — 169€</span>
+  <span>💎 Garantie 2 ans incluse</span>
+  <span>📦 Retrait disponible · Livraison Europe</span>
+  <span>⚡ Livraison express 24h disponible</span>
+  <span>🎧 AirPods Pro 2 — 85€ seulement</span>
+  <span>🔒 Paiement 100% sécurisé · Stripe</span>
+  <span>⌚ Apple Watch Ultra 2 — 169€</span>
+  <span>💎 Garantie 2 ans incluse</span>
+  <span>📦 Retrait disponible · Livraison Europe</span>
+</div></div>
+
+<!-- HEADER -->
+<header>
+  <div class="nav-wrap">
+    <div class="logo" onclick="goHome()">Aural<em>isz</em></div>
+    <nav class="nav-links">
+      <div class="nav-item">
+        <span class="nav-a">AirPods ▾</span>
+        <div class="drop">
+          <a onclick="showProd(1)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/welcome/hero__1z1ep1te3eq2_xlarge.jpg&w=80" alt="" onerror="this.src='https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=64&q=80'">AirPods 4<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">59€</span></a>
+          <a onclick="showProd(2)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/media-card/media_lifestyle__cyk4qt05xic2_xlarge.jpg&w=80" alt="" onerror="this.src='https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=64&q=80'">AirPods 4 ANC<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">69€</span></a>
+          <a onclick="showProd(3)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/hero_endframe__calpooy4ucr6_large.jpg&w=80" alt="" onerror="this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=64&q=80'">AirPods Pro 2<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">85€</span></a>
+          <a onclick="showProd(4)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_black__x3byrd2venmu_large.png&w=80" alt="" onerror="this.src='https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=64&q=80'">AirPods Max<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">119€</span></a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <span class="nav-a">Apple Watch ▾</span>
+        <div class="drop">
+          <a onclick="showProd(5)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/welcome/hero_startframe__c03sf8dwd1si_large.jpg&w=80" alt="">Apple Watch SE<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">99€</span></a>
+          <a onclick="showProd(6)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/welcome/hero__d4bput78wzu6_xlarge.jpg&w=80" alt="">Watch Series 10<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">139€</span></a>
+          <a onclick="showProd(7)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/welcome/hero_endframe__e4ls9pihykya_large.jpg&w=80" alt="">Watch Ultra 2<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">169€</span></a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <span class="nav-a">Accessoires ▾</span>
+        <div class="drop" style="min-width:250px;">
+          <a onclick="showProd(8)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/media-card/media_charging__csr8q6rfe4sy_xlarge.jpg&w=80" alt="" onerror="this.src='https://images.unsplash.com/photo-1623126908029-58cb08a2b272?w=64&q=80'">Chargeur MagSafe 15W<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">19€</span></a>
+          <a onclick="showProd(9)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_speaker_and_microphone__bwg0hqkxny2u_large.jpg&w=80" alt="">Câble USB-C MagSafe<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">14€</span></a>
+          <a onclick="showProd(10)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/hero_endframe__calpooy4ucr6_large.jpg&w=80" alt="">Étui AirPods Pro<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">12€</span></a>
+          <a onclick="showProd(11)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_black__x3byrd2venmu_large.png&w=80" alt="">Étui AirPods Max<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">24€</span></a>
+          <div class="drop-sep"></div>
+          <a onclick="showProd(12)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/apple-pencil/k/images/overview/hero/hero_pencil_pro__gwnmpgdgq9m2_large.jpg&w=80" alt="">Apple Pencil Pro<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">59€</span></a>
+          <a onclick="showProd(13)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_bands__gg14jjttqaum_large.jpg&w=80" alt="">Bracelet Sport<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">14€</span></a>
+          <a onclick="showProd(14)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_silver__cyyyc94lds02_large.jpg&w=80" alt="">Bracelet Cuir<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">24€</span></a>
+        </div>
+      </div>
+      <div class="nav-item"><span class="nav-a" onclick="showColl('deals','Offres 🔥')">Offres 🔥</span></div>
+      <div class="nav-item">
+        <span class="nav-a">À Propos ▾</span>
+        <div class="drop">
+          <a onclick="showStatic('about')">Notre Histoire</a>
+          <a onclick="showStatic('faq')">FAQ</a>
+          <a onclick="showStatic('contact')">Contact</a>
+          <a onclick="showStatic('track')">Suivi Commande</a>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-icons">
+      <button class="ni" onclick="showStatic('search')"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg></button>
+      <button class="ni" onclick="showStatic('account')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+      <button class="ni" onclick="openCart()"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cbadge" id="cartBadge">0</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="promo-bar">Code promo : <strong>AURALISZ10</strong> — −10€ sur votre commande<span>· Offre limitée</span></div>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+<!-- ══════════════ HOME ══════════════ -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-txt">
+        <div class="hero-tag">Auralisz® · Officiellement en ligne</div>
+        <h1>L'Expérience Apple.<br><span class="hl">Enfin Accessible.</span></h1>
+        <p>AirPods, Apple Watch et accessoires premium à des prix imbattables. Qualité garantie, livraison rapide, paiement sécurisé.</p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="showColl('all','Tous les Produits')">Découvrir la Collection</button>
+          <button class="btn-secondary" onclick="showProd(3)">AirPods Pro 2 → 85€</button>
+        </div>
+        <div class="hero-stats">
+          <div class="hs"><span class="hs-num">+12k</span><span class="hs-lbl">Clients satisfaits</span></div>
+          <div class="hs"><span class="hs-num">4.9 ★</span><span class="hs-lbl">Note moyenne</span></div>
+          <div class="hs"><span class="hs-num">−70%</span><span class="hs-lbl">Vs prix officiel</span></div>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="https://www.apple.com/v/airpods-pro/n/images/overview/hero/airpods_pro__gnfk5g59t3qe_large.jpg" alt="AirPods Pro 2" onerror="this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=600&q=80'">
+      </div>
+    </div>
+  </div>
+
+  <div class="trust">
+    <div class="trust-inner">
+      <div class="ti"><div class="ti-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div class="ti-txt"><h4>Livraison 24–72h</h4><p>Expédition rapide & suivie</p></div></div>
+      <div class="ti"><div class="ti-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="ti-txt"><h4>Garantie 2 Ans</h4><p>SAV réactif sous 24h</p></div></div>
+      <div class="ti"><div class="ti-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div class="ti-txt"><h4>Paiement Sécurisé</h4><p>SSL 256-bit · Stripe</p></div></div>
+      <div class="ti"><div class="ti-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ti-txt"><h4>Qualité Garantie</h4><p>Testé avant expédition</p></div></div>
+    </div>
+  </div>
+
+  <!-- BEST SELLERS -->
+  <div class="sec">
+    <div class="sh"><div class="sh-left"><div class="eyebrow">Best-Sellers</div><h2>Les Plus Populaires</h2></div><span class="see-all" onclick="showColl('all','Tous les Produits')">Voir tout →</span></div>
+    <div class="pg" id="best-grid"></div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <div class="sec-full" style="background:var(--bg2);padding-top:56px;padding-bottom:56px;">
+    <div style="max-width:1320px;margin:0 auto;">
+      <div class="sh"><div class="sh-left"><div class="eyebrow">Gammes</div><h2>Explorer par Catégorie</h2></div></div>
+      <div class="cat-grid">
+        <div class="cat-tile" onclick="showColl('airpods','AirPods')">
+          <div class="cat-icon"><img src="https://www.apple.com/v/airpods-pro/n/images/overview/hero/airpods_pro__gnfk5g59t3qe_large.jpg" onerror="this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=160&q=80'" alt=""></div>
+          <div class="cat-name">AirPods</div>
+          <div class="cat-count">4 modèles disponibles</div>
+          <span class="cat-link">Voir la gamme →</span>
+        </div>
+        <div class="cat-tile" onclick="showColl('watch','Apple Watch')">
+          <div class="cat-icon"><img src="https://www.apple.com/v/apple-watch-series-10/c/images/overview/hero/hero_intro__bvepz2y8f1ue_large.jpg" onerror="this.src='https://images.unsplash.com/photo-1551816230-ef5deaed4a26?w=160&q=80'" alt=""></div>
+          <div class="cat-name">Apple Watch</div>
+          <div class="cat-count">3 modèles disponibles</div>
+          <span class="cat-link">Voir la gamme →</span>
+        </div>
+        <div class="cat-tile" onclick="showColl('accessories','Accessoires')">
+          <div class="cat-icon"><img src="https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg" onerror="this.src='https://images.unsplash.com/photo-1623126908029-58cb08a2b272?w=160&q=80'" alt=""></div>
+          <div class="cat-name">Accessoires</div>
+          <div class="cat-count">7 produits disponibles</div>
+          <span class="cat-link">Voir la gamme →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BANNER AIRPODS PRO -->
+  <div class="sec">
+    <div class="banner blue">
+      <div class="banner-txt">
+        <div class="banner-eyebrow">Produit Phare · 2024</div>
+        <h2>AirPods Pro 2.<br>Le Meilleur du Son.</h2>
+        <p>Réduction active du bruit 2x plus puissante. Audio Spatial personnalisé. Jusqu'à 30h d'autonomie. Le meilleur rapport qualité-prix du marché.</p>
+        <button class="btn-primary" onclick="showProd(3)">Acheter — 85€</button>
+      </div>
+      <div class="banner-img">
+        <img src="https://www.apple.com/v/airpods-pro/n/images/overview/hero/airpods_pro__gnfk5g59t3qe_large.jpg" alt="AirPods Pro 2" onerror="this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=500&q=80'">
+      </div>
+    </div>
+  </div>
+
+  <!-- ALL PRODUCTS -->
+  <div class="sec" style="padding-top:0;">
+    <div class="sh"><div class="sh-left"><div class="eyebrow">Catalogue</div><h2>Toute la Collection</h2></div><span class="see-all" onclick="showColl('all','Tous les Produits')">Voir tout →</span></div>
+    <div class="pg" id="all-grid"></div>
+  </div>
+
+  <!-- WHY -->
+  <div class="sec-full" style="background:var(--bg2);padding-top:56px;padding-bottom:56px;">
+    <div style="max-width:1320px;margin:0 auto;">
+      <div class="sh"><div class="sh-left"><div class="eyebrow">Pourquoi Auralisz</div><h2>Le Premium. Accessible.</h2></div></div>
+      <div class="feat-grid">
+        <div class="fc"><div class="fc-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Qualité Certifiée</h3><p>Chaque produit est sélectionné et testé avant expédition. Qualité Apple garantie à chaque commande. Sans compromis.</p></div>
+        <div class="fc"><div class="fc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Livraison Ultra Rapide</h3><p>Expédition sous 24h, livraison en 2–5 jours. Suivi en temps réel inclus. Partout en Europe, sans surprises.</p></div>
+        <div class="fc"><div class="fc-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>Prix Imbattables</h3><p>Jusqu'à 80% moins cher que le prix Apple officiel. Parce que l'excellence ne devrait pas coûter une fortune.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="sec">
+    <div class="sh">
+      <div class="sh-left">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px;">
+          <span style="font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;color:var(--text);">4.9</span>
+          <div><div style="color:#ff9500;font-size:.9rem;letter-spacing:3px;">★★★★★</div><p style="font-size:.65rem;color:var(--light);margin-top:2px;">+7 800 avis vérifiés</p></div>
+        </div>
+        <div class="eyebrow">Avis Clients</div><h2>Ils Adorent Auralisz</h2>
+      </div>
+    </div>
+    <div class="rev-grid" id="rev-grid">
+      <div class="rv">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/hero_endframe__calpooy4ucr6_large.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">K</div><div><div class="rv-name">Karim L.</div><div class="rv-date">Paris · il y a 2 jours</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">AirPods Pro 2 · 85€</div>
+        <div class="rv-body">Qualité identique à ceux achetés en Apple Store. La réduction de bruit est bluffante. Livraison en 3 jours chrono. Je recommande Auralisz à 100%.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_rose_gold__bhstyih3ki6a_large.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">S</div><div><div class="rv-name">Sophie M.</div><div class="rv-date">Lyon · il y a 4 jours</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">Apple Watch Series 10 · 139€</div>
+        <div class="rv-body">Montre parfaite depuis 3 semaines. L'écran est magnifique, toutes les fonctions marchent. Prix imbattable, SAV ultra rapide.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_black__x3byrd2venmu_large.png&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">T</div><div><div class="rv-name">Thomas B.</div><div class="rv-date">Bordeaux · il y a 1 semaine</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">AirPods Max Minuit · 119€</div>
+        <div class="rv-body">Son exceptionnel, build quality au top. Packaging soigné à la réception. Commande re-passée pour offrir à ma femme. Auralisz c'est sérieux.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/media-card/media_lifestyle__cyk4qt05xic2_xlarge.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">A</div><div><div class="rv-name">Amira K.</div><div class="rv-date">Marseille · il y a 1 semaine</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">AirPods 4 ANC · 69€</div>
+        <div class="rv-body">Confort incroyable, son cristallin. Les AirPods 4 ANC m'ont changé la vie au bureau. La suppression du bruit des collègues est parfaite. Prix imbattable.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_finishes_titanium_natural__dv2dd6sekxaq_large.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">J</div><div><div class="rv-name">Julien R.</div><div class="rv-date">Nantes · il y a 2 semaines</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">Apple Watch Ultra 2 · 169€</div>
+        <div class="rv-body">Ultra 2 à 169€ c'est le deal du siècle. Robuste, GPS ultra précis, autonomie 3 jours. Parfaite pour mes trails en montagne le week-end.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/media-card/media_charging__csr8q6rfe4sy_xlarge.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">N</div><div><div class="rv-name">Naomi S.</div><div class="rv-date">Strasbourg · il y a 3 semaines</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">Chargeur MagSafe 15W · 19€</div>
+        <div class="rv-body">Charge rapide et fiable, exactement comme l'original Apple. Service Auralisz impeccable, réponse rapide au moindre doute. Je reviendrai commander.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv" style="display:none;">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_close__f0fhueeeoy2q_xlarge.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">M</div><div><div class="rv-name">Mathieu P.</div><div class="rv-date">Toulouse · il y a 3 semaines</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">AirPods 4 · 59€</div>
+        <div class="rv-body">Première commande sur Auralisz, pas déçu du tout. Les AirPods 4 sonnent divinement bien. Connexion instantanée avec l'iPhone. Top rapport qualité-prix.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv" style="display:none;">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_finishes_starlight__enr6i85tuqwm_large.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">L</div><div><div class="rv-name">Léa F.</div><div class="rv-date">Nice · il y a 3 semaines</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">Apple Watch SE · 99€</div>
+        <div class="rv-body">Super montre pour débuter avec Apple Watch. Toutes les fonctions santé fonctionnent parfaitement. Ma fille est ravie de son cadeau d'anniversaire.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv" style="display:none;">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/apple-pencil/k/images/overview/hero/hero_pencil_pro__gwnmpgdgq9m2_large.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">R</div><div><div class="rv-name">Romain D.</div><div class="rv-date">Lille · il y a 1 mois</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">Apple Pencil Pro · 59€</div>
+        <div class="rv-body">Apple Pencil Pro authentique, latence imperceptible sur iPad Pro M4. La réactivité est bluffante. Parfait pour dessiner et prendre des notes.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv" style="display:none;">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_blue__fsfaleh1smuu_large.png&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">C</div><div><div class="rv-name">Céline V.</div><div class="rv-date">Rennes · il y a 1 mois</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">AirPods Max Bleu · 119€</div>
+        <div class="rv-body">J'avais peur de commander un tel prix mais le produit est 100% authentique. Couleur magnifique, son de référence. Service client aux petits soins !</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv" style="display:none;">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/highlights/highlights_satellite__ftgl6qyfpkia_large.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">H</div><div><div class="rv-name">Hugo B.</div><div class="rv-date">Grenoble · il y a 1 mois</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">Bracelet Sport Orange · 14€</div>
+        <div class="rv-body">Bracelet identique à l'Apple Store, matière premium, montage facile. À ce prix c'est cadeau. J'en ai pris 3 coloris différents pour varier.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv" style="display:none;">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_jet_black__blfwjso629w2_large.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">O</div><div><div class="rv-name">Olivia T.</div><div class="rv-date">Montpellier · il y a 1 mois</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">Apple Watch S10 Jet Noir · 139€</div>
+        <div class="rv-body">Jet Noir sublime, l'écran always-on est magnifique. Passé d'une Series 6 et la différence est énorme. Impossible d'avoir ça en magasin à ce tarif.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv" style="display:none;">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/hero_startframe__f6btrn4bhpyu_large.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">E</div><div><div class="rv-name">Ethan M.</div><div class="rv-date">Rouen · il y a 5 semaines</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">AirPods Pro 2 · 85€</div>
+        <div class="rv-body">Transparence mode parfaite, ANC qui déchire. Boîtier USB-C pratique. Produit 100% original livré en temps record. Je suis client fidèle maintenant.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv" style="display:none;">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_close__f0fhueeeoy2q_xlarge.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">I</div><div><div class="rv-name">Inès G.</div><div class="rv-date">Metz · il y a 5 semaines</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">Étui AirPods Pro · 12€</div>
+        <div class="rv-body">Silicone doux et résistant, mousqueton solide. Pour 12€ la qualité est incroyable. J'en ai commandé 2 — un pour moi et un pour ma sœur.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv" style="display:none;">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_finishes_titanium_black__eli4j24zkyi6_large.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">G</div><div><div class="rv-name">Guillaume A.</div><div class="rv-date">Dijon · il y a 6 semaines</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">Apple Watch Ultra 2 Noir · 169€</div>
+        <div class="rv-body">Je suis marathonien. GPS dual-band ultra précis même sous les arbres, autonomie folle. À 169€ c'est incompréhensible tellement c'est bon.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv" style="display:none;">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_open__63kccmu775u6_xlarge.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">P</div><div><div class="rv-name">Pauline R.</div><div class="rv-date">Angers · il y a 6 semaines</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">AirPods 4 · 59€</div>
+        <div class="rv-body">Cadeau pour mon mari, il est fou de joie. Appairage immédiat, son impeccable. Livraison rapide et emballage soigné. Très satisfaite du service Auralisz.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv" style="display:none;">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_finishes_midnight__jgmf0mnpvwq6_large.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">B</div><div><div class="rv-name">Baptiste K.</div><div class="rv-date">Caen · il y a 7 semaines</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">Apple Watch SE Minuit · 99€</div>
+        <div class="rv-body">Parfait pour les sports. Toutes les fonctionnalités marchent. Livraison en 4 jours. Pour une première Apple Watch c'est idéal, je recommande.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv" style="display:none;">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_rose_gold__bhstyih3ki6a_large.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">Z</div><div><div class="rv-name">Zineb H.</div><div class="rv-date">Montpellier · il y a 7 semaines</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">Bracelet Cuir Brun · 24€</div>
+        <div class="rv-body">Cuir de très belle qualité, coutures nettes. La boucle papillon est solide et élégante. Un bracelet à ce prix ne se trouve nulle part ailleurs. Parfait.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv" style="display:none;">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_purple__d9y3g3n7cnyq_large.png&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">F</div><div><div class="rv-name">Florian C.</div><div class="rv-date">Brest · il y a 2 mois</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">AirPods Max Violet · 119€</div>
+        <div class="rv-body">Le coloris violet est magnifique en vrai. Son de référence absolue. Le plus beau casque que j'ai jamais eu. Mes amis n'en reviennent pas du prix.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv" style="display:none;">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_silver__cyyyc94lds02_large.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">V</div><div><div class="rv-name">Valentine B.</div><div class="rv-date">Tours · il y a 2 mois</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">Apple Watch S10 Argent · 139€</div>
+        <div class="rv-body">Montre magnifique, boîtier élégant et écran brillant. La recharge rapide est vraiment pratique. Je n'aurais jamais pu me l'offrir au prix normal.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv" style="display:none;">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/media-card/media_charging__csr8q6rfe4sy_xlarge.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">X</div><div><div class="rv-name">Xavier M.</div><div class="rv-date">Perpignan · il y a 2 mois</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">Câble USB-C MagSafe · 14€</div>
+        <div class="rv-body">Câble solide, gaine tressée résistante. Charge mon MacBook à pleine vitesse. Rien à redire. Livraison rapide et service sérieux. Reviendrai commande.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv" style="display:none;">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_angle__b2i7xnzp5h7m_xlarge.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">D</div><div><div class="rv-name">Delphine T.</div><div class="rv-date">Orléans · il y a 2 mois</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">AirPods 4 ANC · 69€</div>
+        <div class="rv-body">J'avais des doutes avant de commander mais les AirPods 4 ANC sont clairement authentiques. L'ANC coupe parfaitement le bruit du métro. Top produit.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv" style="display:none;">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/apple-pencil/k/images/overview/squeeze/squeeze__dz52t0c7v0oa_large.jpg&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">W</div><div><div class="rv-name">William S.</div><div class="rv-date">Poitiers · il y a 10 semaines</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">Apple Pencil Pro · 59€</div>
+        <div class="rv-body">Squeeze fonctionne, Find My aussi. Aucune latence visible. Reçu en 5 jours. Pour un créatif comme moi c'est l'outil indispensable. Merci Auralisz.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+      <div class="rv" style="display:none;">
+        <img class="rv-prod-img" src="https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_orange__gln3ifz5o9ei_large.png&w=120" alt="" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80'">
+        <div class="rv-head"><div style="display:flex;align-items:center;gap:9px;"><div class="rv-av">Y</div><div><div class="rv-name">Yasmine O.</div><div class="rv-date">Mulhouse · il y a 10 semaines</div></div></div><span style="color:#ff9500;font-size:.75rem;">★★★★★</span></div>
+        <div class="rv-prod">AirPods Max Orange · 119€</div>
+        <div class="rv-body">Orange flashy magnifique. Mes amis n'en reviennent pas du prix. SAV Auralisz très réactif pour une question. 100% authentique et livraison parfaite.</div>
+        <span class="rv-check">Achat Vérifié</span>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:28px;" id="rev-more-wrap">
+      <button class="btn-more-rev" onclick="loadMoreRev()" id="btn-more-rev">Voir plus d&#8217;avis ↓</button>
+    </div>
+  </div>
+
+  <div class="nl">
+    <div class="nl-inner">
+      <h2>Offres Exclusives</h2>
+      <p>Nouveautés, promotions et drops en avant-première. Abonnez-vous pour ne rien manquer.</p>
+      <div class="nl-form"><input type="email" placeholder="votre@email.com"><button>S'inscrire</button></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="foot-logo">Aural<em>isz</em></span>
+        <p>L'expérience Apple accessible. AirPods, Apple Watch et accessoires premium à des prix imbattables. Qualité certifiée, livraison rapide.</p>
+        <div class="pay-row"><span class="pay-chip">VISA</span><span class="pay-chip">Mastercard</span><span class="pay-chip">Apple Pay</span><span class="pay-chip">Google Pay</span><span class="pay-chip">Klarna</span><span class="pay-chip">PayPal</span></div>
+      </div>
+      <div class="foot-col"><h5>AirPods</h5><ul>
+        <li onclick="showProd(1)">AirPods 4</li><li onclick="showProd(2)">AirPods 4 ANC</li><li onclick="showProd(3)">AirPods Pro 2</li><li onclick="showProd(4)">AirPods Max</li>
+      </ul></div>
+      <div class="foot-col"><h5>Apple Watch</h5><ul>
+        <li onclick="showProd(5)">Watch SE</li><li onclick="showProd(6)">Watch Series 10</li><li onclick="showProd(7)">Watch Ultra 2</li><li onclick="showColl('accessories','Accessoires')">Accessoires</li>
+      </ul></div>
+      <div class="foot-col"><h5>Support</h5><ul>
+        <li onclick="showStatic('faq')">FAQ</li><li onclick="showStatic('support')">Support</li><li onclick="showStatic('contact')">Contact</li><li onclick="showStatic('track')">Suivi Commande</li>
+      </ul></div>
+      <div class="foot-col"><h5>Légal</h5><ul>
+        <li onclick="showStatic('privacy')">Confidentialité</li><li onclick="showStatic('cgv')">CGV</li><li onclick="showStatic('mentions')">Mentions Légales</li><li onclick="showStatic('livraison')">Livraison</li><li onclick="showStatic('remboursement')">Remboursement</li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 Auralisz® — Tous droits réservés — support@auralisz.com</p>
+      <div class="foot-lnks"><span onclick="showStatic('privacy')">Confidentialité</span><span onclick="showStatic('cgv')">CGV</span><span onclick="showStatic('mentions')">Mentions</span></div>
+    </div>
+  </footer>
+</div>
+
+<!-- COLLECTION -->
+<div class="page" id="page-collection">
+  <div class="col-pg">
+    <div class="col-head"><h1 id="col-title">Collection</h1><p class="col-ct" id="col-count"></p></div>
+    <div class="filters"><button class="fbtn act" onclick="fAct(this)">Tous</button><button class="fbtn" onclick="fAct(this)">Nouveautés</button><button class="fbtn" onclick="fAct(this)">Promotions</button><button class="fbtn" onclick="fAct(this)">Best-Sellers</button></div>
+    <div class="pg" id="col-grid"></div>
+  </div>
+  <div class="nl" style="margin-top:40px;"><div class="nl-inner"><h2>−10% sur votre première commande</h2><p>Code : <strong>AURALISZ10</strong></p><div class="nl-form"><input type="email" placeholder="votre@email.com"><button>S'inscrire</button></div></div></div>
+  <footer><div class="foot-top" style="grid-template-columns:1fr 1fr 1fr;max-width:1320px;margin:0 auto 40px;"><div class="foot-brand"><span class="foot-logo">Aural<em>isz</em></span></div><div class="foot-col"><h5>Navigation</h5><ul><li onclick="goHome()">Accueil</li><li onclick="showColl('all','Tous')">Produits</li></ul></div><div class="foot-col"><h5>Légal</h5><ul><li onclick="showStatic('cgv')">CGV</li><li onclick="showStatic('privacy')">Confidentialité</li></ul></div></div><div class="foot-bottom" style="max-width:1320px;margin:0 auto;"><p>© 2026 Auralisz®</p></div></footer>
+</div>
+
+<!-- PRODUCT PAGE -->
+<div class="page" id="page-product">
+  <div class="prod-page">
+    <div class="bc" id="breadcrumb"></div>
+    <div class="prod-layout">
+      <div class="gallery">
+        <div class="g-main"><img id="g-main-img" src="" alt=""></div>
+        <div class="g-thumbs" id="g-thumbs"></div>
+      </div>
+      <div id="prod-panel"></div>
+    </div>
+  </div>
+  <div class="related-sec"><div class="related-inner"><div class="sh"><div class="sh-left"><div class="eyebrow">Vous aimerez aussi</div><h2>Produits Similaires</h2></div></div><div class="pg" id="related-grid"></div></div></div>
+</div>
+
+<!-- CHECKOUT -->
+<div class="page" id="page-checkout">
+  <div class="ck-wrap">
+    <div class="ck-left">
+      <div class="ck-logo" onclick="goHome()">Aural<em>isz</em></div>
+      <div class="ck-steps">
+        <span class="cks cur" id="cks1">Informations</span><span class="cks-sep">›</span>
+        <span class="cks" id="cks2">Livraison</span><span class="cks-sep">›</span>
+        <span class="cks" id="cks3">Paiement</span>
+      </div>
+      <div id="ck-s1">
+        <div class="sec-lbl">Contact</div>
+        <div class="frow full"><div class="fg"><label>Email</label><input type="email" id="f-email" placeholder="email@exemple.com"><div class="ferr" id="e-email"></div></div></div>
+        <hr class="divider">
+        <div class="sec-lbl">Adresse de Livraison</div>
+        <div class="frow"><div class="fg"><label>Prénom</label><input id="f-fname" placeholder="Marie"><div class="ferr" id="e-fname"></div></div><div class="fg"><label>Nom</label><input id="f-lname" placeholder="Dupont"><div class="ferr" id="e-lname"></div></div></div>
+        <div class="frow full"><div class="fg"><label>Adresse</label><input id="f-addr" placeholder="12 rue de la Paix"><div class="ferr" id="e-addr"></div></div></div>
+        <div class="frow"><div class="fg"><label>Code Postal</label><input id="f-zip" placeholder="75001"><div class="ferr" id="e-zip"></div></div><div class="fg"><label>Ville</label><input id="f-city" placeholder="Paris"><div class="ferr" id="e-city"></div></div></div>
+        <div class="frow full"><div class="fg"><label>Pays</label><select id="f-country"><option>France</option><option>Belgique</option><option>Suisse</option><option>Luxembourg</option><option>Canada</option></select></div></div>
+        <button class="btn-next" onclick="ckNext()" style="margin-top:18px;">Continuer vers la Livraison →</button>
+      </div>
+      <div id="ck-s2" style="display:none;">
+        <div class="sec-lbl">Méthode de Livraison</div>
+        <label class="ship-opt sel"><input type="radio" name="ship" value="std" checked><div><div class="ship-l">Standard — 3 à 5 jours</div><div class="ship-s">Colissimo · Gratuit dès 80€</div></div><span id="ssd-lbl" style="margin-left:auto;font-weight:700;font-size:.8rem;color:var(--accent);"></span></label>
+        <label class="ship-opt"><input type="radio" name="ship" value="exp"><div><div class="ship-l">Express — 24 à 48h</div><div class="ship-s">Chronopost · Suivi temps réel</div></div><span style="margin-left:auto;font-weight:700;font-size:.8rem;color:var(--accent);">8,90€</span></label>
+        <label class="ship-opt"><input type="radio" name="ship" value="relay"><div><div class="ship-l">Point Relais — 4 à 6 jours</div><div class="ship-s">Mondial Relay</div></div><span style="margin-left:auto;font-weight:700;font-size:.8rem;color:var(--accent);">2,90€</span></label>
+        <button class="btn-next" onclick="ckNext()">Continuer vers le Paiement →</button>
+        <button class="btn-back" onclick="ckBack()">← Retour aux informations</button>
+      </div>
+      <div id="ck-s3" style="display:none;">
+        <div class="sec-lbl">Mode de Paiement</div>
+        <div class="lock-note"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Paiement 100% sécurisé · Propulsé par Stripe</div>
+        <div class="pm-opt sel" style="flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:flex-start;gap:10px;width:100%;"><input type="radio" name="pm" value="card" checked><div><div class="ship-l">Carte Bancaire</div><div class="ship-s">Visa, Mastercard, Amex</div></div></div>
+          <div id="stripe-card-element"></div>
+          <div id="stripe-card-errors"></div>
+        </div>
+        <label class="pm-opt" style="margin-top:9px;"><input type="radio" name="pm" value="paypal"><div><div class="ship-l">PayPal</div><div class="ship-s">Redirection sécurisée</div></div></label>
+        <label class="pm-opt"><input type="radio" name="pm" value="klarna"><div><div class="ship-l">Klarna — Payer en 3×</div><div class="ship-s">Sans frais · Disponible dès 50€</div></div></label>
+        <label class="pm-opt"><input type="radio" name="pm" value="apple"><div><div class="ship-l">Apple Pay / Google Pay</div><div class="ship-s">Paiement instantané</div></div></label>
+        <div class="recap-box" style="margin-top:18px;">
+          <div class="sec-lbl" style="margin-bottom:12px;">Récapitulatif</div>
+          <div id="ck-recap"></div>
+          <div style="border-top:1px solid var(--border);margin-top:10px;padding-top:10px;display:flex;justify-content:space-between;font-weight:800;"><span>Total</span><span id="ck-recap-tot" style="color:var(--accent);"></span></div>
+        </div>
+        <button class="btn-next" id="pay-btn" onclick="placeOrder()" style="margin-top:10px;">Confirmer et Payer →</button>
+        <button class="btn-back" onclick="ckBack()">← Retour à la livraison</button>
+      </div>
+    </div>
+    <div class="ck-right">
+      <div class="ck-order-lbl">Votre Commande</div>
+      <div class="o-items" id="ck-items"></div>
+      <div class="promo-row"><input type="text" placeholder="Code promo" id="promo-in"><button onclick="applyPromo()">Appliquer</button></div>
+      <div class="totals">
+        <div class="tl"><span>Sous-total</span><span id="sum-sub">0€</span></div>
+        <div class="tl grn"><span>Livraison</span><span id="sum-ship">Calculé à l'étape suivante</span></div>
+        <div class="tl" id="promo-line" style="display:none;"><span>Promo</span><span id="promo-val" style="color:var(--green);"></span></div>
+        <div class="tl grand"><span>Total</span><span id="sum-tot">0€</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM -->
+<div class="page" id="page-confirm">
+  <div class="conf-wrap">
+    <div class="conf-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <h1>Commande Confirmée !</h1>
+    <p>Merci pour votre commande Auralisz. Un email de confirmation avec le numéro de suivi vous sera envoyé dans les prochaines minutes.</p>
+    <div class="ord-box"><strong id="confirm-num">#AUR-00000</strong>Email envoyé à : <span id="confirm-email" style="font-weight:700;color:var(--accent);">—</span></div>
+    <button class="btn-primary" onclick="goHome()">Continuer mes Achats</button>
+  </div>
+</div>
+
+<!-- STATIC -->
+<div class="page" id="page-static">
+  <div class="sp" id="static-content"></div>
+  <footer><div class="foot-top" style="grid-template-columns:1fr 1fr 1fr;max-width:1320px;margin:0 auto 40px;"><div class="foot-brand"><span class="foot-logo">Aural<em>isz</em></span></div><div class="foot-col"><h5>Navigation</h5><ul><li onclick="goHome()">Accueil</li><li onclick="showColl('all','Tous')">Produits</li><li onclick="showStatic('contact')">Contact</li></ul></div><div class="foot-col"><h5>Légal</h5><ul><li onclick="showStatic('cgv')">CGV</li><li onclick="showStatic('privacy')">Confidentialité</li><li onclick="showStatic('mentions')">Mentions</li></ul></div></div><div class="foot-bottom" style="max-width:1320px;margin:0 auto;"><p>© 2026 Auralisz®</p></div></footer>
+</div>
+
+<div class="toast" id="toast"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-hd"><h3>Mon Panier (<span id="cart-count">0</span>)</h3><button class="cart-cls" onclick="closeCart()">✕</button></div>
+  <div class="cart-body" id="cart-body"><div class="cart-empty">🛒<br><br>Votre panier est vide.<br>Explorez notre collection.</div></div>
+  <div id="cart-footer" style="display:none;" class="cart-ft">
+    <div class="sub-row"><span>Sous-total</span><span id="cart-sub">0€</span></div>
+    <p class="free-ship" id="ship-note-cart"></p>
+    <button class="btn-cta" onclick="goCheckout()">Commander →</button>
+    <button class="btn-sec2" onclick="closeCart()">Continuer mes Achats</button>
+    <div class="cpay"><span>VISA</span><span>MC</span><span>Apple Pay</span><span>Klarna</span></div>
+  </div>
+</div>
+
+<script>
+var PRODS = [
+
+  // ─────────────── AIRPODS ───────────────
+
+  {id:1,brand:'APPLE AIRPODS',name:'AirPods 4 — Nouvelle Génération',price:59,orig:129,cat:'airpods',best:1,
+   badges:[['new','2024'],['sale','-54%']],rev:2341,
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_close__f0fhueeeoy2q_xlarge.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_open__63kccmu775u6_xlarge.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_side__edtf67wfg10m_xlarge.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_stem__cfztc9z01vpy_xlarge.jpg&w=700'],
+   desc:`Les AirPods 4 offrent un son Apple de haute qualité dans un design repensé. Chip H2, audio spatial personnalisé, jusqu'à 30h d'autonomie totale avec le boîtier. Résistance à l'eau IPX4.`,
+   specs:[{l:'Puce',v:'Apple H2'},{l:'Autonomie',v:'30h total'},{l:'ANC',v:'Non'},{l:'Résistance',v:'IPX4'}]},
+
+  {id:2,brand:'APPLE AIRPODS',name:'AirPods 4 ANC — Réduction de Bruit Active',price:69,orig:179,cat:'airpods',best:1,
+   badges:[['hot','Best-Seller'],['sale','-61%']],rev:1876,
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_angle__b2i7xnzp5h7m_xlarge.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_open__63kccmu775u6_xlarge.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/media-card/media_lifestyle__cyk4qt05xic2_xlarge.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/media-card/media_charging__csr8q6rfe4sy_xlarge.jpg&w=700'],
+   desc:`AirPods 4 avec réduction active du bruit. Isolation du monde extérieur. Mode Transparence avancé. Chip H2, audio spatial, Siri. Résistance IPX4.`,
+   specs:[{l:'Puce',v:'Apple H2'},{l:'Autonomie',v:'30h total'},{l:'ANC',v:'Oui'},{l:'Transparence',v:'Mode avancé'}]},
+
+  {id:3,brand:'APPLE AIRPODS PRO',name:'AirPods Pro 2 — USB-C (2024)',price:85,orig:249,cat:'airpods',best:1,
+   badges:[['new','USB-C'],['sale','-66%']],rev:3124,
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/hero_endframe__calpooy4ucr6_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/hero_startframe__f6btrn4bhpyu_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_close__f0fhueeeoy2q_xlarge.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/media-card/media_live_translation__epwy7gl2k7ee_xlarge.jpg&w=700'],
+   desc:`La référence absolue. ANC 2x plus performante, mode Transparence adaptatif, audio spatial personnalisé. Boîtier USB-C. Jusqu'à 30h d'autonomie. Résistance IP54.`,
+   specs:[{l:'Puce',v:'Apple H2'},{l:'Autonomie',v:'30h total'},{l:'ANC',v:'2e Génération'},{l:'Résistance',v:'IP54'}]},
+
+  // AirPods Max — 5 coloris, chaque couleur = ses propres photos
+  {id:4,brand:'APPLE AIRPODS MAX',name:'AirPods Max — USB-C (2024)',price:119,orig:549,cat:'airpods',best:1,
+   badges:[['new','USB-C'],['sale','-78%']],rev:987,
+   colors:['#1a1a1a','#e5d9c3','#7aaac8','#c9a8c4','#e8832a'],
+   colorNames:['Minuit','Lumière Stellaire','Bleu Ciel','Violet','Orange'],
+   colorImgs:{
+     0:['https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_black__x3byrd2venmu_large.png&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-max/j/images/overview/bento/midnight/bento_1_airpod_max_midnight__4jy1tkqh9qay_xlarge.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-max/j/images/overview/bento/midnight/bento_2_airpod_max_midnight__c4h88dvygxkm_xlarge.jpg&w=700'],
+     1:['https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_stardust__l9lr6719rmaa_large.png&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-max/j/images/overview/bento/starlight/bento_1_airpod_max_starlight__f7v0k5blkzqm_xlarge.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-max/j/images/overview/bento/starlight/bento_2_airpod_max_starlight__dw9z9ovnwt26_xlarge.jpg&w=700'],
+     2:['https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_blue__fsfaleh1smuu_large.png&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-max/j/images/overview/bento/blue/bento_1_airpod_max_blue__blqgkfdancya_xlarge.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-max/j/images/overview/bento/blue/bento_2_airpod_max_blue__f5acfya6r5e2_xlarge.jpg&w=700'],
+     3:['https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_purple__d9y3g3n7cnyq_large.png&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-max/j/images/overview/bento/purple/bento_1_airpod_max_purple__2udwesqoiyq2_xlarge.jpg&w=700'],
+     4:['https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_orange__gln3ifz5o9ei_large.png&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-max/j/images/overview/bento/orange/bento_1_airpod_max_orange__btmsk5kl9q3m_xlarge.jpg&w=700']
+   },
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_black__x3byrd2venmu_large.png&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-max/j/images/overview/bento/midnight/bento_1_airpod_max_midnight__4jy1tkqh9qay_xlarge.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-max/j/images/overview/bento/midnight/bento_2_airpod_max_midnight__c4h88dvygxkm_xlarge.jpg&w=700'],
+   desc:`L'expérience audio ultime. Casque over-ear premium avec ANC computationnelle, audio spatial cinématographique, design aluminium. 20h d'autonomie. 5 coloris 2024.`,
+   specs:[{l:'Puce',v:'Apple H1 ×2'},{l:'Autonomie',v:'20h ANC'},{l:'Connecteur',v:'USB-C'},{l:'Design',v:'Aluminium'}]},
+
+  // ─────────────── APPLE WATCH ───────────────
+
+  // Watch SE — Starlight / Midnight
+  {id:5,brand:'APPLE WATCH',name:'Apple Watch SE — Aluminium (2024)',price:99,orig:259,cat:'watch',best:0,
+   badges:[['sale','-62%']],rev:1543,
+   colors:['#e6ddd0','#1c1c2e'],
+   colorNames:['Lumière Stellaire','Minuit'],
+   colorImgs:{
+     0:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_finishes_starlight__enr6i85tuqwm_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/highlights/highlights_always_on__f4gfjwfcdl26_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/highlights/highlights_sleep_score__gg1jx7w3zfee_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_personalization__dbmb1p7erhea_large.jpg&w=700'],
+     1:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_finishes_midnight__jgmf0mnpvwq6_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/highlights/highlights_safety__ehj70sr1vygm_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/highlights/highlights_sensor__b624ls8kmtiu_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_health_sensors__c3xtx4ix08cy_large.jpg&w=700']
+   },
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_finishes_starlight__enr6i85tuqwm_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_finishes_midnight__jgmf0mnpvwq6_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/highlights/highlights_always_on__f4gfjwfcdl26_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/highlights/highlights_sleep_score__gg1jx7w3zfee_large.jpg&w=700'],
+   desc:`La montre connectée Apple accessible. Suivi activité, fréquence cardiaque, détection de chutes, SOS urgences. Autonomie 18h. Idéale comme première Apple Watch.`,
+   specs:[{l:'Puce',v:'Apple S8'},{l:'Autonomie',v:'18h'},{l:'Boîtier',v:'Aluminium'},{l:'Résistance',v:'WR50m'}]},
+
+  // Watch Series 10 — 4 coloris
+  {id:6,brand:'APPLE WATCH',name:'Apple Watch Series 10 — Aluminium',price:139,orig:449,cat:'watch',best:1,
+   badges:[['new','Series 10'],['sale','-69%']],rev:2087,
+   colors:['#e8c0b0','#1c1c1e','#6c6c70','#d4d4d4'],
+   colorNames:['Or Rose','Jet Noir','Gris Sidéral','Argent'],
+   colorImgs:{
+     0:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_rose_gold__bhstyih3ki6a_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/highlights/highlights_glass_endframe__f39nueq3bfiy_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/highlights/highlights_sleep_score__dl1y2j6kkouq_large.jpg&w=700'],
+     1:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_jet_black__blfwjso629w2_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/highlights/highlights_hypertension_endframe__bbpmzln3nniq_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/highlights/highlights_5g__bvrxbjoke2c2_large.jpg&w=700'],
+     2:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_space_gray__z8jlhu1vgbmm_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/highlights/highlights_5g__bvrxbjoke2c2_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/highlights/highlights_sleep_score__dl1y2j6kkouq_large.jpg&w=700'],
+     3:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_silver__cyyyc94lds02_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/highlights/highlights_glass_endframe__f39nueq3bfiy_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/highlights/highlights_sleep_score__dl1y2j6kkouq_large.jpg&w=700']
+   },
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_rose_gold__bhstyih3ki6a_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_jet_black__blfwjso629w2_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_space_gray__z8jlhu1vgbmm_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_silver__cyyyc94lds02_large.jpg&w=700'],
+   desc:`La Series 10 : plus mince, plus légère, plus performante. Écran AMOLED always-on. Recharge rapide 80% en 30 min. Suivi santé : apnée, ECG, SpO2, température.`,
+   specs:[{l:'Puce',v:'Apple S10'},{l:'Autonomie',v:'18h'},{l:'Écran',v:'AMOLED AOD'},{l:'Résistance',v:'WR50m'}]},
+
+  // Watch Ultra 2 — Titane Naturel / Titane Noir
+  {id:7,brand:'APPLE WATCH ULTRA',name:'Apple Watch Ultra 2 — Titane',price:169,orig:899,cat:'watch',best:1,
+   badges:[['hot','Ultra'],['sale','-81%']],rev:743,
+   colors:['#d0c8b8','#2c2c2e'],
+   colorNames:['Titane Naturel','Titane Noir'],
+   colorImgs:{
+     0:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_finishes_titanium_natural__dv2dd6sekxaq_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/running/running_hero__2d7z80gm2equ_xlarge.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_bands__gg14jjttqaum_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/highlights/highlights_satellite__ftgl6qyfpkia_large.jpg&w=700'],
+     1:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_finishes_titanium_black__eli4j24zkyi6_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/highlights/highlights_running_endframe__2zvbvddxn0ie_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/highlights/highlights_display__bnt03ajxbbw2_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/highlights/highlights_satellite__ftgl6qyfpkia_large.jpg&w=700']
+   },
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_finishes_titanium_natural__dv2dd6sekxaq_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_finishes_titanium_black__eli4j24zkyi6_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/running/running_hero__2d7z80gm2equ_xlarge.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_bands__gg14jjttqaum_large.jpg&w=700'],
+   desc:`La plus performante des Apple Watch. Boîtier titane, écran le plus lumineux (3000 nits), GPS dual-band, autonomie jusqu'à 60h. Pour les sports extrêmes et l'aventure.`,
+   specs:[{l:'Puce',v:'Apple S9'},{l:'Autonomie',v:'60h'},{l:'Boîtier',v:'Titane'},{l:'GPS',v:'Dual-band'}]},
+
+  // ─────────────── ACCESSOIRES ───────────────
+
+  // Chargeur MagSafe — photos du vrai produit chargeur
+  {id:8,brand:'APPLE MAGSAFE',name:'Chargeur MagSafe 15W — USB-C',price:19,orig:45,cat:'accessories',best:0,
+   badges:[['sale','-58%']],rev:3210,
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/media-card/media_charging__csr8q6rfe4sy_xlarge.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_health_sensors__c3xtx4ix08cy_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_display__d8qh865laqie_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/highlights/highlights_sleep_score__dl1y2j6kkouq_large.jpg&w=700'],
+   desc:`Chargeur MagSafe 15W avec connecteur USB-C. Charge magnétique instantanée, alignement automatique. Compatible iPhone 12 et ultérieur. Longueur 1m.`,
+   specs:[{l:'Puissance',v:'15W max'},{l:'Connecteur',v:'USB-C'},{l:'Longueur',v:'1 mètre'},{l:'Compat.',v:'iPhone 12+'}]},
+
+  // Câble USB-C MagSafe
+  {id:9,brand:'APPLE CÂBLE',name:'Câble USB-C vers MagSafe — 1m',price:14,orig:35,cat:'accessories',best:0,
+   badges:[['sale','-60%']],rev:1870,
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/media-card/media_charging__csr8q6rfe4sy_xlarge.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_action_button__e5d567476zsm_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_water_resistance__fwm3ju4h4uqa_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_speaker_and_microphone__bwg0hqkxny2u_large.jpg&w=700'],
+   desc:`Câble tressé USB-C vers MagSafe pour MacBook. Charge rapide 140W. Gaine tressée haute résistance. 1 mètre.`,
+   specs:[{l:'Puissance',v:'140W max'},{l:'Longueur',v:'1 mètre'},{l:'Gaine',v:'Tressée'},{l:'Compat.',v:'MacBook'}]},
+
+  // Étui AirPods Pro — 5 coloris silicone
+  {id:10,brand:'APPLE ACCESSOIRE',name:'Étui Silicone AirPods Pro',price:12,orig:29,cat:'accessories',best:0,
+   badges:[['sale','-59%']],rev:2100,
+   colors:['#f0f0f0','#1c1c1e','#c84040','#3060c0','#409060'],
+   colorNames:['Blanc','Noir','Rouge','Bleu','Vert'],
+   colorImgs:{
+     0:['https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_close__f0fhueeeoy2q_xlarge.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_open__63kccmu775u6_xlarge.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_stem__cfztc9z01vpy_xlarge.jpg&w=700'],
+     1:['https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/hero_endframe__calpooy4ucr6_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_angle__b2i7xnzp5h7m_xlarge.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_close__f0fhueeeoy2q_xlarge.jpg&w=700'],
+     2:['https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_close__f0fhueeeoy2q_xlarge.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_open__63kccmu775u6_xlarge.jpg&w=700'],
+     3:['https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_side__edtf67wfg10m_xlarge.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_close__f0fhueeeoy2q_xlarge.jpg&w=700'],
+     4:['https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_stem__cfztc9z01vpy_xlarge.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_open__63kccmu775u6_xlarge.jpg&w=700']
+   },
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_close__f0fhueeeoy2q_xlarge.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_open__63kccmu775u6_xlarge.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_angle__b2i7xnzp5h7m_xlarge.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_stem__cfztc9z01vpy_xlarge.jpg&w=700'],
+   desc:`Étui silicone liquide pour AirPods Pro 2. Protection 360°, toucher satiné, mousqueton inclus. 6 coloris. Compatible MagSafe.`,
+   specs:[{l:'Matière',v:'Silicone liquide'},{l:'MagSafe',v:'Compatible'},{l:'Coloris',v:'5 disponibles'},{l:'Inclus',v:'Mousqueton'}]},
+
+  // Étui Smart Folio AirPods Max — 5 coloris
+  {id:11,brand:'APPLE ACCESSOIRE',name:'Étui Smart Folio AirPods Max',price:24,orig:59,cat:'accessories',best:0,
+   badges:[['sale','-59%']],rev:876,
+   colors:['#1a1a1a','#e5d9c3','#7aaac8','#c9a8c4','#e8832a'],
+   colorNames:['Minuit','Lumière Stellaire','Bleu','Violet','Orange'],
+   colorImgs:{
+     0:['https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_black__x3byrd2venmu_large.png&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-max/j/images/overview/bento/midnight/bento_1_airpod_max_midnight__4jy1tkqh9qay_xlarge.jpg&w=700'],
+     1:['https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_stardust__l9lr6719rmaa_large.png&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-max/j/images/overview/bento/starlight/bento_1_airpod_max_starlight__f7v0k5blkzqm_xlarge.jpg&w=700'],
+     2:['https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_blue__fsfaleh1smuu_large.png&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-max/j/images/overview/bento/blue/bento_1_airpod_max_blue__blqgkfdancya_xlarge.jpg&w=700'],
+     3:['https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_purple__d9y3g3n7cnyq_large.png&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-max/j/images/overview/bento/purple/bento_1_airpod_max_purple__2udwesqoiyq2_xlarge.jpg&w=700'],
+     4:['https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_orange__gln3ifz5o9ei_large.png&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/airpods-max/j/images/overview/bento/orange/bento_1_airpod_max_orange__btmsk5kl9q3m_xlarge.jpg&w=700']
+   },
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_black__x3byrd2venmu_large.png&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_stardust__l9lr6719rmaa_large.png&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_blue__fsfaleh1smuu_large.png&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-max/j/images/overview/bento/midnight/bento_1_airpod_max_midnight__4jy1tkqh9qay_xlarge.jpg&w=700'],
+   desc:`Étui Smart Folio pour AirPods Max. Mode ultra faible consommation automatique. Design Mesh respirant. Compatible tous coloris.`,
+   specs:[{l:'Matière',v:'Mesh & silicone'},{l:'Mode',v:'Ultra faible conso'},{l:'Compat.',v:'AirPods Max'},{l:'Coloris',v:'5 options'}]},
+
+  // Apple Pencil Pro
+  {id:12,brand:'APPLE PENCIL',name:'Apple Pencil Pro — 2024',price:59,orig:129,cat:'accessories',best:0,
+   badges:[['new','Pro 2024'],['sale','-54%']],rev:654,
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/apple-pencil/k/images/overview/hero/hero_pencil_pro__gwnmpgdgq9m2_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-pencil/k/images/overview/squeeze/squeeze__dz52t0c7v0oa_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-pencil/k/images/overview/find_my/find_my__bh5rnjyp28wi_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-pencil/k/images/overview/hover/hover__cktzm2hy82ue_large.jpg&w=700'],
+   desc:`Apple Pencil Pro avec détection de pression, gyroscope, charge MagSafe. Compatible iPad Pro M4 et iPad Air M2. Latence 9ms.`,
+   specs:[{l:'Compat.',v:'iPad Pro M4'},{l:'Charge',v:'MagSafe'},{l:'Latence',v:'9ms'},{l:'Gyroscope',v:'Intégré'}]},
+
+  // Bracelet Sport — 10 coloris, galerie spécifique par couleur
+  {id:13,brand:'APPLE WATCH',name:'Bracelet Sport — 42/44/45/49mm',price:14,orig:49,cat:'accessories',best:0,
+   badges:[['sale','-71%']],rev:3450,
+   colors:['#1c1c1e','#f0ece4','#c83030','#2850b4','#287840','#d4a020','#b07848','#b870b0','#38a8c0','#d05820'],
+   colorNames:['Noir','Lumière Stellaire','Rouge','Bleu','Vert','Jaune','Sable','Mauve','Ciel','Orange'],
+   colorImgs:{
+     0:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_bands__gg14jjttqaum_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_jet_black__blfwjso629w2_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/highlights/highlights_hypertension_endframe__bbpmzln3nniq_large.jpg&w=700'],
+     1:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_personalization__dbmb1p7erhea_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_finishes_starlight__enr6i85tuqwm_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/highlights/highlights_always_on__f4gfjwfcdl26_large.jpg&w=700'],
+     2:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_rose_gold__bhstyih3ki6a_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/highlights/highlights_hypertension_endframe__bbpmzln3nniq_large.jpg&w=700'],
+     3:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_space_gray__z8jlhu1vgbmm_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/highlights/highlights_5g__bvrxbjoke2c2_large.jpg&w=700'],
+     4:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/highlights/highlights_sensor__b624ls8kmtiu_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_finishes_starlight__enr6i85tuqwm_large.jpg&w=700'],
+     5:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/highlights/highlights_sleep_score__dl1y2j6kkouq_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_rose_gold__bhstyih3ki6a_large.jpg&w=700'],
+     6:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_finishes_titanium_natural__dv2dd6sekxaq_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_bands__gg14jjttqaum_large.jpg&w=700'],
+     7:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/highlights/highlights_running_endframe__2zvbvddxn0ie_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_finishes_titanium_natural__dv2dd6sekxaq_large.jpg&w=700'],
+     8:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/highlights/highlights_display__bnt03ajxbbw2_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_finishes_starlight__enr6i85tuqwm_large.jpg&w=700'],
+     9:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/highlights/highlights_satellite__ftgl6qyfpkia_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/running/running_hero__2d7z80gm2equ_xlarge.jpg&w=700']
+   },
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_bands__gg14jjttqaum_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_personalization__dbmb1p7erhea_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_jet_black__blfwjso629w2_large.jpg&w=700'],
+   desc:`Bracelet Sport fluoroélastomère. Confortable, imperméable, résistant à la transpiration. Compatible 42/44/45/49mm. 10 coloris.`,
+   specs:[{l:'Matière',v:'Fluoroélastomère'},{l:'Taille',v:'42-49mm'},{l:'Coloris',v:'10 options'},{l:'Résistance',v:'Eau & sueur'}]},
+
+  // Bracelet Cuir — 3 coloris
+  {id:14,brand:'APPLE WATCH',name:'Bracelet Cuir — 42/44/45/49mm',price:24,orig:99,cat:'accessories',best:0,
+   badges:[['sale','-76%'],['hot','Luxe']],rev:1230,
+   colors:['#7a3a18','#1c1c1e','#d4b898'],
+   colorNames:['Brun','Noir','Sable'],
+   colorImgs:{
+     0:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_rose_gold__bhstyih3ki6a_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/highlights/highlights_glass_endframe__f39nueq3bfiy_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_bands__gg14jjttqaum_large.jpg&w=700'],
+     1:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_jet_black__blfwjso629w2_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_finishes_titanium_black__eli4j24zkyi6_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_bands__gg14jjttqaum_large.jpg&w=700'],
+     2:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_silver__cyyyc94lds02_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_finishes_titanium_natural__dv2dd6sekxaq_large.jpg&w=700',
+        'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_personalization__dbmb1p7erhea_large.jpg&w=700']
+   },
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_rose_gold__bhstyih3ki6a_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_jet_black__blfwjso629w2_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/product-viewer/product_finishes_silver__cyyyc94lds02_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_bands__gg14jjttqaum_large.jpg&w=700'],
+   desc:`Bracelet cuir véritable pour Apple Watch. Boucle papillon acier inoxydable. Finition couture main. Compatible 42/44/45/49mm.`,
+   specs:[{l:'Matière',v:'Cuir véritable'},{l:'Boucle',v:'Acier inox'},{l:'Taille',v:'42-49mm'},{l:'Finition',v:'Cousue main'}]}
+];
+
+var STATIC_PAGES = {
+  about:{content:`<h1>Notre Histoire</h1><span class="upd">Fondée en 2023 · Paris, France</span>
+<h2>L'Idée de Départ</h2><p>Auralisz est née d'une frustration simple : pourquoi les produits Apple de qualité sont-ils réservés à ceux qui peuvent payer le prix Apple officiel ? En 2023, notre fondateur a décidé que ce n'était plus acceptable.</p>
+<h2>Notre Mission</h2><p>Rendre l'expérience Apple accessible. Chaque produit vendu chez Auralisz est soigneusement sélectionné pour offrir la même qualité qu'en Apple Store, à une fraction du prix.</p>
+<h2>Nos Engagements</h2><ul><li><strong>Qualité sans compromis</strong> — Chaque produit est testé avant expédition.</li><li><strong>Prix honnêtes</strong> — Jusqu'à 80% de réduction vs prix officiel Apple.</li><li><strong>Service humain</strong> — Un vrai service client, des vraies réponses sous 24h.</li><li><strong>Livraison rapide</strong> — Expédition sous 24h, partout en Europe.</li></ul>
+<h2>Contact</h2><p>Email : support@auralisz.com · Lun–Ven 9h–18h</p>`},
+  contact:{content:`<h1>Contactez-Nous</h1><span class="upd">Réponse sous 24h ouvrées</span>
+<h2>Support Client</h2><p>Email : <a href="mailto:support@auralisz.com">support@auralisz.com</a></p><p>Disponible Lun–Ven, 9h–18h</p>
+<h2>Commande & Livraison</h2><p>Pour toute question sur votre commande, merci d'indiquer votre numéro de commande dans votre email.</p>
+<h2>SAV & Garantie</h2><p>Problème avec un produit ? Envoyez une photo à support@auralisz.com. Traitement sous 24h.</p>`},
+  support:{content:`<h1>Support Technique</h1><span class="upd">Assistance 7j/7</span>
+<h2>Problèmes Fréquents</h2><ul><li>Produit ne s'allume pas → Vérifiez la charge et les connexions</li><li>Couplage Bluetooth → Réinitialisez le produit (maintenez le bouton 10s)</li><li>Son de mauvaise qualité → Nettoyez les grilles avec un chiffon doux</li></ul>
+<h2>Garantie 2 Ans</h2><p>Tous nos produits sont garantis 2 ans contre les défauts de fabrication. Contactez-nous avec votre preuve d'achat.</p>`},
+  faq:{content:`<h1>Questions Fréquentes</h1>
+<h2>Les produits sont-ils authentiques ?</h2><p>Oui. Tous nos produits sont de qualité Apple, sélectionnés et testés avant expédition.</p>
+<h2>Quelle est la durée de livraison ?</h2><p>Standard : 3–7 jours. Express : 24–48h. Un email de suivi est envoyé à l'expédition.</p>
+<h2>Le paiement est-il sécurisé ?</h2><p>100% sécurisé. Paiements traités par Stripe, certifié PCI DSS niveau 1.</p>
+<h2>Comment utiliser un code promo ?</h2><p>Entrez votre code dans le champ prévu lors du checkout. Code actif : AURALISZ10 (−10€).</p>
+<h2>Contact</h2><p>support@auralisz.com · Lun–Ven 9h–18h</p>`},
+  track:{content:`<h1>Suivi de Commande</h1><span class="upd">Suivi en temps réel</span>
+<p>Utilisez le numéro de suivi reçu par email pour localiser votre colis.</p>
+<h2>Transporteurs</h2><ul><li><strong>Colissimo</strong> → colissimo.fr</li><li><strong>Chronopost</strong> → chronopost.fr</li><li><strong>Mondial Relay</strong> → mondialrelay.fr</li></ul>
+<h2>Délais</h2><ul><li>Standard : 3–7 jours ouvrés</li><li>Express : 24–48h</li><li>Point Relais : 4–6 jours</li></ul>`},
+  privacy:{content:`<h1>Politique de Confidentialité</h1><span class="upd">Mise à jour : 1er janvier 2026</span>
+<h2>Données Collectées</h2><p>Auralisz collecte uniquement les données nécessaires au traitement de vos commandes. Les données bancaires sont traitées exclusivement par Stripe.</p>
+<h2>Vos Droits (RGPD)</h2><p>Accès, rectification, suppression : support@auralisz.com</p>`},
+  cgv:{content:`<h1>Conditions Générales de Vente</h1><span class="upd">En vigueur au 1er janvier 2026</span>
+<h2>Article 1 — Identification</h2><p>Auralisz — Email : support@auralisz.com</p>
+<h2>Article 2 — Produits</h2><p>Les produits sont décrits avec précision. Prix TTC.</p>
+<h2>Article 3 — Paiement</h2><p>Paiement sécurisé via Stripe. Débit à la validation de commande.</p>
+<h2>Article 4 — Droit de Rétractation</h2><p>Conformément à l'article L221-18 du Code de la consommation, vous disposez de 14 jours pour exercer votre droit de rétractation.</p>`},
+  mentions:{content:`<h1>Mentions Légales</h1><span class="upd">Conformément à la loi n°2004-575</span>
+<h2>Éditeur</h2><p>Auralisz — Email : support@auralisz.com</p>
+<h2>Hébergement</h2><p>Vercel Inc. — 340 Pine Street, San Francisco, CA 94104, USA</p>`},
+  livraison:{content:`<h1>Politique de Livraison</h1><span class="upd">Mise à jour : 1er janvier 2026</span>
+<h2>Options</h2><ul><li><strong>Standard</strong> : 3–7 jours — Gratuite dès 80€, sinon 4,90€</li><li><strong>Express</strong> : 24–48h — 8,90€</li><li><strong>Point Relais</strong> : 4–6 jours — 2,90€</li></ul>
+<h2>Zones</h2><p>France, Belgique, Suisse, Luxembourg.</p>`},
+  remboursement:{content:`<h1>Politique de Remboursement</h1><span class="upd">Mise à jour : 1er janvier 2026</span>
+<h2>Politique Générale</h2><p>En raison de la nature des produits électroniques, <strong>Auralisz n'accepte aucun retour et n'effectue aucun remboursement</strong> une fois la commande livrée et l'emballage ouvert.</p>
+<h2>Garantie Légale</h2><p>En cas de défaut de conformité avéré dans les 24 mois, Auralisz s'engage à réparer ou remplacer le produit. Contactez support@auralisz.com avec votre preuve d'achat.</p>`},
+  account:{content:`<h1>Mon Compte</h1><p>Connectez-vous pour accéder à vos commandes.</p>`},
+  search:{content:`<h1>Recherche</h1><p>Utilisez la navigation pour parcourir notre catalogue.</p>`}
+};
+
+// ── STATE ──
+var cart=[], curProd=null, curQty=1, ckStep=1, promoAmt=0, promoUsed=false;
+var stripe=null, cardElement=null, stripeInit=false;
+var STRIPE_PK='pk_live_51T7wzz0ym8Y244tlBLaDM42ZIJJZBcVNprvnCDOK7g4jAueYwUUqxK7adFqvvwDiyA8utoq6R7Px3uKGPbdviHUz007bGTiLLz';
+
+// ── PAGES ──
+function showPage(id){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  var el=document.getElementById('page-'+id);
+  if(el){el.classList.add('active');window.scrollTo(0,0);}
+}
+function goHome(){renderHome();showPage('home');}
+
+// ── CARD ──
+function buildCard(p){
+  var bdgs=p.badges.map(function(b){return '<span class="bdg '+b[0]+'">'+b[1]+'</span>';}).join('');
+  var disc=p.orig?Math.round((1-p.price/p.orig)*100):0;
+  var px=p.orig?'<span class="p-was">'+p.orig+'€</span><span class="p-off">-'+disc+'%</span>':'';
+  return '<div class="pc" onclick="showProd('+p.id+')">'
+    +'<div class="pc-img"><img src="'+p.imgs[0]+'" alt="'+p.name+'" loading="lazy" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&q=80\'">'
+    +'<div class="pc-badges">'+bdgs+'</div>'
+    +'<div class="pc-wish"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>'
+    +'<div class="pc-quick" onclick="event.stopPropagation()"><button class="pc-add" onclick="qAdd('+p.id+')">+ Ajouter au Panier</button></div>'
+    +'</div>'
+    +'<div class="pc-body"><div class="pc-brand">'+p.brand+'</div><div class="pc-name">'+p.name+'</div>'
+    +'<div class="pc-stars"><span class="stars">★★★★★</span><span class="stars-n">('+p.rev.toLocaleString('fr-FR')+')</span></div>'
+    +'<div class="pc-price"><span class="p-now">'+p.price+'€</span>'+px+'</div></div></div>';
+}
+function qAdd(id){var p=PRODS.find(function(x){return x.id===id;});if(p)addCart(p,1);}
+
+// ── HOME ──
+function renderHome(){
+  var best=PRODS.filter(function(p){return p.best;});
+  document.getElementById('best-grid').innerHTML=best.map(buildCard).join('');
+  document.getElementById('all-grid').innerHTML=PRODS.slice(0,8).map(buildCard).join('');
+}
+
+// ── COLLECTION ──
+function showColl(slug,title){
+  document.getElementById('col-title').textContent=title||'Collection';
+  var ps=slug==='all'?PRODS:slug==='deals'?PRODS.filter(function(p){return p.orig;}):PRODS.filter(function(p){return p.cat===slug;});
+  if(!ps.length)ps=PRODS;
+  document.getElementById('col-count').textContent=ps.length+' produit'+(ps.length>1?'s':'');
+  document.getElementById('col-grid').innerHTML=ps.map(buildCard).join('');
+  showPage('collection');
+}
+function fAct(btn){btn.closest('.filters').querySelectorAll('.fbtn').forEach(function(b){b.classList.remove('act');});btn.classList.add('act');}
+
+// ── PRODUCT ──
+function showProd(id){
+  var p=PRODS.find(function(x){return x.id===id;});
+  if(!p)return;
+  curProd=id;curQty=1;
+  document.getElementById('breadcrumb').innerHTML=
+    '<span onclick="goHome()">Accueil</span><span class="bcs"> / </span>'
+    +'<span onclick="showColl(\''+p.cat+'\',\''+p.cat+'\')">'+p.cat+'</span>'
+    +'<span class="bcs"> / </span><span style="color:var(--text);">'+p.name+'</span>';
+  var mi=document.getElementById('g-main-img');
+  mi.src=p.imgs[0];
+  mi.onerror=function(){this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=600&q=80';};
+  var th='';
+  p.imgs.forEach(function(src,i){
+    th+='<div class="g-th'+(i===0?' sel':'')+'" onclick="gTh(this,\''+src+'\')">'
+      +'<img src="'+src+'" loading="lazy" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=200&q=80\'"></div>';
+  });
+  document.getElementById('g-thumbs').innerHTML=th;
+  var disc=p.orig?Math.round((1-p.price/p.orig)*100):0;
+  var px=p.orig?'<span class="price-old">'+p.orig+'€</span><span class="price-badge">-'+disc+'%</span>':'';
+  var specs=p.specs.map(function(s){return '<div class="spec-box"><div class="spec-l">'+s.l+'</div><div class="spec-v">'+s.v+'</div></div>';}).join('');
+  var colHtml='';
+  if(p.colors){
+    colHtml='<div class="col-row"><div class="f-lbl">Coloris — <span id="col-lbl" style="font-weight:600;color:var(--acc)">'+(p.colorNames?p.colorNames[0]:'')+' </span></div><div class="prod-cols">';
+    p.colors.forEach(function(c,i){colHtml+='<div class="p-col'+(i===0?' sel':'')+'" style="background:'+c+'" onclick="selCol(this,'+i+')" title="'+(p.colorNames?p.colorNames[i]:'')+'"></div>';});
+    colHtml+='</div></div>';
+  }
+  document.getElementById('prod-panel').innerHTML=
+    '<div class="pd-brand">'+p.brand+'</div>'
+    +'<h1 class="pd-title">'+p.name+'</h1>'
+    +'<div class="pd-stars"><span class="stars" style="font-size:.82rem;">★★★★★</span><span class="rc">'+p.rev.toLocaleString('fr-FR')+' avis clients</span></div>'
+    +'<div class="price-blk"><span class="price-big">'+p.price+'€</span>'+px+'</div>'
+    +colHtml
+    +'<div class="specs-grid">'+specs+'</div>'
+    +'<div class="qty-row">'
+    +'<div class="qty-ctrl"><button onclick="chQty(-1)">−</button><span id="qty-val">1</span><button onclick="chQty(1)">+</button></div>'
+    +'<button class="btn-atc" onclick="addFromProd()">Ajouter au Panier</button>'
+    +'</div>'
+    +'<button class="btn-buy" onclick="buyNow()">Acheter Maintenant →</button>'
+    +'<div class="pd-feats">'
+    +'<div class="pd-feat"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><p><strong>Garantie 2 ans</strong> — Couverte contre tout défaut de fabrication.</p></div>'
+    +'<div class="pd-feat"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><p><strong>Livraison rapide</strong> — Express 24h disponible. Suivi temps réel.</p></div>'
+    +'<div class="pd-feat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><p><strong>Qualité premium</strong> — Produit testé et certifié avant expédition.</p></div>'
+    +'</div>'
+    +'<div class="acc-item"><button class="acc-btn" onclick="accT(this)"><span>Description Complète</span><span class="acc-arrow">▾</span></button><div class="acc-content">'+p.desc+'</div></div>'
+    +'<div class="acc-item"><button class="acc-btn" onclick="accT(this)"><span>Contenu de la Boîte</span><span class="acc-arrow">▾</span></button><div class="acc-content">1× '+p.name+' · 1× Documentation · Câble de charge inclus selon modèle.</div></div>'
+    +'<div class="acc-item"><button class="acc-btn" onclick="accT(this)"><span>Livraison & Retours</span><span class="acc-arrow">▾</span></button><div class="acc-content">Livraison standard 3–7 jours (gratuite dès 80€). Express 24–48h disponible. Garantie 2 ans incluse.</div></div>';
+  var related=PRODS.filter(function(x){return x.id!==id;}).slice(0,4);
+  document.getElementById('related-grid').innerHTML=related.map(buildCard).join('');
+  showPage('product');
+}
+function gTh(el,src){
+  var mi=document.getElementById('g-main-img');
+  mi.src=src;mi.onerror=function(){this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=600&q=80';};
+  document.querySelectorAll('.g-th').forEach(function(t){t.classList.remove('sel');});el.classList.add('sel');
+}
+function selCol(el,idx){
+  document.querySelectorAll('.p-col').forEach(function(c){c.classList.remove('sel');});
+  el.classList.add('sel');
+  var p=PRODS.find(function(x){return x.id===curProd;});
+  if(!p)return;
+  // Mettre à jour le label
+  var lblEl=document.getElementById('col-lbl');
+  if(lblEl&&p.colorNames)lblEl.textContent=p.colorNames[idx]+' ';
+  // Changer les photos si colorImgs défini
+  if(p.colorImgs&&p.colorImgs[idx]){
+    var imgs=p.colorImgs[idx];
+    // Photo principale
+    var mi=document.getElementById('g-main-img');
+    mi.src=imgs[0];
+    mi.onerror=function(){this.onerror=null;this.src='https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=600&q=80';};
+    // Thumbs
+    var th='';
+    imgs.forEach(function(src,i){
+      th+='<div class="g-th'+(i===0?' sel':'')+'" onclick="gTh(this,\''+src+'\')"><img src="'+src+'" loading="lazy" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=200&q=80\'"></div>';
+    });
+    document.getElementById('g-thumbs').innerHTML=th;
+  }
+}
+function chQty(d){curQty=Math.max(1,curQty+d);document.getElementById('qty-val').textContent=curQty;}
+function addFromProd(){var p=PRODS.find(function(x){return x.id===curProd;});if(p)addCart(p,curQty);}
+function buyNow(){var p=PRODS.find(function(x){return x.id===curProd;});if(p){addCart(p,curQty);closeCart();goCheckout();}}
+function accT(b){b.closest('.acc-item').classList.toggle('open');}
+
+// ── CART ──
+function addCart(p,qty){
+  var m=cart.find(function(i){return i.id===p.id;});
+  if(m)m.qty+=qty;
+  else cart.push({id:p.id,name:p.name,price:p.price,img:p.imgs[0],qty:qty});
+  renderCart();toast('✓ Ajouté au panier');openCart();
+}
+function renderCart(){
+  var tot=cart.reduce(function(s,i){return s+i.price*i.qty;},0);
+  var cnt=cart.reduce(function(s,i){return s+i.qty;},0);
+  document.getElementById('cartBadge').textContent=cnt;
+  document.getElementById('cart-count').textContent=cnt;
+  document.getElementById('cart-sub').textContent=tot+'€';
+  var sn=document.getElementById('ship-note-cart');
+  if(sn)sn.textContent=tot>=80?'✓ Livraison gratuite incluse !':'Plus que '+(80-tot)+'€ pour la livraison gratuite';
+  var body=document.getElementById('cart-body');
+  var footer=document.getElementById('cart-footer');
+  if(!cart.length){
+    body.innerHTML='<div class="cart-empty">🛒<br><br>Votre panier est vide.<br>Explorez notre collection.</div>';
+    if(footer)footer.style.display='none';return;
+  }
+  if(footer)footer.style.display='block';
+  body.innerHTML=cart.map(function(it,i){
+    return '<div class="ci"><img class="ci-img" src="'+it.img+'" alt="" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=200&q=80\'">'
+      +'<div style="flex:1;min-width:0;"><div class="ci-name">'+it.name+'</div><div class="ci-det">Réf. AUR-'+it.id+'</div>'
+      +'<div class="ci-price">'+it.price*it.qty+'€</div>'
+      +'<div class="ci-row"><button class="qb" onclick="cQ('+i+',-1)">−</button><span class="qn">'+it.qty+'</span><button class="qb" onclick="cQ('+i+',1)">+</button>'
+      +'<button class="rmb" onclick="rmI('+i+')">Retirer</button></div></div></div>';
+  }).join('');
+}
+function cQ(i,d){if(cart[i]){cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);renderCart();}}
+function rmI(i){cart.splice(i,1);renderCart();}
+function openCart(){document.getElementById('cartDrawer').classList.add('open');document.getElementById('overlay').classList.add('on');}
+function closeCart(){document.getElementById('cartDrawer').classList.remove('open');document.getElementById('overlay').classList.remove('on');}
+
+// ── CHECKOUT ──
+function goCheckout(){
+  if(!cart.length){toast('⚠️ Panier vide');return;}
+  ckStep=1;promoUsed=false;promoAmt=0;
+  document.getElementById('promo-line').style.display='none';
+  renderCkSum();showCkStep(1);showPage('checkout');
+}
+function renderCkSum(){
+  var sub=cart.reduce(function(s,i){return s+i.price*i.qty;},0);
+  document.getElementById('ck-items').innerHTML=cart.map(function(it){
+    return '<div class="oi"><div class="oi-w"><img class="oi-img" src="'+it.img+'" alt="" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=200&q=80\'"><span class="oi-q">'+it.qty+'</span></div>'
+      +'<div style="flex:1;min-width:0;"><div class="oi-name">'+it.name+'</div><div class="oi-det">Réf. AUR-'+it.id+'</div></div>'
+      +'<span class="oi-price">'+it.price*it.qty+'€</span></div>';
+  }).join('');
+  document.getElementById('sum-sub').textContent=sub+'€';
+  document.getElementById('sum-tot').textContent=sub+'€';
+  var sl=document.getElementById('ssd-lbl');
+  if(sl)sl.textContent=sub>=80?'Gratuite':'4,90€';
+}
+function showCkStep(n){
+  for(var i=1;i<=3;i++){var el=document.getElementById('ck-s'+i);if(el)el.style.display=n===i?'block':'none';}
+  ['cks1','cks2','cks3'].forEach(function(id,i){
+    var el=document.getElementById(id);if(!el)return;
+    el.className='cks';
+    if(i+1<n)el.classList.add('done');
+    else if(i+1===n)el.classList.add('cur');
+  });
+  ckStep=n;if(n===3)initStripe();
+}
+function ckNext(){
+  if(ckStep===1){
+    var ok=true;
+    [['f-email','e-email'],['f-fname','e-fname'],['f-lname','e-lname'],['f-addr','e-addr'],['f-zip','e-zip'],['f-city','e-city']].forEach(function(f){
+      var inp=document.getElementById(f[0]),err=document.getElementById(f[1]);
+      if(inp&&!inp.value.trim()){inp.classList.add('err');if(err)err.textContent='Requis';ok=false;}
+      else{if(inp)inp.classList.remove('err');if(err)err.textContent='';}
+    });
+    if(!ok){toast('⚠️ Veuillez remplir tous les champs');return;}
+  }
+  if(ckStep===2){
+    var shipEl=document.querySelector('input[name="ship"]:checked');
+    var ship=shipEl?shipEl.value:'std';
+    var sub=cart.reduce(function(s,i){return s+i.price*i.qty;},0)-promoAmt;
+    var sc=ship==='exp'?8.9:ship==='relay'?2.9:(sub>=80?0:4.9);
+    document.getElementById('sum-ship').textContent=sc===0?'Gratuite':sc.toFixed(2).replace('.',',')+' €';
+    var tot=(sub+sc).toFixed(2).replace('.',',');
+    document.getElementById('sum-tot').textContent=tot+' €';
+    document.getElementById('ck-recap').innerHTML=cart.map(function(it){
+      return '<div style="display:flex;justify-content:space-between;font-size:.74rem;margin-bottom:5px;color:var(--muted);">'
+        +'<span>'+it.name.substring(0,30)+'… ×'+it.qty+'</span><span style="font-weight:700;color:var(--text);">'+it.price*it.qty+'€</span></div>';
+    }).join('');
+    document.getElementById('ck-recap-tot').textContent=tot+' €';
+  }
+  if(ckStep<3)showCkStep(ckStep+1);
+  window.scrollTo(0,0);
+}
+function ckBack(){if(ckStep>1)showCkStep(ckStep-1);}
+
+function initStripe(){
+  if(stripeInit)return;
+  if(typeof Stripe==='undefined'){
+    var s=document.createElement('script');
+    s.src='https://js.stripe.com/v3/';
+    s.onload=function(){doInitStripe();};
+    document.head.appendChild(s);
+    return;
+  }
+  doInitStripe();
+}
+function doInitStripe(){
+  try{
+    stripe=Stripe(STRIPE_PK);
+    var elements=stripe.elements({locale:'fr'});
+    cardElement=elements.create('card',{
+      style:{base:{fontFamily:'DM Sans, sans-serif',fontSize:'14px',color:'#1d1d1f','::placeholder':{color:'#aeaeb2'}},invalid:{color:var_red}},
+      hidePostalCode:true
+    });
+    cardElement.mount('#stripe-card-element');
+    cardElement.on('change',function(e){document.getElementById('stripe-card-errors').textContent=e.error?e.error.message:'';});
+    stripeInit=true;
+  }catch(e){console.log('Stripe error',e);}
+}
+var var_red='#ff3b30';
+
+async function placeOrder(){
+  var btn=document.getElementById('pay-btn');
+  if(btn){btn.disabled=true;btn.textContent='Traitement…';}
+  var pm=document.querySelector('input[name="pm"]:checked');
+  var pmVal=pm?pm.value:'card';
+  if(pmVal==='card'&&stripe&&cardElement){
+    try{
+      var sub=cart.reduce(function(s,i){return s+i.price*i.qty;},0);
+      var shipEl=document.querySelector('input[name="ship"]:checked');
+      var sc=shipEl&&shipEl.value==='exp'?8.9:shipEl&&shipEl.value==='relay'?2.9:(sub>=80?0:4.9);
+      var total=Math.round((sub-promoAmt+sc)*100);
+      var resp=await fetch('/api/create-payment',{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({amount:total,currency:'eur',email:document.getElementById('f-email').value})
+      });
+      if(resp.ok){
+        var data=await resp.json();
+        var result=await stripe.confirmCardPayment(data.clientSecret,{payment_method:{card:cardElement,billing_details:{name:document.getElementById('f-fname').value+' '+document.getElementById('f-lname').value,email:document.getElementById('f-email').value}}});
+        if(result.error){document.getElementById('stripe-card-errors').textContent=result.error.message;if(btn){btn.disabled=false;btn.textContent='Confirmer et Payer →';}return;}
+      }
+    }catch(e){console.log('Payment error',e);}
+  }
+  var num='#AUR-'+Math.floor(10000+Math.random()*90000);
+  document.getElementById('confirm-num').textContent=num;
+  var emailEl=document.getElementById('f-email');
+  document.getElementById('confirm-email').textContent=emailEl?emailEl.value:'—';
+  cart=[];renderCart();
+  if(btn){btn.disabled=false;btn.textContent='Confirmer et Payer →';}
+  showPage('confirm');
+}
+function applyPromo(){
+  if(promoUsed){toast('Code déjà appliqué');return;}
+  var code=document.getElementById('promo-in').value.trim().toUpperCase();
+  var disc=code==='AURALISZ10'?10:code==='AUR20'?20:0;
+  if(disc){
+    promoUsed=true;promoAmt=disc;
+    document.getElementById('promo-line').style.display='flex';
+    document.getElementById('promo-val').textContent='−'+disc+'€';
+    var sub=cart.reduce(function(s,i){return s+i.price*i.qty;},0);
+    document.getElementById('sum-tot').textContent=(sub-disc)+'€';
+    toast('✓ Code '+code+' appliqué — −'+disc+'€ !');
+  }else{toast('⚠️ Code invalide');}
+}
+
+// ── STATIC ──
+function showStatic(key){
+  var pg=STATIC_PAGES[key];
+  if(!pg){toast('Page en construction');return;}
+  document.getElementById('static-content').innerHTML='<div style="padding-top:16px;">'+pg.content+'</div>';
+  showPage('static');
+}
+
+// ── TOAST ──
+function toast(msg){
+  var t=document.getElementById('toast');
+  if(!t)return;
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('show');},2800);
+}
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded',function(){
+  try{renderHome();}catch(e){console.error('Init error:',e);}
+});
+
+// ── REVIEWS LOAD MORE ──
+var revShown=6;
+function loadMoreRev(){
+  var rvs=document.querySelectorAll('#rev-grid .rv');
+  var next=revShown+6;
+  for(var i=revShown;i<next&&i<rvs.length;i++){rvs[i].style.display='';}
+  revShown=next;
+  if(revShown>=rvs.length){document.getElementById('rev-more-wrap').style.display='none';}
+}
+</script>
+</body>
+</html>
