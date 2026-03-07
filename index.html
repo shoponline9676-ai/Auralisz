@@ -396,6 +396,7 @@ footer{background:var(--text);padding:56px 32px 24px;}
 @media(max-width:900px){.nav-links{display:none;}.hero-inner{grid-template-columns:1fr;gap:36px;}.hero-img{display:none;}.cat-grid{grid-template-columns:1fr 1fr;}.rev-grid{grid-template-columns:1fr 1fr;}.banner{grid-template-columns:1fr;}.banner-img{display:none;}.ck-wrap{grid-template-columns:1fr;}.ck-right{order:-1;}.prod-layout{grid-template-columns:1fr;}.gallery{position:static;}}
 @media(max-width:640px){.sec,.prod-page,.col-pg,.ck-left,.ck-right,.sp{padding:24px 16px;}.nav-wrap{padding:0 16px;}.pg{grid-template-columns:1fr 1fr;gap:10px;}.rev-grid{grid-template-columns:1fr;}.cat-grid{grid-template-columns:1fr 1fr;}.foot-top{grid-template-columns:1fr;}footer,.nl,.sec-full,.related-sec{padding:36px 16px;}.trust{padding:14px 16px;}.trust-inner{grid-template-columns:1fr 1fr;}.frow{grid-template-columns:1fr;}.hero{padding:40px 16px 32px;}.promo-bar{padding:10px 16px;}.feat-grid{grid-template-columns:1fr;}}
 </style>
+<script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
 
@@ -441,6 +442,12 @@ footer{background:var(--text);padding:56px 32px 24px;}
         <span class="nav-a">Accessoires ▾</span>
         <div class="drop" style="min-width:250px;">
           <a onclick="showProd(8)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/media-card/media_charging__csr8q6rfe4sy_xlarge.jpg&w=80" alt="" onerror="this.src='https://images.unsplash.com/photo-1623126908029-58cb08a2b272?w=64&q=80'">Chargeur MagSafe 15W<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">19€</span></a>
+          <a onclick="showProd(9)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg&w=80" alt="">Câble USB-C MagSafe<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">14€</span></a>
+          <a onclick="showProd(10)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/hero_endframe__calpooy4ucr6_large.jpg&w=80" alt="">Étui Silicone AirPods Pro<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">12€</span></a>
+          <a onclick="showProd(11)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_black__x3byrd2venmu_large.png&w=80" alt="">Étui Smart Folio AirPods Max<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">24€</span></a>
+          <a onclick="showProd(12)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/apple-pencil/bc/images/overview/hero/hero_1_endframe__by2z4y2a94wi_large.jpg&w=80" alt="">Apple Pencil Pro 2024<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">59€</span></a>
+          <a onclick="showProd(13)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-10/c/images/overview/product-viewer/product_bands__bhchzmqr1vqy_large.jpg&w=80" alt="">Bracelet Sport Watch<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">14€</span></a>
+          <a onclick="showProd(14)"><img src="https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_bands__gg14jjttqaum_large.jpg&w=80" alt="">Bracelet Cuir Watch<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">24€</span></a>
         </div>
       </div>
       <div class="nav-item"><span class="nav-a" onclick="showColl('deals','Offres 🔥')">Offres 🔥</span></div>
@@ -819,16 +826,16 @@ var PRODS = [
 
   {id:1,brand:'APPLE AIRPODS',name:'AirPods 4 — Nouvelle Génération',price:59,orig:129,cat:'airpods',best:1,
    badges:[['new','2024'],['sale','-54%']],rev:2341,
-   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_close__f0fhueeeoy2q_xlarge.jpg&w=700',
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/welcome/hero__1z1ep1te3eq2_xlarge.jpg&w=700',
          'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_open__63kccmu775u6_xlarge.jpg&w=700',
          'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_side__edtf67wfg10m_xlarge.jpg&w=700',
-         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_stem__cfztc9z01vpy_xlarge.jpg&w=700'],
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/media-card/media_lifestyle__cyk4qt05xic2_xlarge.jpg&w=700'],
    desc:`Les AirPods 4 offrent un son Apple de haute qualité dans un design repensé. Chip H2, audio spatial personnalisé, jusqu'à 30h d'autonomie totale avec le boîtier. Résistance à l'eau IPX4.`,
    specs:[{l:'Puce',v:'Apple H2'},{l:'Autonomie',v:'30h total'},{l:'ANC',v:'Non'},{l:'Résistance',v:'IPX4'}]},
 
   {id:2,brand:'APPLE AIRPODS',name:'AirPods 4 ANC — Réduction de Bruit Active',price:69,orig:179,cat:'airpods',best:1,
    badges:[['hot','Best-Seller'],['sale','-61%']],rev:1876,
-   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_close__f0fhueeeoy2q_xlarge.jpg&w=700',
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/airpods/t/images/overview/airpods_4_anc__fuq2oymv3qea_large.jpg&w=700',
          'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_open__63kccmu775u6_xlarge.jpg&w=700',
          'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_angle__b2i7xnzp5h7m_xlarge.jpg&w=700',
          'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/media-card/media_lifestyle__cyk4qt05xic2_xlarge.jpg&w=700'],
@@ -839,7 +846,7 @@ var PRODS = [
    badges:[['new','USB-C'],['sale','-66%']],rev:3124,
    imgs:['https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/hero_endframe__calpooy4ucr6_large.jpg&w=700',
          'https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/hero_startframe__f6btrn4bhpyu_large.jpg&w=700',
-         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/bento-gallery/bento_case_close__f0fhueeeoy2q_xlarge.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-pro/n/images/overview/hero/airpods_pro__gnfk5g59t3qe_large.jpg&w=700',
          'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/media-card/media_live_translation__epwy7gl2k7ee_xlarge.jpg&w=700'],
    desc:`La référence absolue. ANC 2x plus performante, mode Transparence adaptatif, audio spatial personnalisé. Boîtier USB-C. Jusqu'à 30h d'autonomie. Résistance IP54.`,
    specs:[{l:'Puce',v:'Apple H2'},{l:'Autonomie',v:'30h total'},{l:'ANC',v:'2e Génération'},{l:'Résistance',v:'IP54'}]},
@@ -947,82 +954,81 @@ var PRODS = [
   // Chargeur MagSafe — photos du vrai produit chargeur
   {id:8,brand:'APPLE MAGSAFE',name:'Chargeur MagSafe 15W — USB-C',price:19,orig:45,cat:'accessories',best:0,
    badges:[['sale','-58%']],rev:3210,
-   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/media-card/media_charging__csr8q6rfe4sy_xlarge.jpg&w=700',
-         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_health_sensors__c3xtx4ix08cy_large.jpg&w=700',
-         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-se-3/b/images/overview/product-viewer/product_display__d8qh865laqie_large.jpg&w=700',
-         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-11/c/images/overview/highlights/highlights_sleep_score__dl1y2j6kkouq_large.jpg&w=700'],
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/media-card/media_charging__csr8q6rfe4sy_xlarge.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg&w=700'],
    desc:`Chargeur MagSafe 15W avec connecteur USB-C. Charge magnétique instantanée, alignement automatique. Compatible iPhone 12 et ultérieur. Longueur 1m.`,
    specs:[{l:'Puissance',v:'15W max'},{l:'Connecteur',v:'USB-C'},{l:'Longueur',v:'1 mètre'},{l:'Compat.',v:'iPhone 12+'}]},
 
   // Câble USB-C MagSafe
-  {id:9,brand:'APPLE CÂBLE',name:'Câble USB-C vers MagSafe — 1m',price:14,orig:35,cat:'accessories',best:0,outOfStock:true,
+  {id:9,brand:'APPLE CÂBLE',name:'Câble USB-C vers MagSafe — 1m',price:14,orig:35,cat:'accessories',best:0,
    badges:[['sale','-60%']],rev:1870,
-   imgs:['https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement',
-         'https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement',
-         'https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement',
-         'https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement'],
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/media-card/media_charging__csr8q6rfe4sy_xlarge.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg&w=700'],
    desc:`Câble tressé USB-C vers MagSafe pour MacBook. Charge rapide 140W. Gaine tressée haute résistance. 1 mètre.`,
    specs:[{l:'Puissance',v:'140W max'},{l:'Longueur',v:'1 mètre'},{l:'Gaine',v:'Tressée'},{l:'Compat.',v:'MacBook'}]},
 
   // Étui AirPods Pro — 5 coloris silicone
-  {id:10,brand:'APPLE ACCESSOIRE',name:'Étui Silicone AirPods Pro',price:12,orig:29,cat:'accessories',best:0,outOfStock:true,
+  {id:10,brand:'APPLE ACCESSOIRE',name:'Étui Silicone AirPods Pro',price:12,orig:29,cat:'accessories',best:0,
    badges:[['sale','-59%']],rev:2100,
    colors:['#f0f0f0','#1c1c1e','#c84040','#3060c0','#409060'],
    colorNames:['Blanc','Noir','Rouge','Bleu','Vert'],
    colorImgs:{},
-   imgs:['https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement',
-         'https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement',
-         'https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement',
-         'https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement'],
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/hero_endframe__calpooy4ucr6_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/hero_endframe__calpooy4ucr6_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/hero_endframe__calpooy4ucr6_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/hero_endframe__calpooy4ucr6_large.jpg&w=700'],
    desc:`Étui silicone liquide pour AirPods Pro 2. Protection 360°, toucher satiné, mousqueton inclus. 6 coloris. Compatible MagSafe.`,
    specs:[{l:'Matière',v:'Silicone liquide'},{l:'MagSafe',v:'Compatible'},{l:'Coloris',v:'5 disponibles'},{l:'Inclus',v:'Mousqueton'}]},
 
   // Étui Smart Folio AirPods Max — 5 coloris
-  {id:11,brand:'APPLE ACCESSOIRE',name:'Étui Smart Folio AirPods Max',price:24,orig:59,cat:'accessories',best:0,outOfStock:true,
+  {id:11,brand:'APPLE ACCESSOIRE',name:'Étui Smart Folio AirPods Max',price:24,orig:59,cat:'accessories',best:0,
    badges:[['sale','-59%']],rev:876,
    colors:['#1a1a1a','#e5d9c3','#7aaac8','#c9a8c4','#e8832a'],
    colorNames:['Minuit','Lumière Stellaire','Bleu','Violet','Orange'],
    colorImgs:{},
-   imgs:['https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement',
-         'https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement',
-         'https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement',
-         'https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement'],
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_black__x3byrd2venmu_large.png&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-max/j/images/overview/bento/midnight/bento_1_airpod_max_midnight__4jy1tkqh9qay_xlarge.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods/ab/images/overview/airpods_max_black__x3byrd2venmu_large.png&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-max/j/images/overview/bento/midnight/bento_1_airpod_max_midnight__4jy1tkqh9qay_xlarge.jpg&w=700'],
    desc:`Étui Smart Folio pour AirPods Max. Mode ultra faible consommation automatique. Design Mesh respirant. Compatible tous coloris.`,
    specs:[{l:'Matière',v:'Mesh & silicone'},{l:'Mode',v:'Ultra faible conso'},{l:'Compat.',v:'AirPods Max'},{l:'Coloris',v:'5 options'}]},
 
   // Apple Pencil Pro
-  {id:12,brand:'APPLE PENCIL',name:'Apple Pencil Pro — 2024',price:59,orig:129,cat:'accessories',best:0,outOfStock:true,
+  {id:12,brand:'APPLE PENCIL',name:'Apple Pencil Pro — 2024',price:59,orig:129,cat:'accessories',best:0,
    badges:[['new','Pro 2024'],['sale','-54%']],rev:654,
-   imgs:['https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement',
-         'https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement',
-         'https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement',
-         'https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement'],
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/apple-pencil/bc/images/overview/hero/hero_1_endframe__by2z4y2a94wi_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-pencil/bc/images/overview/hero/hero_1_endframe__by2z4y2a94wi_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-pencil/bc/images/overview/hero/hero_1_endframe__by2z4y2a94wi_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-pencil/bc/images/overview/hero/hero_1_endframe__by2z4y2a94wi_large.jpg&w=700'],
    desc:`Apple Pencil Pro avec détection de pression, gyroscope, charge MagSafe. Compatible iPad Pro M4 et iPad Air M2. Latence 9ms.`,
    specs:[{l:'Compat.',v:'iPad Pro M4'},{l:'Charge',v:'MagSafe'},{l:'Latence',v:'9ms'},{l:'Gyroscope',v:'Intégré'}]},
 
   // Bracelet Sport — 10 coloris, galerie spécifique par couleur
-  {id:13,brand:'APPLE WATCH',name:'Bracelet Sport — 42/44/45/49mm',price:14,orig:49,cat:'accessories',best:0,outOfStock:true,
+  {id:13,brand:'APPLE WATCH',name:'Bracelet Sport — 42/44/45/49mm',price:14,orig:49,cat:'accessories',best:0,
    badges:[['sale','-71%']],rev:3450,
    colors:['#1c1c1e','#f0ece4','#c83030','#2850b4','#287840','#d4a020','#b07848','#b870b0','#38a8c0','#d05820'],
    colorNames:['Noir','Lumière Stellaire','Rouge','Bleu','Vert','Jaune','Sable','Mauve','Ciel','Orange'],
    colorImgs:{},
-   imgs:['https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement',
-         'https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement',
-         'https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement',
-         'https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement'],
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-10/c/images/overview/product-viewer/product_bands__bhchzmqr1vqy_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_bands__gg14jjttqaum_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-10/c/images/overview/product-viewer/product_bands__bhchzmqr1vqy_large.jpg&w=700'],
    desc:`Bracelet Sport fluoroélastomère. Confortable, imperméable, résistant à la transpiration. Compatible 42/44/45/49mm. 10 coloris.`,
    specs:[{l:'Matière',v:'Fluoroélastomère'},{l:'Taille',v:'42-49mm'},{l:'Coloris',v:'10 options'},{l:'Résistance',v:'Eau & sueur'}]},
 
   // Bracelet Cuir — 3 coloris
-  {id:14,brand:'APPLE WATCH',name:'Bracelet Cuir — 42/44/45/49mm',price:24,orig:99,cat:'accessories',best:0,outOfStock:true,
+  {id:14,brand:'APPLE WATCH',name:'Bracelet Cuir — 42/44/45/49mm',price:24,orig:99,cat:'accessories',best:0,
    badges:[['sale','-76%'],['hot','Luxe']],rev:1230,
    colors:['#7a3a18','#1c1c1e','#d4b898'],
    colorNames:['Brun','Noir','Sable'],
    colorImgs:{},
-   imgs:['https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement',
-         'https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement',
-         'https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement',
-         'https://placehold.co/700x700/f5f5f7/aeaeb2?text=Disponible+Prochainement'],
+   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_bands__gg14jjttqaum_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-10/c/images/overview/product-viewer/product_bands__bhchzmqr1vqy_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-ultra-3/b/images/overview/product-viewer/product_bands__gg14jjttqaum_large.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/apple-watch-series-10/c/images/overview/product-viewer/product_bands__bhchzmqr1vqy_large.jpg&w=700'],
    desc:`Bracelet cuir véritable pour Apple Watch. Boucle papillon acier inoxydable. Finition couture main. Compatible 42/44/45/49mm.`,
    specs:[{l:'Matière',v:'Cuir véritable'},{l:'Boucle',v:'Acier inox'},{l:'Taille',v:'42-49mm'},{l:'Finition',v:'Cousue main'}]}
 ];
@@ -1074,7 +1080,7 @@ var STATIC_PAGES = {
 // ── STATE ──
 var cart=[], curProd=null, curQty=1, ckStep=1, promoAmt=0, promoUsed=false;
 var stripe=null, cardElement=null, stripeInit=false;
-var STRIPE_PK='pk_live_51T7wzz0ym8Y244tlBLaDM42ZIJJZBcVNprvnCDOK7g4jAueYwUUqxK7adFqvvwDiyA8utoq6R7Px3uKGPbdviHUz007bGTiLLz';
+var STRIPE_PK='pk_live_51T7wzz0ym8Y244tlBLaDM42ZIJJZBcVNprvnCDOK7g4jAueYwUUqxK7adFqvvwDiyA8utoq6R7Px3uKGPbdviHUz007bGTiLLu';
 
 // ── PAGES ──
 function showPage(id){
@@ -1351,10 +1357,7 @@ function ckBack(){if(ckStep>1)showCkStep(ckStep-1);}
 function initStripe(){
   if(stripeInit)return;
   if(typeof Stripe==='undefined'){
-    var s=document.createElement('script');
-    s.src='https://js.stripe.com/v3/';
-    s.onload=function(){doInitStripe();};
-    document.head.appendChild(s);
+    setTimeout(initStripe, 300);
     return;
   }
   doInitStripe();
