@@ -752,11 +752,10 @@ footer{background:var(--text);padding:56px 32px 24px;}
       <div id="ck-s3" style="display:none;">
         <div class="sec-lbl">Mode de Paiement</div>
         <div class="lock-note"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Paiement 100% sécurisé · Propulsé par Stripe</div>
-        <div class="pm-opt sel" style="flex-direction:column;gap:10px;">
+        <label class="pm-opt sel" style="flex-direction:column;gap:10px;">
           <div style="display:flex;align-items:flex-start;gap:10px;width:100%;"><input type="radio" name="pm" value="card" checked><div><div class="ship-l">Carte Bancaire</div><div class="ship-s">Visa, Mastercard, Amex</div></div></div>
-          <div id="stripe-card-element"></div>
-          <div id="stripe-card-errors"></div>
-        </div>
+          <div id="stripe-card-wrap"><div id="stripe-card-element"></div><div id="stripe-card-errors"></div></div>
+        </label>
         <label class="pm-opt" style="margin-top:9px;"><input type="radio" name="pm" value="paypal"><div><div class="ship-l">PayPal</div><div class="ship-s">Redirection sécurisée</div></div></label>
         <label class="pm-opt"><input type="radio" name="pm" value="klarna"><div><div class="ship-l">Klarna — Payer en 3×</div><div class="ship-s">Sans frais · Disponible dès 50€</div></div></label>
         <label class="pm-opt"><input type="radio" name="pm" value="apple"><div><div class="ship-l">Apple Pay / Google Pay</div><div class="ship-s">Paiement instantané</div></div></label>
@@ -1379,7 +1378,13 @@ async function placeOrder(){
   if(btn){btn.disabled=true;btn.textContent='Traitement…';}
   var pm=document.querySelector('input[name="pm"]:checked');
   var pmVal=pm?pm.value:'card';
-  if(pmVal==='card'&&stripe&&cardElement){
+  if(pmVal==='card'){
+    if(!stripe||!cardElement){
+      var errEl=document.getElementById('stripe-card-errors');
+      if(errEl)errEl.textContent='Le système de paiement n\'est pas chargé. Rechargez la page.';
+      if(btn){btn.disabled=false;btn.textContent='Confirmer et Payer →';}
+      return;
+    }
     try{
       var sub=cart.reduce(function(s,i){return s+i.price*i.qty;},0);
       var shipEl=document.querySelector('input[name="ship"]:checked');
@@ -1389,20 +1394,44 @@ async function placeOrder(){
         method:'POST',headers:{'Content-Type':'application/json'},
         body:JSON.stringify({amount:total,currency:'eur',email:document.getElementById('f-email').value})
       });
-      if(resp.ok){
-        var data=await resp.json();
-        var result=await stripe.confirmCardPayment(data.clientSecret,{payment_method:{card:cardElement,billing_details:{name:document.getElementById('f-fname').value+' '+document.getElementById('f-lname').value,email:document.getElementById('f-email').value}}});
-        if(result.error){document.getElementById('stripe-card-errors').textContent=result.error.message;if(btn){btn.disabled=false;btn.textContent='Confirmer et Payer →';}return;}
+      if(!resp.ok){
+        var errEl=document.getElementById('stripe-card-errors');
+        if(errEl)errEl.textContent='Erreur serveur. Réessayez.';
+        if(btn){btn.disabled=false;btn.textContent='Confirmer et Payer →';}
+        return;
       }
-    }catch(e){console.log('Payment error',e);}
+      var data=await resp.json();
+      var result=await stripe.confirmCardPayment(data.clientSecret,{payment_method:{card:cardElement,billing_details:{name:document.getElementById('f-fname').value+' '+document.getElementById('f-lname').value,email:document.getElementById('f-email').value}}});
+      if(result.error){
+        document.getElementById('stripe-card-errors').textContent=result.error.message;
+        if(btn){btn.disabled=false;btn.textContent='Confirmer et Payer →';}
+        return;
+      }
+      if(result.paymentIntent&&result.paymentIntent.status==='succeeded'){
+        var num='#AUR-'+Math.floor(10000+Math.random()*90000);
+        document.getElementById('confirm-num').textContent=num;
+        var emailEl=document.getElementById('f-email');
+        document.getElementById('confirm-email').textContent=emailEl?emailEl.value:'—';
+        cart=[];renderCart();
+        if(btn){btn.disabled=false;btn.textContent='Confirmer et Payer →';}
+        showPage('confirm');
+      }else{
+        document.getElementById('stripe-card-errors').textContent='Paiement non confirmé. Réessayez.';
+        if(btn){btn.disabled=false;btn.textContent='Confirmer et Payer →';}
+      }
+    }catch(e){
+      console.log('Payment error',e);
+      var errEl=document.getElementById('stripe-card-errors');
+      if(errEl)errEl.textContent='Erreur de paiement. Réessayez.';
+      if(btn){btn.disabled=false;btn.textContent='Confirmer et Payer →';}
+    }
+    return;
   }
-  var num='#AUR-'+Math.floor(10000+Math.random()*90000);
-  document.getElementById('confirm-num').textContent=num;
-  var emailEl=document.getElementById('f-email');
-  document.getElementById('confirm-email').textContent=emailEl?emailEl.value:'—';
-  cart=[];renderCart();
+  // Autres méthodes de paiement (PayPal, Klarna, Apple Pay) - affiche message
+  var errEl=document.getElementById('stripe-card-errors');
+  if(errEl)errEl.textContent='';
+  toast('Redirection vers '+pmVal+' en cours…');
   if(btn){btn.disabled=false;btn.textContent='Confirmer et Payer →';}
-  showPage('confirm');
 }
 function applyPromo(){
   if(promoUsed){toast('Code déjà appliqué');return;}
@@ -1433,6 +1462,25 @@ function toast(msg){
   t.textContent=msg;t.classList.add('show');
   clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('show');},2800);
 }
+
+// ── RADIO VISUAL SEL ──
+document.addEventListener('change',function(e){
+  var t=e.target;
+  if(t.type!=='radio')return;
+  if(t.name==='ship'){
+    document.querySelectorAll('.ship-opt').forEach(function(el){el.classList.remove('sel');});
+    var lbl=t.closest('.ship-opt');
+    if(lbl)lbl.classList.add('sel');
+  }
+  if(t.name==='pm'){
+    document.querySelectorAll('.pm-opt').forEach(function(el){el.classList.remove('sel');});
+    var lbl2=t.closest('.pm-opt');
+    if(lbl2)lbl2.classList.add('sel');
+    var wrap=document.getElementById('stripe-card-wrap');
+    if(wrap)wrap.style.display=t.value==='card'?'block':'none';
+    if(t.value==='card')initStripe();
+  }
+});
 
 // ── INIT ──
 renderHome();
