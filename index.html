@@ -755,7 +755,29 @@ footer{background:var(--text);padding:56px 32px 24px;}
         <div class="lock-note"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Paiement 100% sécurisé · Propulsé par Stripe</div>
         <label class="pm-opt sel" style="flex-direction:column;gap:10px;">
           <div style="display:flex;align-items:flex-start;gap:10px;width:100%;"><input type="radio" name="pm" value="card" checked><div><div class="ship-l">Carte Bancaire</div><div class="ship-s">Visa, Mastercard, Amex</div></div></div>
-          <div id="stripe-card-wrap"><div id="stripe-card-element"></div><div id="stripe-card-errors"></div></div>
+          <div id="stripe-card-wrap">
+            <div style="display:grid;gap:10px;margin-top:8px;">
+              <div>
+                <label style="font-size:.72rem;color:var(--text2);font-weight:600;display:block;margin-bottom:5px;">Numéro de carte</label>
+                <div id="stripe-card-number" style="background:var(--bg);border:1.5px solid var(--border2);border-radius:10px;padding:13px;"></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <div>
+                  <label style="font-size:.72rem;color:var(--text2);font-weight:600;display:block;margin-bottom:5px;">Date d'expiration</label>
+                  <div id="stripe-card-expiry" style="background:var(--bg);border:1.5px solid var(--border2);border-radius:10px;padding:13px;"></div>
+                </div>
+                <div>
+                  <label style="font-size:.72rem;color:var(--text2);font-weight:600;display:block;margin-bottom:5px;">CVC</label>
+                  <div id="stripe-card-cvc" style="background:var(--bg);border:1.5px solid var(--border2);border-radius:10px;padding:13px;"></div>
+                </div>
+              </div>
+              <div>
+                <label style="font-size:.72rem;color:var(--text2);font-weight:600;display:block;margin-bottom:5px;">Nom sur la carte</label>
+                <input id="stripe-card-name" type="text" placeholder="Marie Dupont" style="width:100%;background:var(--bg);border:1.5px solid var(--border2);border-radius:10px;padding:13px;font-family:'DM Sans',sans-serif;font-size:.85rem;color:var(--text);box-sizing:border-box;">
+              </div>
+            </div>
+            <div id="stripe-card-errors" style="font-size:.72rem;color:#ff3b30;min-height:15px;margin-top:8px;"></div>
+          </div>
         </label>
         <label class="pm-opt" style="margin-top:9px;"><input type="radio" name="pm" value="paypal"><div><div class="ship-l">PayPal</div><div class="ship-s">Redirection sécurisée</div></div></label>
         <label class="pm-opt"><input type="radio" name="pm" value="klarna"><div><div class="ship-l">Klarna — Payer en 3×</div><div class="ship-s">Sans frais · Disponible dès 50€</div></div></label>
@@ -950,7 +972,7 @@ var PRODS = [
    badges:[['sale','-58%']],rev:3210,
    imgs:['https://wsrv.nl/?url=https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg&w=700',
          'https://wsrv.nl/?url=https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg&w=700',
-         'https://wsrv.nl/?url=https://www.apple.com/v/airpods-4/g/images/overview/media-card/media_charging__csr8q6rfe4sy_xlarge.jpg&w=700',
+         'https://wsrv.nl/?url=https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg&w=700',
          'https://wsrv.nl/?url=https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg&w=700'],
    desc:`Chargeur MagSafe 15W avec connecteur USB-C. Charge magnétique instantanée, alignement automatique. Compatible iPhone 12 et ultérieur. Longueur 1m.`,
    specs:[{l:'Puissance',v:'15W max'},{l:'Connecteur',v:'USB-C'},{l:'Longueur',v:'1 mètre'},{l:'Compat.',v:'iPhone 12+'}]},
@@ -1360,20 +1382,21 @@ function initStripe(){
 function doInitStripe(){
   try{
     if(typeof Stripe==='undefined'){setTimeout(doInitStripe,300);return;}
+    var elNum=document.getElementById('stripe-card-number');
+    if(!elNum){setTimeout(doInitStripe,300);return;}
     stripe=Stripe(STRIPE_PK);
     var elements=stripe.elements({locale:'fr'});
-    cardElement=elements.create('card',{
-      style:{base:{fontFamily:'DM Sans, sans-serif',fontSize:'14px',color:'#1d1d1f','::placeholder':{color:'#aeaeb2'}},invalid:{color:var_red}},
-      hidePostalCode:true
-    });
-    // Attendre que le DOM soit prêt
-    var el=document.getElementById('stripe-card-element');
-    if(!el){setTimeout(doInitStripe,300);return;}
-    cardElement.mount('#stripe-card-element');
-    cardElement.on('change',function(e){
-      var errEl=document.getElementById('stripe-card-errors');
-      if(errEl)errEl.textContent=e.error?e.error.message:'';
-    });
+    var style={base:{fontFamily:'DM Sans, sans-serif',fontSize:'15px',color:'#1d1d1f','::placeholder':{color:'#aeaeb2'}},invalid:{color:var_red}};
+    cardElement=elements.create('cardNumber',{style:style,showIcon:true});
+    cardElement.mount('#stripe-card-number');
+    var cardExpiry=elements.create('cardExpiry',{style:style});
+    cardExpiry.mount('#stripe-card-expiry');
+    var cardCvc=elements.create('cardCvc',{style:style});
+    cardCvc.mount('#stripe-card-cvc');
+    function onChg(e){var errEl=document.getElementById('stripe-card-errors');if(errEl)errEl.textContent=e.error?e.error.message:'';}
+    cardElement.on('change',onChg);
+    cardExpiry.on('change',onChg);
+    cardCvc.on('change',onChg);
     stripeInit=true;
   }catch(e){console.log('Stripe error',e);stripeInit=false;}
 }
@@ -1407,7 +1430,7 @@ async function placeOrder(){
         return;
       }
       var data=await resp.json();
-      var result=await stripe.confirmCardPayment(data.clientSecret,{payment_method:{card:cardElement,billing_details:{name:document.getElementById('f-fname').value+' '+document.getElementById('f-lname').value,email:document.getElementById('f-email').value}}});
+      var result=await stripe.confirmCardPayment(data.clientSecret,{payment_method:{card:cardElement,billing_details:{name:document.getElementById('stripe-card-name')?document.getElementById('stripe-card-name').value:(document.getElementById('f-fname').value+' '+document.getElementById('f-lname').value),email:document.getElementById('f-email').value}}});
       if(result.error){
         document.getElementById('stripe-card-errors').textContent=result.error.message;
         if(btn){btn.disabled=false;btn.textContent='Confirmer et Payer →';}
