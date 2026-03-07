@@ -1,7 +1,6 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-export default async function handler(req, res) {
-  // CORS
+module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -22,19 +21,15 @@ export default async function handler(req, res) {
     }
 
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: amount, // already in cents
+      amount: amount,
       currency: currency || 'eur',
       receipt_email: email || undefined,
-      metadata: {
-        store: 'Auralisz',
-      },
+      metadata: { store: 'Auralisz' },
     });
 
-    return res.status(200).json({
-      clientSecret: paymentIntent.client_secret,
-    });
+    return res.status(200).json({ clientSecret: paymentIntent.client_secret });
   } catch (err) {
     console.error('Stripe error:', err);
     return res.status(500).json({ error: err.message });
   }
-}
+};
