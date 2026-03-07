@@ -758,6 +758,10 @@ footer{background:var(--text);padding:56px 32px 24px;}
           <div id="stripe-card-wrap">
             <div style="display:grid;gap:10px;margin-top:8px;">
               <div>
+                <label style="font-size:.72rem;color:var(--text2);font-weight:600;display:block;margin-bottom:5px;">Nom sur la carte</label>
+                <input id="stripe-card-name" type="text" placeholder="Marie Dupont" style="width:100%;background:var(--bg);border:1.5px solid var(--border2);border-radius:10px;padding:13px;font-family:'DM Sans',sans-serif;font-size:.85rem;color:var(--text);box-sizing:border-box;">
+              </div>
+              <div>
                 <label style="font-size:.72rem;color:var(--text2);font-weight:600;display:block;margin-bottom:5px;">Numéro de carte</label>
                 <div id="stripe-card-number" style="background:var(--bg);border:1.5px solid var(--border2);border-radius:10px;padding:13px;"></div>
               </div>
@@ -770,10 +774,6 @@ footer{background:var(--text);padding:56px 32px 24px;}
                   <label style="font-size:.72rem;color:var(--text2);font-weight:600;display:block;margin-bottom:5px;">CVC</label>
                   <div id="stripe-card-cvc" style="background:var(--bg);border:1.5px solid var(--border2);border-radius:10px;padding:13px;"></div>
                 </div>
-              </div>
-              <div>
-                <label style="font-size:.72rem;color:var(--text2);font-weight:600;display:block;margin-bottom:5px;">Nom sur la carte</label>
-                <input id="stripe-card-name" type="text" placeholder="Marie Dupont" style="width:100%;background:var(--bg);border:1.5px solid var(--border2);border-radius:10px;padding:13px;font-family:'DM Sans',sans-serif;font-size:.85rem;color:var(--text);box-sizing:border-box;">
               </div>
             </div>
             <div id="stripe-card-errors" style="font-size:.72rem;color:#ff3b30;min-height:15px;margin-top:8px;"></div>
@@ -970,8 +970,8 @@ var PRODS = [
   // Chargeur MagSafe — photos du vrai produit chargeur
   {id:8,brand:'APPLE MAGSAFE',name:'Chargeur MagSafe 15W — USB-C',price:19,orig:45,cat:'accessories',best:0,
    badges:[['sale','-58%']],rev:3210,
-   imgs:['https://wsrv.nl/?url=https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg&w=700',
-         'https://wsrv.nl/?url=https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg&w=700',
+   imgs:['https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MQGJ3?wid=700&hei=700&fmt=jpeg&qlt=90&.v=1687543955603',
+         'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MQGJ3_AV1?wid=700&hei=700&fmt=jpeg&qlt=90&.v=1687543955603',
          'https://wsrv.nl/?url=https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg&w=700',
          'https://wsrv.nl/?url=https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg&w=700'],
    desc:`Chargeur MagSafe 15W avec connecteur USB-C. Charge magnétique instantanée, alignement automatique. Compatible iPhone 12 et ultérieur. Longueur 1m.`,
