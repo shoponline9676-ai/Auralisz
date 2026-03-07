@@ -1,15 +1,7 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/create-payment.js",
-      "use": "@vercel/node"
+  "functions": {
+    "api/create-payment.js": {
+      "runtime": "nodejs18.x"
     }
-  ],
-  "routes": [
-    {
-      "src": "/api/create-payment",
-      "dest": "/api/create-payment.js"
-    }
-  ]
+  }
 }
