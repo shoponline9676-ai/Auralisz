@@ -441,7 +441,7 @@ footer{background:var(--text);padding:56px 32px 24px;}
       <div class="nav-item">
         <span class="nav-a">Accessoires ▾</span>
         <div class="drop" style="min-width:250px;">
-          <a onclick="showProd(8)"><img src="https://wsrv.nl/?url=https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MQGJ3?wid=80%26hei=80%26fmt=jpeg%26qlt=90&w=80" alt="">Chargeur MagSafe 15W<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">19€</span></a>
+          <a onclick="showProd(8)"><img src="https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg" style="width:40px;height:40px;object-fit:contain;" alt="">Chargeur MagSafe 15W<span style="margin-left:auto;font-size:.68rem;font-weight:700;color:var(--accent);">19€</span></a>
         </div>
       </div>
       <div class="nav-item"><span class="nav-a" onclick="showColl('deals','Offres 🔥')">Offres 🔥</span></div>
@@ -759,7 +759,7 @@ footer{background:var(--text);padding:56px 32px 24px;}
             <div style="display:grid;gap:10px;margin-top:8px;">
               <div>
                 <label style="font-size:.72rem;color:var(--text2);font-weight:600;display:block;margin-bottom:5px;">Nom sur la carte</label>
-                <input id="stripe-card-name" type="text" placeholder="Marie Dupont" style="width:100%;background:var(--bg);border:1.5px solid var(--border2);border-radius:10px;padding:13px;font-family:'DM Sans',sans-serif;font-size:.85rem;color:var(--text);box-sizing:border-box;">
+                <input id="stripe-card-name" type="text" placeholder="Marie Dupont" autocomplete="cc-name" style="width:100%;background:var(--bg);border:1.5px solid var(--border2);border-radius:10px;padding:13px;font-family:'DM Sans',sans-serif;font-size:.85rem;color:var(--text);box-sizing:border-box;" onkeydown="if(event.key==='Tab'){event.preventDefault();document.getElementById('stripe-card-number').querySelector('input')&&document.getElementById('stripe-card-number').querySelector('input').focus();}">
               </div>
               <div>
                 <label style="font-size:.72rem;color:var(--text2);font-weight:600;display:block;margin-bottom:5px;">Numéro de carte</label>
@@ -779,9 +779,6 @@ footer{background:var(--text);padding:56px 32px 24px;}
             <div id="stripe-card-errors" style="font-size:.72rem;color:#ff3b30;min-height:15px;margin-top:8px;"></div>
           </div>
         </label>
-        <label class="pm-opt" style="margin-top:9px;"><input type="radio" name="pm" value="paypal"><div><div class="ship-l">PayPal</div><div class="ship-s">Redirection sécurisée</div></div></label>
-        <label class="pm-opt"><input type="radio" name="pm" value="klarna"><div><div class="ship-l">Klarna — Payer en 3×</div><div class="ship-s">Sans frais · Disponible dès 50€</div></div></label>
-        <label class="pm-opt"><input type="radio" name="pm" value="apple"><div><div class="ship-l">Apple Pay / Google Pay</div><div class="ship-s">Paiement instantané</div></div></label>
         <div class="recap-box" style="margin-top:18px;">
           <div class="sec-lbl" style="margin-bottom:12px;">Récapitulatif</div>
           <div id="ck-recap"></div>
@@ -970,10 +967,10 @@ var PRODS = [
   // Chargeur MagSafe — photos du vrai produit chargeur
   {id:8,brand:'APPLE MAGSAFE',name:'Chargeur MagSafe 15W — USB-C',price:19,orig:45,cat:'accessories',best:0,
    badges:[['sale','-58%']],rev:3210,
-   imgs:['https://wsrv.nl/?url=https://m.media-amazon.com/images/I/61HBxYCx9IL._AC_SL1500_.jpg&w=700&output=jpg',
-         'https://wsrv.nl/?url=https://m.media-amazon.com/images/I/71WtytMnPFL._AC_SL1500_.jpg&w=700&output=jpg',
-         'https://wsrv.nl/?url=https://m.media-amazon.com/images/I/61HBxYCx9IL._AC_SL1500_.jpg&w=700&output=jpg',
-         'https://wsrv.nl/?url=https://m.media-amazon.com/images/I/71WtytMnPFL._AC_SL1500_.jpg&w=700&output=jpg'],
+   imgs:['https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg',
+         'https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg',
+         'https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg',
+         'https://www.apple.com/v/magsafe-charger/g/images/overview/hero__b1hfgfq82m8y_large.jpg'],
    desc:`Chargeur MagSafe 15W avec connecteur USB-C. Charge magnétique instantanée, alignement automatique. Compatible iPhone 12 et ultérieur. Longueur 1m.`,
    specs:[{l:'Puissance',v:'15W max'},{l:'Connecteur',v:'USB-C'},{l:'Longueur',v:'1 mètre'},{l:'Compat.',v:'iPhone 12+'}]},
 
@@ -1097,7 +1094,7 @@ var STATIC_PAGES = {
 // ── STATE ──
 var cart=[], curProd=null, curQty=1, ckStep=1, promoAmt=0, promoUsed=false;
 var stripe=null, cardElement=null, stripeInit=false;
-var STRIPE_PK='pk_live_51T7wzz0ym8Y244tlBLaDM42ZIJJZBcVNprvnCDOK7g4jAueYwUUqxK7adFqvvwDiyA8utoq6R7Px3uKGPbdviHUz007bGTiLLu';
+var STRIPE_PK='pk_live_51T7wzz0ym8Y244tlBLaDM42ZIJJZBcVNprvnCDOK7g4jAueYwUUqxK7adFqvvwDiyA8utoq6R7Px3uKGPbdviHUz007bGTiLLj';
 
 // ── PAGES ──
 function showPage(id){
@@ -1456,10 +1453,20 @@ async function placeOrder(){
     }
     return;
   }
-  // Autres méthodes de paiement (PayPal, Klarna, Apple Pay) - affiche message
+  // Autres méthodes de paiement
   var errEl=document.getElementById('stripe-card-errors');
   if(errEl)errEl.textContent='';
-  toast('Redirection vers '+pmVal+' en cours…');
+  if(pmVal==='paypal'){
+    var totalEl=document.getElementById('sum-tot');
+    var amount=totalEl?totalEl.textContent.replace('€','').trim():'0';
+    var fname=document.getElementById('f-fname')?document.getElementById('f-fname').value:'';
+    var lname=document.getElementById('f-lname')?document.getElementById('f-lname').value:'';
+    var itemName=encodeURIComponent('Commande Auralisz - '+(fname+' '+lname).trim());
+    window.open('https://www.paypal.com/paypalme/auralisz/'+amount+'EUR','_blank');
+    toast('✓ Redirection PayPal en cours…');
+  } else {
+    toast('Redirection vers '+pmVal+' en cours…');
+  }
   if(btn){btn.disabled=false;btn.textContent='Confirmer et Payer →';}
 }
 function applyPromo(){
