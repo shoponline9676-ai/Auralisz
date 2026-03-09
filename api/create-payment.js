@@ -1,15 +1,13 @@
-// api/createPaiement.js
 const express = require('express');
 const app = express();
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); // utilise la variable d'environnement
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const cors = require('cors');
 
 app.use(cors());
 app.use(express.json());
 
-// Route pour créer le paiement
 app.post('/create-payment-intent', async (req, res) => {
-    const { amount } = req.body; // montant en centimes, ex: 49€ -> 4900
+    const { amount } = req.body;
     try {
         const paymentIntent = await stripe.paymentIntents.create({
             amount: amount,
@@ -22,6 +20,5 @@ app.post('/create-payment-intent', async (req, res) => {
     }
 });
 
-// Démarrage du serveur (pour tests locaux)
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
