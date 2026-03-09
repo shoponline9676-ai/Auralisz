@@ -1,34 +1,27 @@
-const Stripe = require("stripe");
+// api/createPaiement.js
+const express = require('express');
+const app = express();
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); // utilise la variable d'environnement
+const cors = require('cors');
 
-module.exports = async function handler(req, res) {
-  // CORS
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+app.use(cors());
+app.use(express.json());
 
-  if (req.method === "OPTIONS") return res.status(200).end();
-  if (req.method !== "POST") return res.status(405).end("Method Not Allowed");
-
-  try {
-    const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
-    const { amount, currency, email } = req.body;
-
-    if (!amount || amount < 50) {
-      return res.status(400).json({ error: "Montant invalide" });
+// Route pour créer le paiement
+app.post('/create-payment-intent', async (req, res) => {
+    const { amount } = req.body; // montant en centimes, ex: 49€ -> 4900
+    try {
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: amount,
+            currency: 'eur',
+            automatic_payment_methods: { enabled: true },
+        });
+        res.send({ clientSecret: paymentIntent.client_secret });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
+});
 
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount:   Math.round(amount),
-      currency: currency || "eur",
-      receipt_email: email || undefined,
-      automatic_payment_methods: { enabled: true },
-      metadata: { source: "auralizs-zs" }
-    });
-
-    res.status(200).json({ clientSecret: paymentIntent.client_secret });
-
-  } catch (error) {
-    console.error("Stripe error:", error.message);
-    res.status(500).json({ error: "Erreur Stripe" });
-  }
-};
+// Démarrage du serveur (pour tests locaux)
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
