@@ -1,24 +1,34 @@
-const express = require('express');
-const app = express();
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const cors = require('cors');
+const Stripe = require("stripe");
 
-app.use(cors());
-app.use(express.json());
+module.exports = async function handler(req, res) {
+  // CORS
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-app.post('/create-payment-intent', async (req, res) => {
-    const { amount } = req.body;
-    try {
-        const paymentIntent = await stripe.paymentIntents.create({
-            amount: amount,
-            currency: 'eur',
-            automatic_payment_methods: { enabled: true },
-        });
-        res.send({ clientSecret: paymentIntent.client_secret });
-    } catch (err) {
-        res.status(500).json({ error: err.message });
+  if (req.method === "OPTIONS") return res.status(200).end();
+  if (req.method !== "POST") return res.status(405).end("Method Not Allowed");
+
+  try {
+    const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
+    const { amount, currency, email } = req.body;
+
+    if (!amount || amount < 50) {
+      return res.status(400).json({ error: "Montant invalide" });
     }
-});
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount:   Math.round(amount),
+      currency: currency || "eur",
+      receipt_email: email || undefined,
+      automatic_payment_methods: { enabled: true },
+      metadata: { source: "auralizs-zs" }
+    });
+
+    res.status(200).json({ clientSecret: paymentIntent.client_secret });
+
+  } catch (error) {
+    console.error("Stripe error:", error.message);
+    res.status(500).json({ error: "Erreur Stripe" });
+  }
+};
