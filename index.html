@@ -941,9 +941,9 @@ footer{background:var(--text);padding:56px 32px 24px;}
             <div id="stripe-card-errors" style="font-size:.72rem;color:#ff3b30;min-height:15px;margin-top:8px;"></div>
           </div>
         </label>
-        <label class="pm-opt" style="margin-top:9px;"><input type="radio" name="pm" value="paypal"><div><div class="ship-l">PayPal</div><div class="ship-s">Redirection sécurisée</div></div></label>
-        <label class="pm-opt"><input type="radio" name="pm" value="apple"><div><div class="ship-l">Apple Pay / Google Pay</div><div class="ship-s">Paiement instantané</div></div></label>
-        <label class="pm-opt"><input type="radio" name="pm" value="klarna"><div><div class="ship-l">Klarna — Payer en 3×</div><div class="ship-s">Sans frais · Disponible dès 50€</div></div></label>
+
+       <div id="payment-request-wrap" style="display:none;margin-top:10px;"><div id="payment-request-button"></div></div>
+      
         <div class="recap-box" style="margin-top:18px;">
           <div class="sec-lbl" style="margin-bottom:12px;">Récapitulatif</div>
           <div id="ck-recap"></div>
@@ -1578,7 +1578,7 @@ function doInitStripe(){
     cardElement.on('change',onChg);
     cardExpiry.on('change',onChg);
     cardCvc.on('change',onChg);
-    stripeInit=true;
+    stripeInit=true;_initPR(stripe,elements);
   }catch(e){console.log('Stripe error',e);stripeInit=false;}
 }
 async function placeOrder(){
@@ -1665,7 +1665,8 @@ function applyPromo(){
   }else{toast('⚠️ Code invalide');}
 }
 
-// ── STATIC ──
+var _prMounted=false;
+function _initPR(si,el){try{var sub=cart.reduce(function(s,i){return s+i.price*i.qty;},0);var se=document.querySelector('input[name="ship"]:checked');var sc=se&&se.value==='exp'?8.9:se&&se.value==='relay'?2.9:(sub>=80?0:4.9);var tot=Math.round((sub-promoAmt+sc)*100)||100;var pr=si.paymentRequest({country:'FR',currency:'eur',total:{label:'Auralizs ZS',amount:tot},requestPayerName:true,requestPayerEmail:true});pr.canMakePayment().then(function(res){var wrap=document.getElementById('payment-request-wrap');if(res&&wrap&&!_prMounted){wrap.style.display='block';el.create('paymentRequestButton',{paymentRequest:pr,style:{paymentRequestButton:{type:'buy',theme:'dark',height:'46px'}}}).mount('#payment-request-button');_prMounted=true;pr.on('paymentmethod',function(ev){fetch('/api/create-payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({amount:tot,currency:'eur',email:document.getElementById('f-email')?document.getElementById('f-email').value:''})}).then(function(r){return r.json();}).then(function(d){si.confirmCardPayment(d.clientSecret,{payment_method:ev.paymentMethod.id},{handleActions:false}).then(function(r2){if(r2.error){ev.complete('fail');}else{ev.complete('success');var n='#AUR-'+Math.floor(10000+Math.random()*90000);document.getElementById('confirm-num').textContent=n;var em=document.getElementById('f-email');document.getElementById('confirm-email').textContent=em?em.value:'—';cart=[];renderCart();showPage('confirm');}});}).catch(function(){ev.complete('fail');});});}});}catch(e){console.log('PR:',e);}}// ── STATIC ──
 function showStatic(key){
   var pg=STATIC_PAGES[key];
   if(!pg){toast('Page en construction');return;}
