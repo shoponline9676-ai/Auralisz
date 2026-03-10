@@ -8,86 +8,233 @@
 <script src="https://js.stripe.com/v3/"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* --- TON DESIGN COMPLET (CSS) --- */
-:root{--bg:#ffffff;--fg:#1d1d1f;--acc:#0071e3;--gray:#86868b;--light:#f5f5f7;--border:#d2d2d7;--white:#fff;--success:#28a745}
-*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--fg);line-height:1.5;overflow-x:hidden}
-h1,h2,h3,.syne{font-family:'Syne',sans-serif;font-weight:800;letter-spacing:-0.02em}
-/* ... [Ici se trouve tout le reste de ton CSS que j'ai conservé] ... */
-/* (Je raccourcis l'affichage ici pour la lisibilité, mais le fichier final a bien tout ton design) */
+:root{
+  --bg:#ffffff; --bg2:#f5f5f7; --bg3:#fafafa; --surface:#ffffff; --card:#ffffff;
+  --border:#e5e5ea; --border2:#d1d1d6; --text:#1d1d1f; --text2:#3a3a3c;
+  --muted:#6e6e73; --light:#aeaeb2; --accent:#0071e3; --accent2:#0077ed;
+  --accentbg:#e8f1fd; --red:#ff3b30; --green:#30d158; --r:12px; --r2:18px;
+  --shadow:0 2px 12px rgba(0,0,0,.08); --shadow2:0 8px 32px rgba(0,0,0,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* TICKER & HEADER */
+.ticker{background:var(--text);height:36px;overflow:hidden;display:flex;align-items:center;}
+.ticker-t{display:flex;animation:tkroll 30s linear infinite;white-space:nowrap;}
+.ticker-t span{font-size:.65rem;font-weight:500;letter-spacing:.08em;color:rgba(255,255,255,.85);padding:0 48px;}
+@keyframes tkroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+header{position:sticky;top:0;z-index:900;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-wrap{display:flex;align-items:center;height:60px;max-width:1320px;margin:0 auto;padding:0 32px;}
+.logo{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;color:var(--text);margin-right:40px;}
+.logo em{color:var(--accent);font-style:normal;}
+.nav-links{display:flex;align-items:stretch;height:60px;flex:1;}
+.nav-a{padding:0 16px;font-size:.82rem;font-weight:500;color:var(--text2);cursor:pointer;display:flex;align-items:center;transition:color .15s;}
+.nav-a:hover{color:var(--accent);}
+
+/* HERO & SECTIONS */
+.hero{background:var(--bg2);padding:60px 32px;overflow:hidden;position:relative;}
+.hero-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.hero-txt h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.08;margin-bottom:16px;}
+.hero-txt p{font-size:.9rem;color:var(--muted);line-height:1.75;margin-bottom:28px;}
+.btn-primary{background:var(--accent);color:#fff;padding:13px 28px;font-size:.8rem;font-weight:600;border:none;border-radius:100px;cursor:pointer;}
+.pg{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.pc{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;transition:all .22s;}
+.pc:hover{box-shadow:var(--shadow2);transform:translateY(-4px);}
+.pc-img{background:var(--bg2);aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:20px;}
+.pc-img img{width:80%;filter:drop-shadow(0 8px 20px rgba(0,0,0,.1));}
+.pc-body{padding:14px 16px 18px;}
+.pc-name{font-size:.84rem;font-weight:600;color:var(--text);}
+.pc-price{display:flex;align-items:center;gap:7px;margin-top:8px;}
+.p-now{font-family:'Syne',sans-serif;font-weight:700;color:var(--text);}
+.p-was{font-size:.72rem;color:var(--light);text-decoration:line-through;}
+
+/* CART DRAWER */
+.cart-drawer{position:fixed;top:0;right:-460px;width:440px;height:100vh;background:var(--bg);z-index:1000;transition:right .3s;display:flex;flex-direction:column;box-shadow:-16px 0 48px rgba(0,0,0,.1);}
+.cart-drawer.open{right:0;}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:800;display:none;backdrop-filter:blur(2px);}
+.overlay.on{display:block;}
 </style>
 </head>
 <body>
+  <div class="ticker"><div class="ticker-t">
+    <span>LIVRAISON GRATUITE DÈS 50€ D'ACHAT</span><span>GARANTIE CONSTRUCTEUR 2 ANS</span>
+    <span>LIVRAISON GRATUITE DÈS 50€ D'ACHAT</span><span>GARANTIE CONSTRUCTEUR 2 ANS</span>
+  </div></div>
 
-<div id="app">
+  <header><div class="nav-wrap">
+    <div class="logo" onclick="showPage('home')">AURALIZS <em>ZS</em></div>
+    <div class="nav-links">
+      <div class="nav-a" onclick="showPage('home')">Accueil</div>
+      <div class="nav-a" onclick="showCollection('airpods')">AirPods</div>
+      <div class="nav-a" onclick="showCollection('watch')">Apple Watch</div>
+    </div>
+    <div class="nav-icons">
+      <div class="ni" onclick="toggleCart()"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4H6z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg><div class="cbadge" id="cart-count">0</div></div>
+    </div>
+  </div></header>
+
+  <div id="app">
+    <section class="hero"><div class="hero-inner">
+      <div class="hero-txt">
+        <div class="hero-tag">Offre Limitée</div>
+        <h1>L'excellence Apple, <span class="hl">enfin accessible.</span></h1>
+        <p>AirPods et Apple Watch premium jusqu'à -80%. Qualité certifiée et garantie 2 ans.</p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="showCollection('all')">Découvrir la collection</button>
+        </div>
+      </div>
+      <div class="hero-img"><img src="https://www.auralizs.com/hero-airpods.png" alt="AirPods Pro"></div>
+    </div></section>
+
+    <section class="sec">
+      <div class="sh"><div class="sh-left"><h2>Nos Bestsellers</h2></div></div>
+      <div class="pg" id="main-grid">
+        </div>
+    </section>
   </div>
 
-<script>
-/* --- CONFIGURATION STRIPE CORRIGÉE --- */
-// 1. Remplace bien les XXXXX par ta clé pk_live si ce n'est pas déjà fait
-var STRIPE_PUBLISHABLE_KEY = 'pk_live_51Qy68fP9mX9mX9mX'; 
+  <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-hd"><h3>Mon Panier</h3><button class="cart-cls" onclick="toggleCart()">✕</button></div>
+    <div class="cart-body" id="cart-items"></div>
+    <div class="cart-ft" id="cart-footer">
+      <div class="sub-row"><span>Sous-total</span><span id="cart-total">0.00€</span></div>
+      <button class="btn-cta" onclick="showPage('checkout')">Passer à la caisse</button>
+    </div>
+  </div>
+  <script>
+// --- DONNÉES PRODUITS ---
+var PRODUCTS = [
+  {id:'ap3', name:'AirPods (3ème génération)', price:49, old:199, img:'https://www.auralizs.com/ap3.png', cat:'airpods'},
+  {id:'app2', name:'AirPods Pro (2ème génération)', price:69, old:279, img:'https://www.auralizs.com/app2.png', cat:'airpods'},
+  {id:'apmax', name:'AirPods Max', price:149, old:579, img:'https://www.auralizs.com/apmax.png', cat:'airpods'},
+  {id:'aw10', name:'Apple Watch Series 10', price:129, old:449, img:'https://www.auralizs.com/aw10.png', cat:'watch'}
+];
 
-// 2. Correction de l'URL pour Vercel (indispensable)
-var STRIPE_API_URL = '/api/create-payment'; 
-
-var stripe, elements, cardElement;
 var cart = [];
 var total = 0;
 
-// --- TES FONCTIONS ORIGINALES ---
-function addToCart(id, name, price, img){
-  cart.push({id:id, name:name, price:price, img:img});
-  updateCartCount();
-  toast("Ajouté au panier");
+// --- GESTION NAVIGATION ---
+function showPage(pageId) {
+  const app = document.getElementById('app');
+  if(pageId === 'home') {
+    location.reload(); // Retour simple à l'accueil
+  }
+  if(pageId === 'checkout') {
+    renderCheckout();
+  }
 }
 
-/* ... [Toutes tes fonctions originales (renderCart, showPage, etc.) sont ici] ... */
+// --- GESTION PANIER ---
+function toggleCart() {
+  document.getElementById('cart-drawer').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('on');
+}
 
-// --- INITIALISATION STRIPE ---
+function addToCart(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  cart.push(p);
+  updateCart();
+  toast("Ajouté au panier !");
+}
+
+function updateCart() {
+  const items = document.getElementById('cart-items');
+  items.innerHTML = '';
+  total = 0;
+  cart.forEach((item, index) => {
+    total += item.price;
+    items.innerHTML += `
+      <div class="ci">
+        <img src="${item.img}" class="ci-img">
+        <div>
+          <div class="ci-name">${item.name}</div>
+          <div class="ci-price">${item.price}€</div>
+          <button class="rmb" onclick="removeFromCart(${index})">Supprimer</button>
+        </div>
+      </div>`;
+  });
+  document.getElementById('cart-total').textContent = total.toFixed(2) + '€';
+  document.getElementById('cart-count').textContent = cart.length;
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  updateCart();
+}
+
+// --- AFFICHAGE INITIAL ---
+function renderHome() {
+  const grid = document.getElementById('main-grid');
+  if(!grid) return;
+  PRODUCTS.forEach(p => {
+    grid.innerHTML += `
+      <div class="pc" onclick="addToCart('${p.id}')">
+        <div class="pc-img"><img src="${p.img}"></div>
+        <div class="pc-body">
+          <div class="pc-name">${p.name}</div>
+          <div class="pc-price">
+            <span class="p-now">${p.price}€</span>
+            <span class="p-was">${p.old}€</span>
+          </div>
+        </div>
+      </div>`;
+  });
+}
+
+window.onload = renderHome;
+// --- CONFIGURATION PAIEMENT ---
+// REMPLACE BIEN LA CLÉ CI-DESSOUS PAR TA CLÉ pk_live_... SI BESOIN
+var STRIPE_PUBLISHABLE_KEY = 'pk_live_51Qy68fP9mX9mX9mX'; 
+var STRIPE_API_URL = '/api/create-payment'; // Correction Vercel
+
+var stripe, elements, cardElement;
+
+// Fonction pour afficher la page de paiement
+function renderCheckout() {
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <section class="sec">
+      <div style="max-width:600px; margin:0 auto; background:var(--bg2); padding:30px; border-radius:18px; border:1px solid var(--border);">
+        <h2 style="margin-bottom:20px;">Paiement Sécurisé</h2>
+        <div style="margin-bottom:15px;">
+          <label style="display:block; font-size:.7rem; margin-bottom:5px;">Email de livraison</label>
+          <input type="email" id="email" style="width:100%; padding:12px; border-radius:10px; border:1px solid var(--border2);" placeholder="votre@email.com">
+        </div>
+        <div id="card-element" style="background:white; padding:15px; border-radius:10px; border:1px solid var(--border2); margin-bottom:20px;"></div>
+        <button class="btn-primary" id="pay-btn" style="width:100%;" onclick="handlePayment()">Payer ${total.toFixed(2)}€</button>
+      </div>
+    </section>`;
+  initStripe();
+}
+
 async function initStripe() {
   if (stripe) return;
-  const wrap = document.getElementById('stripe-card-wrap');
-  if (wrap) wrap.style.display = 'block';
-  
   stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
   elements = stripe.elements();
-  cardElement = elements.create('card', {
-    style: {
-      base: { fontSize: '16px', color: '#1d1d1f', fontFamily: 'DM Sans, sans-serif' }
-    }
-  });
+  cardElement = elements.create('card');
   cardElement.mount('#card-element');
 }
 
-// --- FONCTION DE PAIEMENT CORRIGÉE ---
 async function handlePayment() {
   const btn = document.getElementById('pay-btn');
-  const emailInput = document.getElementById('email');
+  const email = document.getElementById('email').value;
+  if(!email) { alert("Email requis"); return; }
   
-  if (!emailInput || !emailInput.value) {
-    alert("Veuillez entrer votre email");
-    return;
-  }
-
   btn.disabled = true;
-  btn.textContent = "Traitement sécurisé...";
+  btn.textContent = "Traitement...";
 
   try {
     const response = await fetch(STRIPE_API_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        amount: total * 100, // Conversion en centimes
-        currency: 'eur',
-        email: emailInput.value
-      })
+      body: JSON.stringify({ amount: total * 100, currency: 'eur', email: email })
     });
-
     const data = await response.json();
-    if (data.error) throw new Error(data.error);
-
+    
     const result = await stripe.confirmCardPayment(data.clientSecret, {
       payment_method: { card: cardElement }
     });
@@ -95,22 +242,19 @@ async function handlePayment() {
     if (result.error) {
       alert(result.error.message);
       btn.disabled = false;
-      btn.textContent = "Confirmer et Payer";
-    } else if (result.paymentIntent.status === 'succeeded') {
-      showPage('success');
+    } else {
+      alert("Paiement réussi !");
+      location.reload();
     }
   } catch (err) {
-    console.error(err);
-    alert("Erreur de connexion avec le service de paiement.");
+    alert("Erreur de connexion au serveur.");
     btn.disabled = false;
-    btn.textContent = "Confirmer et Payer";
   }
 }
 
-// Lancement automatique au chargement
-window.onload = function() {
-  // Ton code d'initialisation de page
-};
+function toast(msg){
+  alert(msg); // Version simplifiée pour la démo
+}
 </script>
 </body>
 </html>
