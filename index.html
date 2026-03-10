@@ -723,7 +723,7 @@ footer{background:var(--text);padding:56px 32px 24px;}
       <div class="guarantee-card">
         <div class="guarantee-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
         <h3>Paiement 100% Sécurisé</h3>
-        <p>Stripe PCI DSS niveau 1. Visa, Mastercard, Apple Pay, Google Pay. Vos données sont protégées.</p>
+        <p>Stripe PCI DSS niveau 1. Visa, Mastercard, Apple Pay, Google Pay, PayPal et Klarna. Vos données sont protégées.</p>
       </div>
     </div>
   </div>
@@ -835,7 +835,7 @@ footer{background:var(--text);padding:56px 32px 24px;}
       <div class="foot-brand">
         <span class="foot-logo">Aural<em>izs</em></span>
         <p>Auralizs ZS rend l'expérience Apple accessible à tous. AirPods, Apple Watch et accessoires premium à des prix imbattables. Qualité certifiée, livraison rapide.</p>
-        <div class="pay-row"><span class="pay-chip">VISA</span><span class="pay-chip">Mastercard</span><span class="pay-chip">Apple Pay</span><span class="pay-chip">Google Pay</span></div>
+        <div class="pay-row"><span class="pay-chip">VISA</span><span class="pay-chip">Mastercard</span><span class="pay-chip">Apple Pay</span><span class="pay-chip">Google Pay</span><span class="pay-chip">Klarna</span><span class="pay-chip">PayPal</span></div>
       </div>
       <div class="foot-col"><h5>AirPods</h5><ul>
         <li onclick="showProd(1)">AirPods 4</li><li onclick="showProd(2)">AirPods 4 ANC</li><li onclick="showProd(3)">AirPods Pro 2</li><li onclick="showProd(4)">AirPods Max</li>
@@ -851,7 +851,7 @@ footer{background:var(--text);padding:56px 32px 24px;}
       </ul></div>
     </div>
     <div class="foot-bottom">
-      <p>© 2026 Auralizs ZS® — Tous droits réservés — <a href="/cdn-cgi/l/email-protection#770402070718050337160205161b1e0d045914181a" style="color:inherit;"><span class="__cf_email__" data-cfemail="bbc8cecbcbd4c9cffbdacec9dad7d2c1c895d8d4d6">[email&#160;protected]</span></a></p>
+      <p>© 2026 Auralizs ZS® — Tous droits réservés — <a href="mailto:support@auralizs.com" style="color:inherit;">support@auralizs.com</a></p>
       <div class="foot-lnks"><span onclick="showStatic('privacy')">Confidentialité</span><span onclick="showStatic('cgv')">CGV</span><span onclick="showStatic('mentions')">Mentions</span></div>
     </div>
   </footer>
@@ -920,37 +920,30 @@ footer{background:var(--text);padding:56px 32px 24px;}
           <div id="stripe-card-wrap">
             <div style="display:grid;gap:10px;margin-top:8px;">
               <div>
-                <label style="font-size:.6rem;color:var(--muted);font-weight:600;display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Nom sur la carte</label>
-                <input id="stripe-card-name" type="text" placeholder="Marie Dupont" autocomplete="off" data-lpignore="true" data-form-type="other" style="width:100%;background:var(--bg);border:1.5px solid var(--border2);border-radius:10px;padding:0 13px;height:46px;font-family:'DM Sans',sans-serif;font-size:.85rem;color:var(--text);box-sizing:border-box;" onkeydown="event.stopPropagation();" onclick="event.stopPropagation();" onfocus="event.stopPropagation();">
+                <label style="font-size:.72rem;color:var(--text2);font-weight:600;display:block;margin-bottom:5px;">Nom sur la carte</label>
+                <input id="stripe-card-name" type="text" placeholder="Marie Dupont" autocomplete="off" data-lpignore="true" data-form-type="other" style="width:100%;background:var(--bg);border:1.5px solid var(--border2);border-radius:10px;padding:13px;font-family:'DM Sans',sans-serif;font-size:.85rem;color:var(--text);box-sizing:border-box;" onkeydown="event.stopPropagation();" onclick="event.stopPropagation();" onfocus="event.stopPropagation();">
               </div>
               <div>
-                <label style="font-size:.6rem;color:var(--muted);font-weight:600;display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Numéro de carte</label>
-                <div id="stripe-card-number" style="background:var(--bg);border:1.5px solid var(--border2);border-radius:10px;padding:0 13px;height:46px;display:flex;align-items:center;"></div>
+                <label style="font-size:.72rem;color:var(--text2);font-weight:600;display:block;margin-bottom:5px;">Numéro de carte</label>
+                <div id="stripe-card-number" style="background:var(--bg);border:1.5px solid var(--border2);border-radius:10px;padding:13px;"></div>
               </div>
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
                 <div>
-                  <label style="font-size:.6rem;color:var(--muted);font-weight:600;display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Date d'expiration</label>
-                  <div id="stripe-card-expiry" style="background:var(--bg);border:1.5px solid var(--border2);border-radius:10px;padding:0 13px;height:46px;display:flex;align-items:center;"></div>
+                  <label style="font-size:.72rem;color:var(--text2);font-weight:600;display:block;margin-bottom:5px;">Date d'expiration</label>
+                  <div id="stripe-card-expiry" style="background:var(--bg);border:1.5px solid var(--border2);border-radius:10px;padding:13px;"></div>
                 </div>
                 <div>
-                  <label style="font-size:.6rem;color:var(--muted);font-weight:600;display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">CVV</label>
-                  <div id="stripe-card-cvc" style="background:var(--bg);border:1.5px solid var(--border2);border-radius:10px;padding:0 13px;height:46px;display:flex;align-items:center;"></div>
+                  <label style="font-size:.72rem;color:var(--text2);font-weight:600;display:block;margin-bottom:5px;">CVC</label>
+                  <div id="stripe-card-cvc" style="background:var(--bg);border:1.5px solid var(--border2);border-radius:10px;padding:13px;"></div>
                 </div>
               </div>
             </div>
             <div id="stripe-card-errors" style="font-size:.72rem;color:#ff3b30;min-height:15px;margin-top:8px;"></div>
           </div>
         </label>
-        
-        <div id="payment-request-wrap" style="display:none;margin-top:10px;">
-          <div style="display:flex;align-items:center;gap:10px;margin:4px 0 10px;">
-            <div style="flex:1;height:1px;background:var(--border);"></div>
-            <span style="font-size:.68rem;color:var(--muted);font-weight:500;white-space:nowrap;">ou payer instantanément</span>
-            <div style="flex:1;height:1px;background:var(--border);"></div>
-          </div>
-          <div id="payment-request-button" style="border-radius:10px;overflow:hidden;min-height:46px;"></div>
-        </div>
-        
+        <label class="pm-opt" style="margin-top:9px;"><input type="radio" name="pm" value="paypal"><div><div class="ship-l">PayPal</div><div class="ship-s">Redirection sécurisée</div></div></label>
+        <label class="pm-opt"><input type="radio" name="pm" value="apple"><div><div class="ship-l">Apple Pay / Google Pay</div><div class="ship-s">Paiement instantané</div></div></label>
+        <label class="pm-opt"><input type="radio" name="pm" value="klarna"><div><div class="ship-l">Klarna — Payer en 3×</div><div class="ship-s">Sans frais · Disponible dès 50€</div></div></label>
         <div class="recap-box" style="margin-top:18px;">
           <div class="sec-lbl" style="margin-bottom:12px;">Récapitulatif</div>
           <div id="ck-recap"></div>
@@ -1002,11 +995,11 @@ footer{background:var(--text);padding:56px 32px 24px;}
     <p class="free-ship" id="ship-note-cart"></p>
     <button class="btn-cta" onclick="goCheckout()">Commander →</button>
     <button class="btn-sec2" onclick="closeCart()">Continuer mes Achats</button>
-    <div class="cpay"><span>VISA</span><span>MC</span><span>Apple Pay</span><span>Google Pay</span></div>
+    <div class="cpay"><span>VISA</span><span>MC</span><span>Apple Pay</span><span>Klarna</span></div>
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 var PRODS = [
 
   // ─────────────── AIRPODS ───────────────
@@ -1258,7 +1251,7 @@ var STATIC_PAGES = {
 <h2>Article 2 — Objet</h2><p>Les présentes CGV régissent les relations contractuelles entre Auralizs ZS et tout acheteur effectuant un achat sur le site. Tout achat implique l'acceptation sans réserve des présentes CGV.</p>
 <h2>Article 3 — Produits & Prix</h2><p>Les produits sont décrits avec précision. Les prix sont indiqués en euros TTC. Auralizs ZS se réserve le droit de modifier ses prix à tout moment, les produits étant facturés sur la base des tarifs en vigueur au moment de la validation de la commande.</p>
 <h2>Article 4 — Commande</h2><p>La validation de votre commande vaut acceptation des présentes CGV. Un email de confirmation vous est adressé dès validation. Auralizs ZS se réserve le droit d'annuler toute commande en cas de problème de stock ou de paiement non confirmé.</p>
-<h2>Article 5 — Paiement</h2><p>Le paiement est sécurisé via Stripe (certifié PCI DSS niveau 1). Moyens acceptés : Visa, Mastercard, Amex, Apple Pay, Google Pay. Le débit est effectué à la validation de la commande.</p>
+<h2>Article 5 — Paiement</h2><p>Le paiement est sécurisé via Stripe (certifié PCI DSS niveau 1). Moyens acceptés : Visa, Mastercard, Amex, Apple Pay, Google Pay, PayPal, Klarna. Le débit est effectué à la validation de la commande.</p>
 <h2>Article 6 — Livraison</h2><p>Les commandes sont expédiées sous 24h ouvrées. Délais indicatifs : Standard 3–7 jours, Express 24–48h, Point Relais 4–6 jours. Les délais courent à compter de la confirmation d'expédition. Auralizs ZS n'est pas responsable des retards imputables aux transporteurs.</p>
 <h2>Article 7 — Droit de Rétractation</h2><p>Conformément à l'article L221-18 du Code de la consommation, vous disposez de 14 jours à compter de la réception de votre commande pour exercer votre droit de rétractation, sans justification. Toutefois, en raison de la nature des produits électroniques descellés, le droit de rétractation ne peut s'appliquer aux produits dont l'emballage a été ouvert. Contactez support@auralisz.com pour toute demande.</p>
 <h2>Article 8 — Garantie Légale</h2><p>Tous les produits bénéficient de la garantie légale de conformité (art. L217-4 et suivants du Code de la consommation) et de la garantie contre les vices cachés (art. 1641 et suivants du Code civil). En cas de défaut avéré dans les 24 mois suivant la livraison, contactez support@auralisz.com avec votre preuve d'achat.</p>
@@ -1586,7 +1579,6 @@ function doInitStripe(){
     cardExpiry.on('change',onChg);
     cardCvc.on('change',onChg);
     stripeInit=true;
-    initPaymentRequest(stripe,elements);
   }catch(e){console.log('Stripe error',e);stripeInit=false;}
 }
 async function placeOrder(){
@@ -1617,12 +1609,20 @@ async function placeOrder(){
         return;
       }
       var data=await resp.json();
-      var result=await stripe.confirmCardPayment(data.clientSecret,{payment_method:{card:cardElement,billing_details:{name:document.getElementById('stripe-card-name')?document.getElementById('stripe-card-name').value:(document.getElementByIn){btn.disabled=false;btn.textContent='Confirmer et Payer →';}
+      var result=await stripe.confirmCardPayment(data.clientSecret,{payment_method:{card:cardElement,billing_details:{name:document.getElementById('stripe-card-name')?document.getElementById('stripe-card-name').value:(document.getElementById('f-fname').value+' '+document.getElementById('f-lname').value),email:document.getElementById('f-email').value}}});
+      if(result.error){
+        document.getElementById('stripe-card-errors').textContent=result.error.message;
+        if(btn){btn.disabled=false;btn.textContent='Confirmer et Payer →';}
         return;
       }
       if(result.paymentIntent&&result.paymentIntent.status==='succeeded'){
+        var num='#AUR-'+Math.floor(10000+Math.random()*90000);
+        document.getElementById('confirm-num').textContent=num;
+        var emailEl=document.getElementById('f-email');
+        document.getElementById('confirm-email').textContent=emailEl?emailEl.value:'—';
+        cart=[];renderCart();
         if(btn){btn.disabled=false;btn.textContent='Confirmer et Payer →';}
-        confirmOrder();
+        showPage('confirm');
       }else{
         document.getElementById('stripe-card-errors').textContent='Paiement non confirmé. Réessayez.';
         if(btn){btn.disabled=false;btn.textContent='Confirmer et Payer →';}
@@ -1634,6 +1634,20 @@ async function placeOrder(){
       if(btn){btn.disabled=false;btn.textContent='Confirmer et Payer →';}
     }
     return;
+  }
+  // Autres méthodes de paiement
+  var errEl=document.getElementById('stripe-card-errors');
+  if(errEl)errEl.textContent='';
+  if(pmVal==='paypal'){
+    var totalEl=document.getElementById('sum-tot');
+    var amount=totalEl?totalEl.textContent.replace('€','').trim():'0';
+    var fname=document.getElementById('f-fname')?document.getElementById('f-fname').value:'';
+    var lname=document.getElementById('f-lname')?document.getElementById('f-lname').value:'';
+    var itemName=encodeURIComponent('Commande Auralizs ZS - '+(fname+' '+lname).trim());
+    window.open('https://www.paypal.com/paypalme/auralizs_zs/'+amount+'EUR','_blank');
+    toast('✓ Redirection PayPal en cours…');
+  } else {
+    toast('Redirection vers '+pmVal+' en cours…');
   }
   if(btn){btn.disabled=false;btn.textContent='Confirmer et Payer →';}
 }
@@ -1649,68 +1663,6 @@ function applyPromo(){
     document.getElementById('sum-tot').textContent=(sub-disc)+'€';
     toast('✓ Code '+code+' appliqué — −'+disc+'€ !');
   }else{toast('⚠️ Code invalide');}
-}
-
-// ── APPLE PAY / GOOGLE PAY ──
-function getCartTotal(){
-  var sub=cart.reduce(function(s,i){return s+i.price*i.qty;},0);
-  var shipEl=document.querySelector('input[name="ship"]:checked');
-  var sc=shipEl&&shipEl.value==='exp'?8.9:shipEl&&shipEl.value==='relay'?2.9:(sub>=80?0:4.9);
-  return Math.round((sub-promoAmt+sc)*100);
-}
-function confirmOrder(){
-  var num='#AUR-'+Math.floor(10000+Math.random()*90000);
-  var cnEl=document.getElementById('confirm-num');
-  if(cnEl)cnEl.textContent=num;
-  var emailEl=document.getElementById('f-email');
-  var ceEl=document.getElementById('confirm-email');
-  if(ceEl)ceEl.textContent=emailEl?emailEl.value:'—';
-  cart=[];renderCart();
-  showPage('confirm');
-}
-var prButtonMounted=false;
-function initPaymentRequest(stripeInst,elementsInst){
-  try{
-    var total=getCartTotal()||100;
-    var pr=stripeInst.paymentRequest({
-      country:'FR',currency:'eur',
-      total:{label:'Auralizs ZS',amount:total},
-      requestPayerName:true,requestPayerEmail:true
-    });
-    pr.canMakePayment().then(function(result){
-      var wrap=document.getElementById('payment-request-wrap');
-      if(result&&wrap&&!prButtonMounted){
-        wrap.style.display='block';
-        var prBtn=elementsInst.create('paymentRequestButton',{
-          paymentRequest:pr,
-          style:{paymentRequestButton:{type:'buy',theme:'dark',height:'46px'}}
-        });
-        prBtn.mount('#payment-request-button');
-        prButtonMounted=true;
-        pr.on('paymentmethod',function(ev){
-          var total2=getCartTotal()||100;
-          var email=document.getElementById('f-email')?document.getElementById('f-email').value:(ev.payerEmail||'');
-          fetch('/api/create-payment',{
-            method:'POST',headers:{'Content-Type':'application/json'},
-            body:JSON.stringify({amount:total2,currency:'eur',email:email})
-          }).then(function(r){return r.json();}).then(function(data){
-            stripeInst.confirmCardPayment(data.clientSecret,{payment_method:ev.paymentMethod.id},{handleActions:false})
-            .then(function(res){
-              if(res.error){ev.complete('fail');}
-              else{
-                ev.complete('success');
-                if(res.paymentIntent&&res.paymentIntent.status==='requires_action'){
-                  stripeInst.confirmCardPayment(data.clientSecret).then(function(r2){
-                    if(!r2.error)confirmOrder();
-                  });
-                }else{confirmOrder();}
-              }
-            });
-          }).catch(function(){ev.complete('fail');});
-        });
-      }
-    });
-  }catch(e){console.log('PaymentRequest error',e);}
 }
 
 // ── STATIC ──
