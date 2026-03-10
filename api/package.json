@@ -1,6 +1,4 @@
 {
-  "name": "auralizs-zs-payment",
-  "version": "1.0.0",
   "dependencies": {
     "stripe": "^14.0.0"
   }
