@@ -1,15 +1,7 @@
 {
-  "name": "auralizs-zs-stripe-server",
+  "name": "auralizs-zs",
   "version": "1.0.0",
-  "description": "Serveur Stripe pour Auralizs ZS",
-  "main": "api/create-payment.js",
-  "scripts": {
-    "start": "node api/create-payment.js"
-  },
   "dependencies": {
     "stripe": "^14.0.0"
-  },
-  "engines": {
-    "node": ">=18.0.0"
   }
 }
