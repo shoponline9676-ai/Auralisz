@@ -851,7 +851,7 @@ footer{background:var(--text);padding:56px 32px 24px;}
       </ul></div>
     </div>
     <div class="foot-bottom">
-      <p>© 2026 Auralizs ZS® — Tous droits réservés — <a href="/cdn-cgi/l/email-protection#1d6e686d6d726f695d7c686f7c7174676e337e7270" style="color:inherit;"><span class="__cf_email__" data-cfemail="b3c0c6c3c3dcc1c7f3d2c6c1d2dfdac9c09dd0dcde">[email&#160;protected]</span></a></p>
+      <p>© 2026 Auralizs ZS® — Tous droits réservés — <a href="mailto:support@auralizs.com" style="color:inherit;">support@auralizs.com</a></p>
       <div class="foot-lnks"><span onclick="showStatic('privacy')">Confidentialité</span><span onclick="showStatic('cgv')">CGV</span><span onclick="showStatic('mentions')">Mentions</span></div>
     </div>
   </footer>
@@ -999,7 +999,7 @@ footer{background:var(--text);padding:56px 32px 24px;}
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 var PRODS = [
 
   // ─────────────── AIRPODS ───────────────
@@ -1279,8 +1279,6 @@ var cart=[], curProd=null, curQty=1, ckStep=1, promoAmt=0, promoUsed=false;
 var var_red='#ff3b30';
 var stripe=null, cardElement=null, stripeInit=false;
 var STRIPE_PK='pk_live_51T7wzz0ym8Y244tlBLaDM42ZIJJZBcVNprvnCDOK7g4jAueYwUUqxK7adFqvvwDiyA8utoq6R7Px3uKGPbdviHUz007bGTiLLj';
-// ⚙️ URL de votre serveur Stripe — à modifier selon votre hébergement
-var STRIPE_API_URL='/api/create-payment';
 
 // ── PAGES ──
 function showPage(id){
@@ -1600,7 +1598,7 @@ async function placeOrder(){
       var shipEl=document.querySelector('input[name="ship"]:checked');
       var sc=shipEl&&shipEl.value==='exp'?8.9:shipEl&&shipEl.value==='relay'?2.9:(sub>=80?0:4.9);
       var total=Math.round((sub-promoAmt+sc)*100);
-      var resp=await fetch(STRIPE_API_URL,{
+      var resp=await fetch('/api/create-payment',{
         method:'POST',headers:{'Content-Type':'application/json'},
         body:JSON.stringify({amount:total,currency:'eur',email:document.getElementById('f-email').value})
       });
@@ -1710,4 +1708,14 @@ function toggleMobileMenu(){
 // Close mobile menu when clicking outside
 document.addEventListener('click',function(e){
   var nav=document.getElementById('mobileNav');
-  var btn=document.
+  var btn=document.getElementById('hamburgerBtn');
+  if(nav&&nav.classList.contains('open')&&!nav.contains(e.target)&&e.target!==btn&&!btn.contains(e.target)){
+    nav.classList.remove('open');
+  }
+});
+
+// ── INIT ──
+renderHome();
+</script>
+</body>
+</html>
