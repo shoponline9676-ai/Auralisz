@@ -1,0 +1,1004 @@
+/* ============================================================
+   CÉLINE & CO — Custom Theme Override
+   Design: Luxury French E-Commerce 2026
+   Inspired by: Shapellx aesthetic
+   ============================================================ */
+
+/* ── Google Fonts ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ── Brand Tokens ─────────────────────────────────────────── */
+:root {
+  /* Palette */
+  --cc-cream:        #FAF7F4;
+  --cc-cream-dark:   #F0EBE3;
+  --cc-beige:        #E8E0D6;
+  --cc-black:        #1A1A1A;
+  --cc-charcoal:     #2D2D2D;
+  --cc-grey:         #6B6B6B;
+  --cc-grey-light:   #ADADAD;
+  --cc-gold:         #B8985A;
+  --cc-gold-light:   #D4B87A;
+  --cc-white:        #FFFFFF;
+
+  /* Typography */
+  --cc-font-heading: 'Cormorant Garamond', Georgia, serif;
+  --cc-font-body:    'Inter', -apple-system, sans-serif;
+
+  /* Spacing */
+  --cc-radius-sm:   4px;
+  --cc-radius-md:   8px;
+  --cc-radius-lg:   16px;
+
+  /* Transitions */
+  --cc-transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --cc-transition-fast: all 0.18s ease;
+}
+
+/* ── Global Reset & Base ──────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--cc-cream) !important;
+  font-family: var(--cc-font-body) !important;
+  color: var(--cc-black) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Override Shopify gradient background */
+.gradient {
+  background: var(--cc-cream) !important;
+}
+
+/* ── Typography ───────────────────────────────────────────── */
+h1, h2, h3, h4, h5,
+.h0, .h1, .h2, .h3, .h4, .h5,
+.heading {
+  font-family: var(--cc-font-heading) !important;
+  font-weight: 400 !important;
+  color: var(--cc-black) !important;
+  letter-spacing: 0.02em !important;
+  line-height: 1.15 !important;
+}
+
+h1, .h1 { font-size: clamp(2.8rem, 5vw, 5.2rem) !important; }
+h2, .h2 { font-size: clamp(2.2rem, 3.5vw, 3.6rem) !important; }
+h3, .h3 { font-size: clamp(1.8rem, 2.5vw, 2.4rem) !important; }
+
+p, li, span, label, input, button {
+  font-family: var(--cc-font-body) !important;
+}
+
+/* Elegant section subtitles */
+.subtitle,
+.caption-with-letter-spacing {
+  font-family: var(--cc-font-body) !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: var(--cc-gold) !important;
+  font-weight: 500 !important;
+}
+
+/* ── Announcement Bar ─────────────────────────────────────── */
+.shopify-section-group-header-group .announcement-bar,
+.announcement-bar {
+  background-color: var(--cc-black) !important;
+  color: var(--cc-white) !important;
+  min-height: 40px !important;
+}
+
+.announcement-bar__message {
+  font-family: var(--cc-font-body) !important;
+  font-size: 1.2rem !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--cc-white) !important;
+  font-weight: 400 !important;
+  padding: 0.8rem 0 !important;
+}
+
+.announcement-bar__link {
+  color: var(--cc-white) !important;
+  text-decoration: none !important;
+}
+
+.announcement-bar__link:hover {
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.header-wrapper {
+  background-color: var(--cc-white) !important;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.08) !important;
+  transition: var(--cc-transition) !important;
+}
+
+.header-wrapper.scrolled,
+.shopify-section-header-sticky .header-wrapper {
+  box-shadow: 0 2px 24px rgba(26, 26, 26, 0.06) !important;
+}
+
+/* Logo / Brand name */
+.header__heading-link .h2,
+.header__heading-link h1,
+.header__heading-link span {
+  font-family: var(--cc-font-heading) !important;
+  font-size: 2.4rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--cc-black) !important;
+}
+
+/* Navigation links */
+.header__menu-item {
+  font-family: var(--cc-font-body) !important;
+  font-size: 1.25rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--cc-charcoal) !important;
+  transition: color 0.2s ease !important;
+}
+
+.header__menu-item:hover {
+  color: var(--cc-gold) !important;
+}
+
+.header__menu-item::after {
+  background-color: var(--cc-gold) !important;
+  height: 1px !important;
+}
+
+.header__active-menu-item {
+  color: var(--cc-black) !important;
+}
+
+.header__active-menu-item::after {
+  background-color: var(--cc-black) !important;
+}
+
+/* Header icons */
+.header__icon {
+  color: var(--cc-black) !important;
+}
+
+.header__icon:hover .icon {
+  color: var(--cc-gold) !important;
+}
+
+/* Cart bubble */
+.cart-count-bubble {
+  background-color: var(--cc-gold) !important;
+  color: var(--cc-white) !important;
+  font-size: 0.75rem !important;
+  width: 1.6rem !important;
+  height: 1.6rem !important;
+}
+
+/* ── Drawer / Mobile Menu ─────────────────────────────────── */
+.drawer {
+  background-color: var(--cc-white) !important;
+}
+
+.drawer__close {
+  background-color: var(--cc-cream) !important;
+  color: var(--cc-black) !important;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+/* Primary button */
+.button,
+.customer button,
+.shopify-challenge__button {
+  background-color: var(--cc-black) !important;
+  color: var(--cc-white) !important;
+  font-family: var(--cc-font-body) !important;
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  border: 1px solid var(--cc-black) !important;
+  border-radius: 0 !important;
+  min-height: 5rem !important;
+  padding: 0 3.2rem !important;
+  transition: var(--cc-transition) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.button:not([disabled]):hover,
+.customer button:hover,
+.shopify-challenge__button:hover {
+  background-color: var(--cc-white) !important;
+  color: var(--cc-black) !important;
+  border-color: var(--cc-black) !important;
+}
+
+/* Shimmer effect on hover */
+.button:not([disabled]):hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  animation: ccShimmer 0.6s ease-out forwards;
+  z-index: 1;
+}
+
+@keyframes ccShimmer {
+  0%   { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Secondary button */
+.button--secondary {
+  background-color: transparent !important;
+  color: var(--cc-black) !important;
+  border: 1px solid var(--cc-black) !important;
+}
+
+.button--secondary:not([disabled]):hover {
+  background-color: var(--cc-black) !important;
+  color: var(--cc-white) !important;
+}
+
+/* Gold accent button */
+.button--gold {
+  background-color: var(--cc-gold) !important;
+  color: var(--cc-white) !important;
+  border-color: var(--cc-gold) !important;
+}
+
+.button--gold:hover {
+  background-color: var(--cc-gold-light) !important;
+  border-color: var(--cc-gold-light) !important;
+  color: var(--cc-white) !important;
+}
+
+/* Add to cart full width */
+.product-form__submit,
+.quick-add__submit {
+  background-color: var(--cc-black) !important;
+  color: var(--cc-white) !important;
+  border-radius: 0 !important;
+  min-height: 5.4rem !important;
+  font-size: 1.2rem !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  transition: var(--cc-transition) !important;
+}
+
+.product-form__submit:hover,
+.quick-add__submit:hover {
+  background-color: var(--cc-charcoal) !important;
+}
+
+/* Buy now / dynamic checkout */
+.shopify-payment-button__button--branded {
+  border-radius: 0 !important;
+}
+
+/* ── Product Cards ────────────────────────────────────────── */
+.card-wrapper,
+.product-card-wrapper {
+  transition: var(--cc-transition) !important;
+}
+
+.card-wrapper:hover {
+  transform: translateY(-4px) !important;
+}
+
+.card {
+  border-radius: 0 !important;
+  background-color: var(--cc-white) !important;
+  border: none !important;
+  overflow: hidden !important;
+}
+
+/* Card image zoom on hover */
+.card .media img,
+.card__media img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transform: scale(1) !important;
+}
+
+.card-wrapper:hover .card .media img,
+.card-wrapper:hover .card__media img {
+  transform: scale(1.06) !important;
+}
+
+/* Card content */
+.card__content,
+.card__information {
+  padding: 1.4rem 0.4rem 1.6rem !important;
+  background-color: var(--cc-white) !important;
+}
+
+.card__heading,
+.card__heading a {
+  font-family: var(--cc-font-body) !important;
+  font-size: 1.4rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.03em !important;
+  color: var(--cc-black) !important;
+  text-decoration: none !important;
+  line-height: 1.4 !important;
+}
+
+.card__heading a:hover {
+  color: var(--cc-gold) !important;
+}
+
+/* Price */
+.price,
+.price__regular,
+.price--large {
+  font-family: var(--cc-font-body) !important;
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  color: var(--cc-black) !important;
+}
+
+.price--on-sale .price-item--regular {
+  color: var(--cc-grey) !important;
+  text-decoration: line-through !important;
+}
+
+.price--on-sale .price-item--sale,
+.price-item--sale {
+  color: #C0392B !important;
+  font-weight: 600 !important;
+}
+
+/* Badge */
+.badge {
+  font-family: var(--cc-font-body) !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  border-radius: 0 !important;
+  padding: 0.4rem 1rem !important;
+}
+
+.badge--sale {
+  background-color: #C0392B !important;
+  color: var(--cc-white) !important;
+  border-color: transparent !important;
+}
+
+.badge--new {
+  background-color: var(--cc-black) !important;
+  color: var(--cc-white) !important;
+  border-color: transparent !important;
+}
+
+/* Quick add button overlay */
+.quick-add,
+.card__footer .button {
+  border-radius: 0 !important;
+}
+
+/* ── Collection Cards ─────────────────────────────────────── */
+.collection-card-wrapper .card__heading,
+.collection-card-wrapper .card__heading a {
+  font-family: var(--cc-font-heading) !important;
+  font-size: 2rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.04em !important;
+  color: var(--cc-white) !important;
+}
+
+/* ── Section Titles ───────────────────────────────────────── */
+.title-wrapper .title,
+.section-title,
+[class*="featured"] .title {
+  font-family: var(--cc-font-heading) !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Decorative gold underline on section titles */
+.title-wrapper .title::after {
+  content: '';
+  display: block;
+  width: 4rem;
+  height: 1px;
+  background-color: var(--cc-gold);
+  margin: 1.2rem auto 0;
+}
+
+.title-wrapper--no-top-margin .title::after {
+  margin-top: 1rem;
+}
+
+/* ── Slideshow / Hero ─────────────────────────────────────── */
+.slideshow__slide,
+.banner {
+  position: relative !important;
+}
+
+/* Hero text overlay */
+.slideshow__text-wrapper,
+.banner__box {
+  background: transparent !important;
+}
+
+.slideshow__text .title,
+.banner .banner__heading {
+  font-family: var(--cc-font-heading) !important;
+  font-size: clamp(3.6rem, 7vw, 7.2rem) !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.02em !important;
+  line-height: 1.08 !important;
+  color: var(--cc-white) !important;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.18) !important;
+}
+
+.slideshow__text .subtitle,
+.banner .banner__subheading {
+  font-family: var(--cc-font-body) !important;
+  font-size: 1.3rem !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: rgba(255,255,255,0.88) !important;
+}
+
+/* Hero CTA button — white outlined on dark background */
+.slideshow__text .button,
+.banner .button {
+  background-color: transparent !important;
+  color: var(--cc-white) !important;
+  border: 1px solid rgba(255,255,255,0.8) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+.slideshow__text .button:hover,
+.banner .button:hover {
+  background-color: var(--cc-white) !important;
+  color: var(--cc-black) !important;
+}
+
+/* ── Marquee / Scrolling Text ─────────────────────────────── */
+.cc-marquee {
+  background-color: var(--cc-cream-dark);
+  padding: 1.2rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 1px solid var(--cc-beige);
+  border-bottom: 1px solid var(--cc-beige);
+}
+
+.cc-marquee__track {
+  display: inline-flex;
+  animation: ccMarquee 28s linear infinite;
+  gap: 0;
+}
+
+.cc-marquee__item {
+  font-family: var(--cc-font-body);
+  font-size: 1.15rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cc-charcoal);
+  padding: 0 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  white-space: nowrap;
+}
+
+.cc-marquee__item::after {
+  content: '✦';
+  color: var(--cc-gold);
+  font-size: 0.8rem;
+}
+
+@keyframes ccMarquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Trust Badges Bar ─────────────────────────────────────── */
+.cc-trust-bar {
+  background-color: var(--cc-white);
+  padding: 2.4rem 0;
+  border-top: 1px solid var(--cc-beige);
+  border-bottom: 1px solid var(--cc-beige);
+}
+
+.cc-trust-bar__grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.cc-trust-bar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 3rem;
+  position: relative;
+  flex: 1;
+  min-width: 140px;
+}
+
+.cc-trust-bar__item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background-color: var(--cc-beige);
+}
+
+.cc-trust-bar__icon {
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
+  color: var(--cc-gold);
+}
+
+.cc-trust-bar__label {
+  font-family: var(--cc-font-body);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-black);
+  margin-bottom: 0.2rem;
+}
+
+.cc-trust-bar__sub {
+  font-family: var(--cc-font-body);
+  font-size: 1.1rem;
+  color: var(--cc-grey);
+  font-weight: 400;
+}
+
+@media screen and (max-width: 749px) {
+  .cc-trust-bar__item {
+    min-width: calc(50% - 2rem);
+    padding: 1.2rem 1rem;
+  }
+  .cc-trust-bar__item:nth-child(2)::after { display: none; }
+  .cc-trust-bar__item:nth-child(4)::after { display: none; }
+}
+
+/* ── Testimonials ─────────────────────────────────────────── */
+.cc-testimonials {
+  background-color: var(--cc-cream-dark);
+  padding: 6rem 0;
+}
+
+.cc-testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.cc-testimonial-card {
+  background-color: var(--cc-white);
+  padding: 3rem 2.8rem;
+  border-radius: 0;
+  position: relative;
+}
+
+.cc-testimonial-card__stars {
+  color: var(--cc-gold);
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.6rem;
+}
+
+.cc-testimonial-card__text {
+  font-family: var(--cc-font-heading);
+  font-size: 1.7rem;
+  font-style: italic;
+  color: var(--cc-charcoal);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.cc-testimonial-card__author {
+  font-family: var(--cc-font-body);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-black);
+}
+
+.cc-testimonial-card__verified {
+  font-size: 1.1rem;
+  color: var(--cc-gold);
+  letter-spacing: 0.05em;
+  font-weight: 400;
+  text-transform: none;
+}
+
+/* ── Image with Text (split section) ─────────────────────── */
+.image-with-text__content,
+.content-container {
+  background-color: var(--cc-white) !important;
+  border-radius: 0 !important;
+}
+
+.image-with-text__heading {
+  font-family: var(--cc-font-heading) !important;
+  font-weight: 300 !important;
+  font-size: clamp(2.4rem, 4vw, 4rem) !important;
+}
+
+.image-with-text__text {
+  font-family: var(--cc-font-body) !important;
+  font-size: 1.5rem !important;
+  color: var(--cc-grey) !important;
+  line-height: 1.8 !important;
+}
+
+/* ── Collage ──────────────────────────────────────────────── */
+.collage-card__content {
+  background: linear-gradient(to top, rgba(26,26,26,0.7) 0%, transparent 60%) !important;
+}
+
+.collage-card__heading {
+  font-family: var(--cc-font-heading) !important;
+  font-weight: 300 !important;
+  color: var(--cc-white) !important;
+}
+
+/* ── Newsletter Section ───────────────────────────────────── */
+.email-signup,
+[class*="newsletter"] {
+  background-color: var(--cc-black) !important;
+  color: var(--cc-white) !important;
+}
+
+[class*="newsletter"] .title,
+[class*="newsletter"] h2 {
+  color: var(--cc-white) !important;
+  font-family: var(--cc-font-heading) !important;
+  font-weight: 300 !important;
+}
+
+[class*="newsletter"] .subtitle {
+  color: var(--cc-gold) !important;
+}
+
+[class*="newsletter"] p {
+  color: rgba(255,255,255,0.72) !important;
+}
+
+/* Newsletter input */
+[class*="newsletter"] .field__input,
+[class*="newsletter"] .customer .field input {
+  background-color: rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  color: var(--cc-white) !important;
+  border-radius: 0 !important;
+}
+
+[class*="newsletter"] .field__label {
+  color: rgba(255,255,255,0.55) !important;
+}
+
+[class*="newsletter"] .button {
+  background-color: var(--cc-gold) !important;
+  border-color: var(--cc-gold) !important;
+  color: var(--cc-white) !important;
+  border-radius: 0 !important;
+}
+
+[class*="newsletter"] .button:hover {
+  background-color: var(--cc-gold-light) !important;
+  border-color: var(--cc-gold-light) !important;
+  color: var(--cc-white) !important;
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+.footer,
+.footer__content-top {
+  background-color: var(--cc-black) !important;
+  color: var(--cc-white) !important;
+}
+
+.footer__content-bottom {
+  background-color: #111111 !important;
+  border-top: 1px solid rgba(255,255,255,0.08) !important;
+}
+
+.footer-block__heading {
+  font-family: var(--cc-font-body) !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  color: var(--cc-white) !important;
+  margin-bottom: 1.6rem !important;
+}
+
+.footer-block__details-content a,
+.footer__list-social a,
+.footer a {
+  font-family: var(--cc-font-body) !important;
+  font-size: 1.35rem !important;
+  color: rgba(255,255,255,0.6) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+  letter-spacing: 0.02em !important;
+}
+
+.footer-block__details-content a:hover,
+.footer a:hover {
+  color: var(--cc-gold) !important;
+}
+
+.footer__copyright {
+  font-family: var(--cc-font-body) !important;
+  font-size: 1.15rem !important;
+  color: rgba(255,255,255,0.38) !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* Footer brand name */
+.footer .footer__heading-logo,
+.footer .h2 {
+  font-family: var(--cc-font-heading) !important;
+  font-size: 2.2rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: var(--cc-white) !important;
+}
+
+/* Social icons in footer */
+.list-social__item .icon {
+  fill: rgba(255,255,255,0.6) !important;
+  transition: fill 0.2s ease !important;
+}
+
+.list-social__item:hover .icon {
+  fill: var(--cc-gold) !important;
+}
+
+/* ── Product Page ─────────────────────────────────────────── */
+.product__title,
+.product-title {
+  font-family: var(--cc-font-heading) !important;
+  font-size: clamp(2.4rem, 4vw, 3.6rem) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em !important;
+}
+
+.product__price,
+.price-item {
+  font-family: var(--cc-font-body) !important;
+  font-size: 1.8rem !important;
+  font-weight: 500 !important;
+}
+
+/* Variant pills */
+.variant-input-wrapper .button,
+.swatch__input:checked+.swatch__label {
+  border-color: var(--cc-black) !important;
+}
+
+/* Collapsible tabs (size guide, details) */
+.product__accordion .summary {
+  font-family: var(--cc-font-body) !important;
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: var(--cc-black) !important;
+  border-bottom: 1px solid var(--cc-beige) !important;
+  padding: 1.6rem 0 !important;
+}
+
+/* ── Cart Drawer ──────────────────────────────────────────── */
+.cart-drawer {
+  background-color: var(--cc-white) !important;
+}
+
+.cart-drawer__header {
+  border-bottom: 1px solid var(--cc-beige) !important;
+  padding: 2rem !important;
+}
+
+.cart-drawer__heading {
+  font-family: var(--cc-font-heading) !important;
+  font-size: 2rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.06em !important;
+}
+
+.cart-item__name {
+  font-family: var(--cc-font-body) !important;
+  font-weight: 400 !important;
+  font-size: 1.4rem !important;
+  color: var(--cc-black) !important;
+}
+
+.cart-item__image {
+  border-radius: 0 !important;
+}
+
+.totals {
+  border-top: 1px solid var(--cc-beige) !important;
+}
+
+.totals__subtotal {
+  font-family: var(--cc-font-body) !important;
+  font-weight: 600 !important;
+  font-size: 1.5rem !important;
+}
+
+.cart__ctas .button {
+  border-radius: 0 !important;
+}
+
+/* ── Forms / Inputs ───────────────────────────────────────── */
+.field__input,
+.select__select,
+.customer .field input {
+  border-radius: 0 !important;
+  border-color: var(--cc-beige) !important;
+  font-family: var(--cc-font-body) !important;
+  background-color: var(--cc-white) !important;
+  color: var(--cc-black) !important;
+}
+
+.field__input:focus,
+.select__select:focus,
+.customer .field input:focus {
+  border-color: var(--cc-black) !important;
+  box-shadow: 0 0 0 1px var(--cc-black) !important;
+}
+
+.field__label {
+  font-family: var(--cc-font-body) !important;
+  color: var(--cc-grey) !important;
+  font-size: 1.4rem !important;
+}
+
+/* ── Star Ratings ─────────────────────────────────────────── */
+.rating,
+.product-reviews .spr-icon {
+  color: var(--cc-gold) !important;
+  fill: var(--cc-gold) !important;
+}
+
+/* ── Breadcrumbs ──────────────────────────────────────────── */
+.breadcrumbs,
+.breadcrumb {
+  font-family: var(--cc-font-body) !important;
+  font-size: 1.2rem !important;
+  color: var(--cc-grey) !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* ── Predictive Search ────────────────────────────────────── */
+.predictive-search {
+  border-radius: 0 !important;
+  border-color: var(--cc-beige) !important;
+}
+
+.predictive-search__item:hover {
+  background-color: var(--cc-cream) !important;
+}
+
+.predictive-search__item-heading {
+  font-family: var(--cc-font-body) !important;
+  font-weight: 400 !important;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--cc-cream); }
+::-webkit-scrollbar-thumb {
+  background: var(--cc-beige);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--cc-grey-light); }
+
+/* ── Text Selection ───────────────────────────────────────── */
+::selection {
+  background-color: rgba(184, 152, 90, 0.2) !important;
+  color: var(--cc-black) !important;
+}
+
+/* ── Loader / Progress Bar ────────────────────────────────── */
+.progress-bar-value {
+  background-color: var(--cc-gold) !important;
+}
+
+/* ── Section Spacing ──────────────────────────────────────── */
+.section + .section {
+  margin-top: 6rem !important;
+}
+
+@media screen and (min-width: 750px) {
+  .section + .section {
+    margin-top: 8rem !important;
+  }
+}
+
+/* ── Utility Classes (CÉLINE & CO specific) ───────────────── */
+.cc-gold { color: var(--cc-gold) !important; }
+.cc-bg-cream { background-color: var(--cc-cream) !important; }
+.cc-bg-black { background-color: var(--cc-black) !important; }
+.cc-serif { font-family: var(--cc-font-heading) !important; }
+.cc-uppercase {
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+}
+
+/* ── Hover underline links ────────────────────────────────── */
+.cc-link {
+  position: relative;
+  text-decoration: none;
+  color: var(--cc-black);
+}
+
+.cc-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--cc-gold);
+  transition: width 0.3s ease;
+}
+
+.cc-link:hover::after { width: 100%; }
+
+/* ── Mobile Responsive Fixes ──────────────────────────────── */
+@media screen and (max-width: 749px) {
+  .header__heading-link .h2,
+  .header__heading-link h1 {
+    font-size: 1.8rem !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  .button,
+  .customer button {
+    font-size: 1.15rem !important;
+    min-height: 4.8rem !important;
+    padding: 0 2.4rem !important;
+  }
+
+  .cc-marquee__item {
+    font-size: 1rem !important;
+    padding: 0 2rem !important;
+  }
+
+  .cc-trust-bar__label { font-size: 1rem !important; }
+  .cc-trust-bar__sub { font-size: 1rem !important; }
+}
+
+/* ── Print styles ─────────────────────────────────────────── */
+@media print {
+  .announcement-bar,
+  .header__icons,
+  .footer { display: none !important; }
+}
